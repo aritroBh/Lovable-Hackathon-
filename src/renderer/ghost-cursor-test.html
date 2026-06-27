@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ghost Action Player Integration Test</title>
+    <style>
+      body {
+        margin: 0;
+        background: #111;
+        overflow: hidden;
+      }
+      .target {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #f59e0b;
+        border-radius: 6px;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="targets"></div>
+    <div id="root"></div>
+    <script type="module" src="./ghost-cursor-test.tsx"></script>
+  </body>
+</html>

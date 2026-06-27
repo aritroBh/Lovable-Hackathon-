@@ -99,3 +99,18 @@ export async function startTavusConversation(
   }
   return data.conversation_url;
 }
+
+export async function endTavusConversation(conversationUrl: string): Promise<void> {
+  let id = "";
+  try {
+    id = new URL(conversationUrl).pathname.replace(/^\//, "");
+  } catch {
+    return;
+  }
+  if (!id) return;
+  await fetch("/api/tavus-conversation/end", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ conversationId: id }),
+  }).catch(() => undefined);
+}

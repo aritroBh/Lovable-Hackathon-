@@ -93,6 +93,7 @@ Entry points for E2E work:
 | Area | Files |
 | --- | --- |
 | Mac → Hub publish | `src/main/session/skillRecorder.ts`, `src/main/hubSync.ts` |
-| Tavus overlay | `src/main/tavusHub.ts`, `src/renderer/overlay/TavusPalPanel.tsx` |
+| Tavus overlay | `src/main/tavusHub.ts`, `src/renderer/overlay/TavusPalPanel.tsx`, `scripts/tavus-e2e-playwright.cjs` |
+| Tavus Hub API | `skills-hub/api/tavus-conversation.ts`, `tavus-conversation-end.ts`, `tavus-face-preview.ts` |
 | Hub game UI | `skills-hub/src/pages/Browse.tsx`, `SkillDetail.tsx`, `JourneyContext.tsx` |
 | Verify scripts | `skills-hub/scripts/e2e-mac-publish.cjs`, `e2e-matrix.cjs`, `adversarial-stress.cjs` |

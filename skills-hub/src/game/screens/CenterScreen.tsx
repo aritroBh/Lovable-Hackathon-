@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useJourney } from "../../JourneyContext";
-import { fetchSkills, getSkill, startTavusConversation } from "../../skills";
+import { fetchSkills, getSkill, startTavusConversation, endTavusConversation } from "../../skills";
 import { useGame } from "../GameContext";
 import { monName } from "../mons";
 
@@ -40,6 +40,12 @@ export default function CenterScreen({ skillId }: { skillId: string | null }) {
   useEffect(() => {
     void loadPal();
   }, [loadPal]);
+
+  useEffect(() => {
+    return () => {
+      if (url) void endTavusConversation(url);
+    };
+  }, [url]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

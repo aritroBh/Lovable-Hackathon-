@@ -157,6 +157,7 @@ Individual probes:
 
 | Script | Role |
 |--------|------|
+| `scripts/tavus-e2e-playwright.cjs` | Tavus API, CSP, overlay persona, Hub TRAIN PAL (`npm run test:tavus`) |
 | `scripts/e2e-mac-publish.cjs` | Journey learned + publish → caught + catalog |
 | `scripts/e2e-matrix.cjs` | 4-skill progression, RECAPORDON gym, publish gate |
 | `scripts/sync-user-id.cjs` | Mac `SPECTER_USER_ID` ↔ Hub `specter-user-id` |
@@ -164,9 +165,40 @@ Individual probes:
 
 ## Voice-first agent
 
-- **Primary:** Tavus PAL — Hub **TRAIN with PAL** or Mac overlay **Face → Talk**
+- **Primary:** Tavus PAL — Hub **TRAIN PAL** (battle screen or Pokémon Center) or Mac overlay **Face → click James circle → Talk**
 - Mac defaults to Tavus face when `GET /api/tavus-health` returns `palReady: true` (`tavusPalAvailable` IPC)
-- **Fallback:** local ultra loop — Whisper STT + ElevenLabs/OpenAI/macOS TTS; `speakIfUltra()` skips while PAL iframe is live
+- Overlay shows **circular roaming persona** (James / `TAVUS_REPLICA_ID` preview video); live Talk embeds Daily iframe inside the circle
+- **Voice:** Tavus CVI audio when Face mode live — local TTS (`speakIfUltra`) and main-process `tts:speak` are gated off while PAL is active
+- **Fallback:** local ultra loop — Whisper STT + ElevenLabs/OpenAI/macOS TTS when Tavus unavailable
+
+## Tavus overlay (Mac)
+
+| File | Role |
+|------|------|
+| [`src/renderer/overlay/TavusPalPanel.tsx`](../src/renderer/overlay/TavusPalPanel.tsx) | Circular persona, preview video, Talk iframe |
+| [`src/renderer/overlay.html`](../src/renderer/overlay.html) | CSP for `tavus.daily.co`, `cdn.replica.tavus.io` |
+| [`src/main/tavusHub.ts`](../src/main/tavusHub.ts) | IPC → Hub API (start/end conversation, face preview) |
+| [`electron.vite.config.ts`](../electron.vite.config.ts) | Overlay dev server **:5174** (Hub owns :5173) |
+
+**API routes (Hub only):**
+
+| Route | Method | Role |
+|-------|--------|------|
+| `/api/tavus-health` | GET | `palReady` probe |
+| `/api/tavus-face-preview` | GET | James thumbnail video + name from `TAVUS_REPLICA_ID` |
+| `/api/tavus-conversation` | POST | Create PAL room (`source: overlay` or `skillId`) |
+| `/api/tavus-conversation/end` | POST | `{ conversationId }` — DELETE on Tavus; frees concurrent slot |
+
+Ending Talk (click circle again), hiding overlay (double-shift), or leaving Center screen all call **end**. Without this, Tavus returns `maximum concurrent conversations` (plan limit ~1).
+
+**Verify:** `npm run test:tavus` from repo root (Playwright — API, CSP, overlay persona, Hub TRAIN PAL).
+
+## Post-hackathon (explicitly cut today)
+
+- Tavus Knowledge Base document upload pipeline
+- GhostWiki → Tavus Skills API attach
+- HMAC-signed userId (hackathon uses UUID secrecy)
+- Custom photo replica training in overlay (use prebuilt `TAVUS_REPLICA_ID` only)
 
 ## Skill recording (Cmd+Shift+R)
 
@@ -182,25 +214,3 @@ Requires `SKILLS_HUB_URL` and matching `SPECTER_USER_ID` for dex sync in your br
 - Rules: [`skills-hub/design/GAME_LOGIC.md`](../skills-hub/design/GAME_LOGIC.md)
 - Playable mockup: [`skills-hub/design/concepts/12f-specter-mon-playable.html`](../skills-hub/design/concepts/12f-specter-mon-playable.html)
 - React game: Browse (route map) + SkillDetail (battle / PAL / catch)
-
-## Post-hackathon (explicitly cut today)
-
-- Tavus Knowledge Base document upload pipeline
-- GhostWiki → Tavus Skills API attach
-- HMAC-signed userId (hackathon uses UUID secrecy)
-
-## Photo → Tavus face (overlay) — optional
-
-**Hackathon demo:** use prebuilt `TAVUS_REPLICA_ID` in Hub secrets — **skip photo upload** (~3h training).
-
-Mac overlay can swap SpecBuddy for a **Tavus CVI iframe** (`Face` toggle in mode bar).
-
-1. User uploads JPG/PNG headshot → `POST /api/tavus-upload` (base64 JSON)
-2. Hub starts replica training → `POST /api/tavus-replica` → Tavus `POST /v2/replicas` with `train_image_url` + `voice_name`
-3. Training ~3–4h ([docs](https://docs.tavus.io/sections/replica/train-with-an-image)); until ready, conversations use stock `TAVUS_REPLICA_ID`
-4. `Talk` → `POST /api/tavus-conversation` with `source: "overlay"` + GhostWiki `memoryContext`
-5. Electron IPC proxies Hub routes (`tavusHub.ts`) — `tavusPalAvailable()` probes `GET /api/tavus-health`; `TAVUS_API_KEY` never in renderer
-
-**Dev:** `skills-hub/.data/uploads/` served at `http://127.0.0.1:3001/api/uploads/{file}`. Set `TAVUS_PUBLIC_BASE_URL` if Tavus must reach a tunnel (ngrok) during local replica training.
-
-**Prod:** add Vercel Blob or S3 for publicly reachable `train_image_url` (ponytail: `/tmp` + GET route works on Vercel for same-deploy fetches only).

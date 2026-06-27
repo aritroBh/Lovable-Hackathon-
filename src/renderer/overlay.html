@@ -5,7 +5,7 @@
     <title>Specter Overlay</title>
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:* ws://localhost:*; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:*; style-src 'self' 'unsafe-inline';"
+      content="default-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:* http://127.0.0.1:* ws://localhost:* ws://127.0.0.1:*; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:* http://127.0.0.1:* https://*.daily.co; style-src 'self' 'unsafe-inline'; frame-src 'self' https://tavus.daily.co https://*.daily.co; media-src 'self' https://cdn.replica.tavus.io blob: data:; connect-src 'self' http://localhost:* http://127.0.0.1:* ws://localhost:* ws://127.0.0.1:* wss://*.daily.co https://*.daily.co https://tavus.daily.co; img-src 'self' data: https://cdn.replica.tavus.io; worker-src 'self' blob: https://*.daily.co;"
     />
     <style>
       body {

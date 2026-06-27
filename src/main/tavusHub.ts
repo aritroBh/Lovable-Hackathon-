@@ -119,6 +119,33 @@ export async function tavusGetReplicaStatus(): Promise<{
   };
 }
 
+export async function tavusGetPersonaPreview(): Promise<{
+  ok: boolean;
+  thumbnail_video_url?: string | null;
+  face_name?: string | null;
+  error?: string;
+}> {
+  const { ok, data } = await hubJson("/api/tavus-face-preview");
+  if (!ok) {
+    return {
+      ok: false,
+      error:
+        typeof data.error === "string" ? data.error : JSON.stringify(data.error ?? data),
+    };
+  }
+  return {
+    ok: true,
+    thumbnail_video_url:
+      typeof data.thumbnail_video_url === "string" || data.thumbnail_video_url === null
+        ? (data.thumbnail_video_url as string | null)
+        : undefined,
+    face_name:
+      typeof data.face_name === "string" || data.face_name === null
+        ? (data.face_name as string | null)
+        : undefined,
+  };
+}
+
 export async function tavusStartConversation(opts: {
   memoryContext?: string;
   replicaId?: string | null;
@@ -156,6 +183,25 @@ export async function tavusStartConversation(opts: {
       typeof data.conversation_id === "string" ? data.conversation_id : undefined,
     using_custom_replica: data.using_custom_replica === true,
   };
+}
+
+export async function tavusEndConversation(
+  conversationId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  if (!conversationId) return { ok: false, error: "Missing conversationId" };
+  const { ok, data } = await hubJson("/api/tavus-conversation/end", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ conversationId }),
+  });
+  if (!ok) {
+    return {
+      ok: false,
+      error:
+        typeof data.error === "string" ? data.error : JSON.stringify(data.error ?? data),
+    };
+  }
+  return { ok: true };
 }
 
 export function tavusHubConfigured(): boolean {

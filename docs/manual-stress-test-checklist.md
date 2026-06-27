@@ -74,9 +74,9 @@ Run after `bash scripts/hackathon-prep.sh` passes. Requires Skills Hub on `:5173
 ### I1. Voice-first activation
 
 1. Double-shift summon overlay.
-2. Confirm **Face** mode is Tavus when Hub `TAVUS_*` env is set (`/api/tavus-health` → `palReady`).
-3. Click **Talk** — PAL iframe loads; local TTS silent while live.
-4. Dismiss overlay — no orphan mic streams.
+2. Confirm **Face** mode shows circular **James** persona (roams screen edge) when Hub `TAVUS_*` env is set (`/api/tavus-health` → `palReady`). Overlay Vite is **:5174** (Hub UI is :5173).
+3. Click circle → **Talk** → Tavus iframe + voice inside circle; local TTS silent while live.
+4. Click circle again or double-shift hide → session ends (`/api/tavus-conversation/end`); no orphan mic streams.
 
 ### I2. Cmd+Shift+R → Hub catalog
 
@@ -90,7 +90,7 @@ Run after `bash scripts/hackathon-prep.sh` passes. Requires Skills Hub on `:5173
 
 1. Route map HUD shows PARTY / LEARNED / CAUGHT / **BADGES**.
 2. RECAPORDON — learn all 11 moves sequentially → badge + party equip.
-3. **TRAIN with PAL** — Tavus iframe on skill detail.
+3. **TRAIN PAL** — Tavus iframe in Pokémon Center (battle screen → TRAIN PAL button).
 4. Adversarial: catch without learn → blocked (automated in `verify:stress`).
 
 ### I4. Dex sync

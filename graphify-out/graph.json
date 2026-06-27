@@ -1,13 +1,6 @@
 {
   "nodes": [
     {
-      "id": "file::electron_vite_config",
-      "label": "electron.vite.config.ts",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/electron.vite.config.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/electron.vite.config.ts:1"
-    },
-    {
       "id": "file::tailwind_config",
       "label": "tailwind.config.js",
       "fileType": "code",
@@ -2685,8 +2678,8 @@
       "id": "file::index",
       "label": "index.ts",
       "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/index.ts:1"
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:1"
     },
     {
       "id": "index::_interopnamespacedefault",
@@ -6280,293 +6273,6 @@
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/out/main/index.js:10792"
     },
     {
-      "id": "index::autocompiletowiki",
-      "label": "autoCompileToWiki",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:159"
-    },
-    {
-      "id": "index::isbrokenpipeerror",
-      "label": "isBrokenPipeError",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:180"
-    },
-    {
-      "id": "index::captureforegroundappnow",
-      "label": "captureForegroundAppNow",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:235"
-    },
-    {
-      "id": "index::getcachedforegroundappidentifier",
-      "label": "getCachedForegroundAppIdentifier",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:276"
-    },
-    {
-      "id": "index::createclinicalwindow",
-      "label": "createClinicalWindow",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:287"
-    },
-    {
-      "id": "index::showclinicalwindow",
-      "label": "showClinicalWindow",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:321"
-    },
-    {
-      "id": "index::bufferfromaudiodata",
-      "label": "bufferFromAudioData",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:327"
-    },
-    {
-      "id": "index::bytelengthofaudiodata",
-      "label": "byteLengthOfAudioData",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:343"
-    },
-    {
-      "id": "index::displaysummary",
-      "label": "displaySummary",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:350"
-    },
-    {
-      "id": "index::getsummondisplay",
-      "label": "getSummonDisplay",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:364"
-    },
-    {
-      "id": "index::enableoverlayworkspacebehavior",
-      "label": "enableOverlayWorkspaceBehavior",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:379"
-    },
-    {
-      "id": "index::moveoverlaytodisplay",
-      "label": "moveOverlayToDisplay",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:399"
-    },
-    {
-      "id": "index::centercontentbounds",
-      "label": "centerContentBounds",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:407"
-    },
-    {
-      "id": "index::movepracticewindowtodisplay",
-      "label": "movePracticeWindowToDisplay",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:421"
-    },
-    {
-      "id": "index::overlayisondisplay",
-      "label": "overlayIsOnDisplay",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:441"
-    },
-    {
-      "id": "index::routevisiblewindowstodisplay",
-      "label": "routeVisibleWindowsToDisplay",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:446"
-    },
-    {
-      "id": "index::registerwindowroutinglisteners",
-      "label": "registerWindowRoutingListeners",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:453"
-    },
-    {
-      "id": "index::delay",
-      "label": "delay",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:480"
-    },
-    {
-      "id": "index::clamppercent",
-      "label": "clampPercent",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:484"
-    },
-    {
-      "id": "index::confidencevalue",
-      "label": "confidenceValue",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:490"
-    },
-    {
-      "id": "index::realappaction",
-      "label": "realAppAction",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:496"
-    },
-    {
-      "id": "index::safelabel",
-      "label": "safeLabel",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:500"
-    },
-    {
-      "id": "index::instructionfortarget",
-      "label": "instructionForTarget",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:504"
-    },
-    {
-      "id": "index::createrealappstep",
-      "label": "createRealAppStep",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:511"
-    },
-    {
-      "id": "index::realappnodeid",
-      "label": "realAppNodeId",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:563"
-    },
-    {
-      "id": "index::islearninggraph",
-      "label": "isLearningGraph",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:570"
-    },
-    {
-      "id": "index::safesend",
-      "label": "safeSend",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:582"
-    },
-    {
-      "id": "index::sendoverlayevent",
-      "label": "sendOverlayEvent",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:594"
-    },
-    {
-      "id": "index::sortedbehavioralcheckpoints",
-      "label": "sortedBehavioralCheckpoints",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:598"
-    },
-    {
-      "id": "index::behavioralcheckpointforid",
-      "label": "behavioralCheckpointForId",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:607"
-    },
-    {
-      "id": "index::newestbehavioralcheckpoint",
-      "label": "newestBehavioralCheckpoint",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:617"
-    },
-    {
-      "id": "index::realbehavioralframecount",
-      "label": "realBehavioralFrameCount",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:624"
-    },
-    {
-      "id": "index::hasrealbehavioralsignature",
-      "label": "hasRealBehavioralSignature",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:631"
-    },
-    {
-      "id": "index::realcheckpointornull",
-      "label": "realCheckpointOrNull",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:638"
-    },
-    {
-      "id": "index::safefeedbackarm",
-      "label": "safeFeedbackArm",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:644"
-    },
-    {
-      "id": "index::lateststepsfornode",
-      "label": "latestStepsForNode",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:648"
-    },
-    {
-      "id": "index::selectmirrorsignature",
-      "label": "selectMirrorSignature",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:656"
-    },
-    {
-      "id": "index::toggleoverlay",
-      "label": "toggleOverlay",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:680"
-    },
-    {
-      "id": "index::createwindow",
-      "label": "createWindow",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:763"
-    },
-    {
-      "id": "index::createoverlaywindow",
-      "label": "createOverlayWindow",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:803"
-    },
-    {
-      "id": "index::failmirrorrun",
-      "label": "failMirrorRun",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:1935"
-    },
-    {
       "id": "file::ambient",
       "label": "ambient.ts",
       "fileType": "code",
@@ -6586,20 +6292,6 @@
       "fileType": "code",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/clinical.ts",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/clinical.ts:3"
-    },
-    {
-      "id": "file::overlay",
-      "label": "overlay.ts",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/overlay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/overlay.ts:1"
-    },
-    {
-      "id": "overlay::onipc",
-      "label": "onIpc",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/overlay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/overlay.ts:3"
     },
     {
       "id": "file::dashboard",
@@ -9605,69 +9297,6 @@
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-health.ts:4"
     },
     {
-      "id": "file::tavus",
-      "label": "tavus.ts",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:1"
-    },
-    {
-      "id": "tavus::resolvereplicaid",
-      "label": "resolveReplicaId",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:3"
-    },
-    {
-      "id": "tavus::isreplicaready",
-      "label": "isReplicaReady",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:31"
-    },
-    {
-      "id": "tavus::publicbaseurl",
-      "label": "publicBaseUrl",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:37"
-    },
-    {
-      "id": "tavus::tavusfetch",
-      "label": "tavusFetch",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:44"
-    },
-    {
-      "id": "tavus::tavuserrortext",
-      "label": "tavusErrorText",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:64"
-    },
-    {
-      "id": "tavus::isinvalidreplicaerror",
-      "label": "isInvalidReplicaError",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:68"
-    },
-    {
-      "id": "tavus::isconcurrencylimiterror",
-      "label": "isConcurrencyLimitError",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:75"
-    },
-    {
-      "id": "tavus::createtavusconversation",
-      "label": "createTavusConversation",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:80"
-    },
-    {
       "id": "file::store",
       "label": "store.ts",
       "fileType": "code",
@@ -9785,13 +9414,6 @@
       "fileType": "code",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-conversation.ts",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-conversation.ts:5"
-    },
-    {
-      "id": "file::skills",
-      "label": "skills.ts",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:1"
     },
     {
       "id": "skills::handler",
@@ -10002,41 +9624,6 @@
       "fileType": "code",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/vite-env.d.ts",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/vite-env.d.ts:1"
-    },
-    {
-      "id": "skills::clearskillscache",
-      "label": "clearSkillsCache",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:40"
-    },
-    {
-      "id": "skills::fetchskills",
-      "label": "fetchSkills",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:44"
-    },
-    {
-      "id": "skills::getskills",
-      "label": "getSkills",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:59"
-    },
-    {
-      "id": "skills::getskill",
-      "label": "getSkill",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:63"
-    },
-    {
-      "id": "skills::starttavusconversation",
-      "label": "startTavusConversation",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:67"
     },
     {
       "id": "file::skilldetail",
@@ -10760,55 +10347,6 @@
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/ReasoningBubbles.tsx:1"
     },
     {
-      "id": "file::tavuspalpanel",
-      "label": "TavusPalPanel.tsx",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:1"
-    },
-    {
-      "id": "tavuspalpanel::loadstored",
-      "label": "loadStored",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:21"
-    },
-    {
-      "id": "tavuspalpanel::savestored",
-      "label": "saveStored",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:30"
-    },
-    {
-      "id": "tavuspalpanel::phasefromstored",
-      "label": "phaseFromStored",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:34"
-    },
-    {
-      "id": "TavusPalPanel::handleupload",
-      "label": "handleUpload",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:89"
-    },
-    {
-      "id": "TavusPalPanel::starttalk",
-      "label": "startTalk",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:125"
-    },
-    {
-      "id": "TavusPalPanel::endtalk",
-      "label": "endTalk",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:154"
-    },
-    {
       "id": "file::skillrecordinghud",
       "label": "SkillRecordingHud.tsx",
       "fileType": "code",
@@ -11346,426 +10884,6 @@
       "fileType": "code",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/main.tsx",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/main.tsx:5"
-    },
-    {
-      "id": "file::overlayapp",
-      "label": "OverlayApp.tsx",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1"
-    },
-    {
-      "id": "overlayapp::clamphudposition",
-      "label": "clampHudPosition",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:112"
-    },
-    {
-      "id": "overlayapp::messagefromerror",
-      "label": "messageFromError",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:132"
-    },
-    {
-      "id": "overlayapp::isnotehtmlcompilationintent",
-      "label": "isNoteHtmlCompilationIntent",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:138"
-    },
-    {
-      "id": "overlayapp::confirmautomationgate",
-      "label": "confirmAutomationGate",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:152"
-    },
-    {
-      "id": "overlayapp::finitepercent",
-      "label": "finitePercent",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:163"
-    },
-    {
-      "id": "overlayapp::cursortargetdistancepx",
-      "label": "cursorTargetDistancePx",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:169"
-    },
-    {
-      "id": "overlayapp::cursorrevealtuning",
-      "label": "cursorRevealTuning",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:183"
-    },
-    {
-      "id": "overlayapp::formatcoordinate",
-      "label": "formatCoordinate",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:214"
-    },
-    {
-      "id": "overlayapp::confidencepercent",
-      "label": "confidencePercent",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:220"
-    },
-    {
-      "id": "overlayapp::realapptargetkey",
-      "label": "realAppTargetKey",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:225"
-    },
-    {
-      "id": "overlayapp::samerealapptarget",
-      "label": "sameRealAppTarget",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:234"
-    },
-    {
-      "id": "overlayapp::behaviorpercent",
-      "label": "behaviorPercent",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:242"
-    },
-    {
-      "id": "overlayapp::signedbehaviorpercent",
-      "label": "signedBehaviorPercent",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:248"
-    },
-    {
-      "id": "overlayapp::latestcheckpoint",
-      "label": "latestCheckpoint",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:254"
-    },
-    {
-      "id": "overlayapp::firstcheckpoint",
-      "label": "firstCheckpoint",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:260"
-    },
-    {
-      "id": "overlayapp::formataihealthstatus",
-      "label": "formatAIHealthStatus",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:266"
-    },
-    {
-      "id": "overlayapp::realappinstruction",
-      "label": "realAppInstruction",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:311"
-    },
-    {
-      "id": "overlayapp::normalizedrealapptarget",
-      "label": "normalizedRealAppTarget",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:319"
-    },
-    {
-      "id": "overlayapp::walkthroughstepfromreplay",
-      "label": "walkthroughStepFromReplay",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:363"
-    },
-    {
-      "id": "OverlayApp::fetchmode",
-      "label": "fetchMode",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:383"
-    },
-    {
-      "id": "OverlayApp::setinteractivity",
-      "label": "setInteractivity",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:537"
-    },
-    {
-      "id": "OverlayApp::speakifultra",
-      "label": "speakIfUltra",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:553"
-    },
-    {
-      "id": "OverlayApp::logtargetcoordinatealignment",
-      "label": "logTargetCoordinateAlignment",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:689"
-    },
-    {
-      "id": "OverlayApp::computepreviewghoststart",
-      "label": "computePreviewGhostStart",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:753"
-    },
-    {
-      "id": "OverlayApp::clearliveghost",
-      "label": "clearLiveGhost",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:782"
-    },
-    {
-      "id": "OverlayApp::scheduleliveghostdismiss",
-      "label": "scheduleLiveGhostDismiss",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:797"
-    },
-    {
-      "id": "OverlayApp::applylivetargetfromresult",
-      "label": "applyLiveTargetFromResult",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:816"
-    },
-    {
-      "id": "OverlayApp::handleultraspokeninput",
-      "label": "handleUltraSpokenInput",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:851"
-    },
-    {
-      "id": "OverlayApp::handlechatinput",
-      "label": "handleChatInput",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:936"
-    },
-    {
-      "id": "OverlayApp::clamptoviewport",
-      "label": "clampToViewport",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1022"
-    },
-    {
-      "id": "OverlayApp::updatecursorreveal",
-      "label": "updateCursorReveal",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1055"
-    },
-    {
-      "id": "OverlayApp::onkeydown",
-      "label": "onKeyDown",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1363"
-    },
-    {
-      "id": "OverlayApp::runlegacyplannerflow",
-      "label": "runLegacyPlannerFlow",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1598"
-    },
-    {
-      "id": "OverlayApp::replaysavedworkflow",
-      "label": "replaySavedWorkflow",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1675"
-    },
-    {
-      "id": "OverlayApp::preparecontrolleddemo",
-      "label": "prepareControlledDemo",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1720"
-    },
-    {
-      "id": "OverlayApp::runnotehtmlagent",
-      "label": "runNoteHtmlAgent",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1747"
-    },
-    {
-      "id": "OverlayApp::handleinputsubmit",
-      "label": "handleInputSubmit",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1821"
-    },
-    {
-      "id": "OverlayApp::startrealapptest",
-      "label": "startRealAppTest",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1835"
-    },
-    {
-      "id": "OverlayApp::selectrealapptarget",
-      "label": "selectRealAppTarget",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1958"
-    },
-    {
-      "id": "OverlayApp::startmanualtargetpicking",
-      "label": "startManualTargetPicking",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1971"
-    },
-    {
-      "id": "OverlayApp::cancelmanualtargetpicking",
-      "label": "cancelManualTargetPicking",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1985"
-    },
-    {
-      "id": "OverlayApp::updatemanualpickpoint",
-      "label": "updateManualPickPoint",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1991"
-    },
-    {
-      "id": "OverlayApp::handlemanualtargetpick",
-      "label": "handleManualTargetPick",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1998"
-    },
-    {
-      "id": "OverlayApp::startrealappwalkthrough",
-      "label": "startRealAppWalkthrough",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2056"
-    },
-    {
-      "id": "OverlayApp::runcoordinatecalibration",
-      "label": "runCoordinateCalibration",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2128"
-    },
-    {
-      "id": "OverlayApp::checkaibackend",
-      "label": "checkAIBackend",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2144"
-    },
-    {
-      "id": "OverlayApp::movecursortoscreencenter",
-      "label": "moveCursorToScreenCenter",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2161"
-    },
-    {
-      "id": "OverlayApp::refreshbehaviordiff",
-      "label": "refreshBehaviorDiff",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2176"
-    },
-    {
-      "id": "OverlayApp::seedspecdemo",
-      "label": "seedSpecDemo",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2194"
-    },
-    {
-      "id": "OverlayApp::createbehaviorcheckpoint",
-      "label": "createBehaviorCheckpoint",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2217"
-    },
-    {
-      "id": "OverlayApp::updateblendpreview",
-      "label": "updateBlendPreview",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2240"
-    },
-    {
-      "id": "OverlayApp::runmirrormode",
-      "label": "runMirrorMode",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2259"
-    },
-    {
-      "id": "OverlayApp::submitmirrorfeedback",
-      "label": "submitMirrorFeedback",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2307"
-    },
-    {
-      "id": "OverlayApp::starthuddrag",
-      "label": "startHudDrag",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2339"
-    },
-    {
-      "id": "OverlayApp::movehuddrag",
-      "label": "moveHudDrag",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2359"
-    },
-    {
-      "id": "OverlayApp::stophuddrag",
-      "label": "stopHudDrag",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2373"
-    },
-    {
-      "id": "OverlayApp::resethudposition",
-      "label": "resetHudPosition",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2389"
-    },
-    {
-      "id": "OverlayApp::startnewchat",
-      "label": "startNewChat",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2393"
-    },
-    {
-      "id": "overlayapp::async",
-      "label": "async",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:3919"
     },
     {
       "id": "file::api",
@@ -13509,76 +12627,6 @@
       "fileType": "code",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/logger.ts",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/logger.ts:66"
-    },
-    {
-      "id": "file::tavushub",
-      "label": "tavusHub.ts",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:1"
-    },
-    {
-      "id": "tavushub::huburl",
-      "label": "hubUrl",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:6"
-    },
-    {
-      "id": "tavushub::userid",
-      "label": "userId",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:11"
-    },
-    {
-      "id": "tavushub::hubjson",
-      "label": "hubJson",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:15"
-    },
-    {
-      "id": "tavushub::tavusuploadphoto",
-      "label": "tavusUploadPhoto",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:41"
-    },
-    {
-      "id": "tavushub::tavuscreatereplica",
-      "label": "tavusCreateReplica",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:63"
-    },
-    {
-      "id": "tavushub::tavusgetreplicastatus",
-      "label": "tavusGetReplicaStatus",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:93"
-    },
-    {
-      "id": "tavushub::tavusstartconversation",
-      "label": "tavusStartConversation",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:122"
-    },
-    {
-      "id": "tavushub::tavushubconfigured",
-      "label": "tavusHubConfigured",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:161"
-    },
-    {
-      "id": "tavushub::tavuspalavailable",
-      "label": "tavusPalAvailable",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:165"
     },
     {
       "id": "file::screencoordinates",
@@ -15856,97 +14904,6 @@
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/storage.ts:290"
     },
     {
-      "id": "file::replay",
-      "label": "replay.ts",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:1"
-    },
-    {
-      "id": "replay::steptitle",
-      "label": "stepTitle",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:38"
-    },
-    {
-      "id": "replay::stepwaitms",
-      "label": "stepWaitMs",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:48"
-    },
-    {
-      "id": "replay::waitforuserneartarget",
-      "label": "waitForUserNearTarget",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:52"
-    },
-    {
-      "id": "replay::waitforuserclickontarget",
-      "label": "waitForUserClickOnTarget",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:94"
-    },
-    {
-      "id": "replay::waitformanualstepconfirmation",
-      "label": "waitForManualStepConfirmation",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:136"
-    },
-    {
-      "id": "replay::confirmreplaystep",
-      "label": "confirmReplayStep",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:189"
-    },
-    {
-      "id": "replay::stepsfornode",
-      "label": "stepsForNode",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:202"
-    },
-    {
-      "id": "replay::logwalkthroughstep",
-      "label": "logWalkthroughStep",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:212"
-    },
-    {
-      "id": "replay::emitghoststep",
-      "label": "emitGhostStep",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:230"
-    },
-    {
-      "id": "replay::parkghostatendpoint",
-      "label": "parkGhostAtEndpoint",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:272"
-    },
-    {
-      "id": "replay::replaywalkthrough",
-      "label": "replayWalkthrough",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:307"
-    },
-    {
-      "id": "replay::registerreplayipc",
-      "label": "registerReplayIpc",
-      "fileType": "code",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:473"
-    },
-    {
       "id": "file::replaycontroller",
       "label": "replayController.ts",
       "fileType": "code",
@@ -16470,6 +15427,1210 @@
       "fileType": "code",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/verificationLoop.ts",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/verificationLoop.ts:228"
+    },
+    {
+      "id": "file::electron_vite_config",
+      "label": "electron.vite.config.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/electron.vite.config.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/electron.vite.config.ts:1"
+    },
+    {
+      "id": "file::tavus",
+      "label": "tavus.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:1"
+    },
+    {
+      "id": "tavus::resolvereplicaid",
+      "label": "resolveReplicaId",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:3"
+    },
+    {
+      "id": "tavus::isreplicaready",
+      "label": "isReplicaReady",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:31"
+    },
+    {
+      "id": "tavus::publicbaseurl",
+      "label": "publicBaseUrl",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:37"
+    },
+    {
+      "id": "tavus::tavusfetch",
+      "label": "tavusFetch",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:44"
+    },
+    {
+      "id": "tavus::tavuserrortext",
+      "label": "tavusErrorText",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:64"
+    },
+    {
+      "id": "tavus::isinvalidreplicaerror",
+      "label": "isInvalidReplicaError",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:68"
+    },
+    {
+      "id": "tavus::isconcurrencylimiterror",
+      "label": "isConcurrencyLimitError",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:75"
+    },
+    {
+      "id": "tavus::createtavusconversation",
+      "label": "createTavusConversation",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:80"
+    },
+    {
+      "id": "tavus::endtavusconversation",
+      "label": "endTavusConversation",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:126"
+    },
+    {
+      "id": "file::centerscreen",
+      "label": "CenterScreen.tsx",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/game/screens/CenterScreen.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/game/screens/CenterScreen.tsx:1"
+    },
+    {
+      "id": "CenterScreen::onkey",
+      "label": "onKey",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/game/screens/CenterScreen.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/game/screens/CenterScreen.tsx:51"
+    },
+    {
+      "id": "file::skills",
+      "label": "skills.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:1"
+    },
+    {
+      "id": "skills::clearskillscache",
+      "label": "clearSkillsCache",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:40"
+    },
+    {
+      "id": "skills::fetchskills",
+      "label": "fetchSkills",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:44"
+    },
+    {
+      "id": "skills::getskills",
+      "label": "getSkills",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:59"
+    },
+    {
+      "id": "skills::getskill",
+      "label": "getSkill",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:63"
+    },
+    {
+      "id": "skills::starttavusconversation",
+      "label": "startTavusConversation",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:67"
+    },
+    {
+      "id": "skills::endtavusconversation",
+      "label": "endTavusConversation",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:103"
+    },
+    {
+      "id": "index::autocompiletowiki",
+      "label": "autoCompileToWiki",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:161"
+    },
+    {
+      "id": "index::isbrokenpipeerror",
+      "label": "isBrokenPipeError",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:182"
+    },
+    {
+      "id": "index::appendagentdebuglog",
+      "label": "appendAgentDebugLog",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:223"
+    },
+    {
+      "id": "index::captureforegroundappnow",
+      "label": "captureForegroundAppNow",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:251"
+    },
+    {
+      "id": "index::getcachedforegroundappidentifier",
+      "label": "getCachedForegroundAppIdentifier",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:292"
+    },
+    {
+      "id": "index::createclinicalwindow",
+      "label": "createClinicalWindow",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:303"
+    },
+    {
+      "id": "index::showclinicalwindow",
+      "label": "showClinicalWindow",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:337"
+    },
+    {
+      "id": "index::bufferfromaudiodata",
+      "label": "bufferFromAudioData",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:343"
+    },
+    {
+      "id": "index::bytelengthofaudiodata",
+      "label": "byteLengthOfAudioData",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:359"
+    },
+    {
+      "id": "index::displaysummary",
+      "label": "displaySummary",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:366"
+    },
+    {
+      "id": "index::getsummondisplay",
+      "label": "getSummonDisplay",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:380"
+    },
+    {
+      "id": "index::enableoverlayworkspacebehavior",
+      "label": "enableOverlayWorkspaceBehavior",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:395"
+    },
+    {
+      "id": "index::moveoverlaytodisplay",
+      "label": "moveOverlayToDisplay",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:415"
+    },
+    {
+      "id": "index::centercontentbounds",
+      "label": "centerContentBounds",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:423"
+    },
+    {
+      "id": "index::movepracticewindowtodisplay",
+      "label": "movePracticeWindowToDisplay",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:437"
+    },
+    {
+      "id": "index::overlayisondisplay",
+      "label": "overlayIsOnDisplay",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:457"
+    },
+    {
+      "id": "index::routevisiblewindowstodisplay",
+      "label": "routeVisibleWindowsToDisplay",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:462"
+    },
+    {
+      "id": "index::registerwindowroutinglisteners",
+      "label": "registerWindowRoutingListeners",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:469"
+    },
+    {
+      "id": "index::delay",
+      "label": "delay",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:496"
+    },
+    {
+      "id": "index::clamppercent",
+      "label": "clampPercent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:500"
+    },
+    {
+      "id": "index::confidencevalue",
+      "label": "confidenceValue",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:506"
+    },
+    {
+      "id": "index::realappaction",
+      "label": "realAppAction",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:512"
+    },
+    {
+      "id": "index::safelabel",
+      "label": "safeLabel",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:516"
+    },
+    {
+      "id": "index::instructionfortarget",
+      "label": "instructionForTarget",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:520"
+    },
+    {
+      "id": "index::createrealappstep",
+      "label": "createRealAppStep",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:527"
+    },
+    {
+      "id": "index::realappnodeid",
+      "label": "realAppNodeId",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:579"
+    },
+    {
+      "id": "index::islearninggraph",
+      "label": "isLearningGraph",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:586"
+    },
+    {
+      "id": "index::safesend",
+      "label": "safeSend",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:598"
+    },
+    {
+      "id": "index::sendoverlayevent",
+      "label": "sendOverlayEvent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:610"
+    },
+    {
+      "id": "index::sortedbehavioralcheckpoints",
+      "label": "sortedBehavioralCheckpoints",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:614"
+    },
+    {
+      "id": "index::behavioralcheckpointforid",
+      "label": "behavioralCheckpointForId",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:623"
+    },
+    {
+      "id": "index::newestbehavioralcheckpoint",
+      "label": "newestBehavioralCheckpoint",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:633"
+    },
+    {
+      "id": "index::realbehavioralframecount",
+      "label": "realBehavioralFrameCount",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:640"
+    },
+    {
+      "id": "index::hasrealbehavioralsignature",
+      "label": "hasRealBehavioralSignature",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:647"
+    },
+    {
+      "id": "index::realcheckpointornull",
+      "label": "realCheckpointOrNull",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:654"
+    },
+    {
+      "id": "index::safefeedbackarm",
+      "label": "safeFeedbackArm",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:660"
+    },
+    {
+      "id": "index::lateststepsfornode",
+      "label": "latestStepsForNode",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:664"
+    },
+    {
+      "id": "index::selectmirrorsignature",
+      "label": "selectMirrorSignature",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:672"
+    },
+    {
+      "id": "index::toggleoverlay",
+      "label": "toggleOverlay",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:696"
+    },
+    {
+      "id": "index::createwindow",
+      "label": "createWindow",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:779"
+    },
+    {
+      "id": "index::createoverlaywindow",
+      "label": "createOverlayWindow",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:819"
+    },
+    {
+      "id": "index::failmirrorrun",
+      "label": "failMirrorRun",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:2054"
+    },
+    {
+      "id": "file::replay",
+      "label": "replay.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:1"
+    },
+    {
+      "id": "replay::steptitle",
+      "label": "stepTitle",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:38"
+    },
+    {
+      "id": "replay::stepwaitms",
+      "label": "stepWaitMs",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:48"
+    },
+    {
+      "id": "replay::stepviewportpercent",
+      "label": "stepViewportPercent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:53"
+    },
+    {
+      "id": "replay::waitforuserneartarget",
+      "label": "waitForUserNearTarget",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:60"
+    },
+    {
+      "id": "replay::waitforuserclickontarget",
+      "label": "waitForUserClickOnTarget",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:102"
+    },
+    {
+      "id": "replay::waitformanualstepconfirmation",
+      "label": "waitForManualStepConfirmation",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:144"
+    },
+    {
+      "id": "replay::confirmreplaystep",
+      "label": "confirmReplayStep",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:197"
+    },
+    {
+      "id": "replay::stepsfornode",
+      "label": "stepsForNode",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:210"
+    },
+    {
+      "id": "replay::logwalkthroughstep",
+      "label": "logWalkthroughStep",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:220"
+    },
+    {
+      "id": "replay::emitghoststep",
+      "label": "emitGhostStep",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:238"
+    },
+    {
+      "id": "replay::parkghostatendpoint",
+      "label": "parkGhostAtEndpoint",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:280"
+    },
+    {
+      "id": "replay::replaywalkthrough",
+      "label": "replayWalkthrough",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:315"
+    },
+    {
+      "id": "replay::registerreplayipc",
+      "label": "registerReplayIpc",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:481"
+    },
+    {
+      "id": "file::tavushub",
+      "label": "tavusHub.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:1"
+    },
+    {
+      "id": "tavushub::huburl",
+      "label": "hubUrl",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:6"
+    },
+    {
+      "id": "tavushub::userid",
+      "label": "userId",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:11"
+    },
+    {
+      "id": "tavushub::hubjson",
+      "label": "hubJson",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:15"
+    },
+    {
+      "id": "tavushub::tavusuploadphoto",
+      "label": "tavusUploadPhoto",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:41"
+    },
+    {
+      "id": "tavushub::tavuscreatereplica",
+      "label": "tavusCreateReplica",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:63"
+    },
+    {
+      "id": "tavushub::tavusgetreplicastatus",
+      "label": "tavusGetReplicaStatus",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:93"
+    },
+    {
+      "id": "tavushub::tavusgetpersonapreview",
+      "label": "tavusGetPersonaPreview",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:122"
+    },
+    {
+      "id": "tavushub::tavusstartconversation",
+      "label": "tavusStartConversation",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:149"
+    },
+    {
+      "id": "tavushub::tavusendconversation",
+      "label": "tavusEndConversation",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:188"
+    },
+    {
+      "id": "tavushub::tavushubconfigured",
+      "label": "tavusHubConfigured",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:207"
+    },
+    {
+      "id": "tavushub::tavuspalavailable",
+      "label": "tavusPalAvailable",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:211"
+    },
+    {
+      "id": "file::overlay",
+      "label": "overlay.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/overlay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/overlay.ts:1"
+    },
+    {
+      "id": "overlay::onipc",
+      "label": "onIpc",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/overlay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/preload/overlay.ts:3"
+    },
+    {
+      "id": "file::tavuspalpanel",
+      "label": "TavusPalPanel.tsx",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:1"
+    },
+    {
+      "id": "TavusPalPanel::dbg",
+      "label": "dbg",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:9"
+    },
+    {
+      "id": "tavuspalpanel::conversationidfromurl",
+      "label": "conversationIdFromUrl",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:30"
+    },
+    {
+      "id": "TavusPalPanel::oncsp",
+      "label": "onCsp",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:61"
+    },
+    {
+      "id": "TavusPalPanel::starttalk",
+      "label": "startTalk",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:104"
+    },
+    {
+      "id": "file::overlayapp",
+      "label": "OverlayApp.tsx",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1"
+    },
+    {
+      "id": "overlayapp::clamphudposition",
+      "label": "clampHudPosition",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:112"
+    },
+    {
+      "id": "overlayapp::messagefromerror",
+      "label": "messageFromError",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:132"
+    },
+    {
+      "id": "overlayapp::isnotehtmlcompilationintent",
+      "label": "isNoteHtmlCompilationIntent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:138"
+    },
+    {
+      "id": "overlayapp::confirmautomationgate",
+      "label": "confirmAutomationGate",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:152"
+    },
+    {
+      "id": "overlayapp::finitepercent",
+      "label": "finitePercent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:163"
+    },
+    {
+      "id": "overlayapp::cursortargetdistancepx",
+      "label": "cursorTargetDistancePx",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:169"
+    },
+    {
+      "id": "overlayapp::cursorrevealtuning",
+      "label": "cursorRevealTuning",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:183"
+    },
+    {
+      "id": "overlayapp::formatcoordinate",
+      "label": "formatCoordinate",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:214"
+    },
+    {
+      "id": "overlayapp::confidencepercent",
+      "label": "confidencePercent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:220"
+    },
+    {
+      "id": "overlayapp::realapptargetkey",
+      "label": "realAppTargetKey",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:225"
+    },
+    {
+      "id": "overlayapp::samerealapptarget",
+      "label": "sameRealAppTarget",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:234"
+    },
+    {
+      "id": "overlayapp::behaviorpercent",
+      "label": "behaviorPercent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:242"
+    },
+    {
+      "id": "overlayapp::signedbehaviorpercent",
+      "label": "signedBehaviorPercent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:248"
+    },
+    {
+      "id": "overlayapp::latestcheckpoint",
+      "label": "latestCheckpoint",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:254"
+    },
+    {
+      "id": "overlayapp::firstcheckpoint",
+      "label": "firstCheckpoint",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:260"
+    },
+    {
+      "id": "overlayapp::formataihealthstatus",
+      "label": "formatAIHealthStatus",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:266"
+    },
+    {
+      "id": "overlayapp::realappinstruction",
+      "label": "realAppInstruction",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:311"
+    },
+    {
+      "id": "overlayapp::normalizedrealapptarget",
+      "label": "normalizedRealAppTarget",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:319"
+    },
+    {
+      "id": "overlayapp::walkthroughstepfromreplay",
+      "label": "walkthroughStepFromReplay",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:363"
+    },
+    {
+      "id": "OverlayApp::fetchmode",
+      "label": "fetchMode",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:384"
+    },
+    {
+      "id": "OverlayApp::setinteractivity",
+      "label": "setInteractivity",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:560"
+    },
+    {
+      "id": "OverlayApp::speakifultra",
+      "label": "speakIfUltra",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:576"
+    },
+    {
+      "id": "OverlayApp::logtargetcoordinatealignment",
+      "label": "logTargetCoordinateAlignment",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:712"
+    },
+    {
+      "id": "OverlayApp::computepreviewghoststart",
+      "label": "computePreviewGhostStart",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:776"
+    },
+    {
+      "id": "OverlayApp::clearliveghost",
+      "label": "clearLiveGhost",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:805"
+    },
+    {
+      "id": "OverlayApp::scheduleliveghostdismiss",
+      "label": "scheduleLiveGhostDismiss",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:820"
+    },
+    {
+      "id": "OverlayApp::applylivetargetfromresult",
+      "label": "applyLiveTargetFromResult",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:839"
+    },
+    {
+      "id": "OverlayApp::handleultraspokeninput",
+      "label": "handleUltraSpokenInput",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:874"
+    },
+    {
+      "id": "OverlayApp::handlechatinput",
+      "label": "handleChatInput",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:959"
+    },
+    {
+      "id": "OverlayApp::clamptoviewport",
+      "label": "clampToViewport",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1045"
+    },
+    {
+      "id": "OverlayApp::updatecursorreveal",
+      "label": "updateCursorReveal",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1078"
+    },
+    {
+      "id": "OverlayApp::onkeydown",
+      "label": "onKeyDown",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1386"
+    },
+    {
+      "id": "OverlayApp::runlegacyplannerflow",
+      "label": "runLegacyPlannerFlow",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1621"
+    },
+    {
+      "id": "OverlayApp::replaysavedworkflow",
+      "label": "replaySavedWorkflow",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1698"
+    },
+    {
+      "id": "OverlayApp::preparecontrolleddemo",
+      "label": "prepareControlledDemo",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1743"
+    },
+    {
+      "id": "OverlayApp::runnotehtmlagent",
+      "label": "runNoteHtmlAgent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1770"
+    },
+    {
+      "id": "OverlayApp::handleinputsubmit",
+      "label": "handleInputSubmit",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1844"
+    },
+    {
+      "id": "OverlayApp::startrealapptest",
+      "label": "startRealAppTest",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1858"
+    },
+    {
+      "id": "OverlayApp::selectrealapptarget",
+      "label": "selectRealAppTarget",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1981"
+    },
+    {
+      "id": "OverlayApp::startmanualtargetpicking",
+      "label": "startManualTargetPicking",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1994"
+    },
+    {
+      "id": "OverlayApp::cancelmanualtargetpicking",
+      "label": "cancelManualTargetPicking",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2008"
+    },
+    {
+      "id": "OverlayApp::updatemanualpickpoint",
+      "label": "updateManualPickPoint",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2014"
+    },
+    {
+      "id": "OverlayApp::handlemanualtargetpick",
+      "label": "handleManualTargetPick",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2021"
+    },
+    {
+      "id": "OverlayApp::startrealappwalkthrough",
+      "label": "startRealAppWalkthrough",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2079"
+    },
+    {
+      "id": "OverlayApp::runcoordinatecalibration",
+      "label": "runCoordinateCalibration",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2151"
+    },
+    {
+      "id": "OverlayApp::checkaibackend",
+      "label": "checkAIBackend",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2167"
+    },
+    {
+      "id": "OverlayApp::movecursortoscreencenter",
+      "label": "moveCursorToScreenCenter",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2184"
+    },
+    {
+      "id": "OverlayApp::refreshbehaviordiff",
+      "label": "refreshBehaviorDiff",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2199"
+    },
+    {
+      "id": "OverlayApp::seedspecdemo",
+      "label": "seedSpecDemo",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2217"
+    },
+    {
+      "id": "OverlayApp::createbehaviorcheckpoint",
+      "label": "createBehaviorCheckpoint",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2240"
+    },
+    {
+      "id": "OverlayApp::updateblendpreview",
+      "label": "updateBlendPreview",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2263"
+    },
+    {
+      "id": "OverlayApp::runmirrormode",
+      "label": "runMirrorMode",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2282"
+    },
+    {
+      "id": "OverlayApp::submitmirrorfeedback",
+      "label": "submitMirrorFeedback",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2330"
+    },
+    {
+      "id": "OverlayApp::starthuddrag",
+      "label": "startHudDrag",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2362"
+    },
+    {
+      "id": "OverlayApp::movehuddrag",
+      "label": "moveHudDrag",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2382"
+    },
+    {
+      "id": "OverlayApp::stophuddrag",
+      "label": "stopHudDrag",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2396"
+    },
+    {
+      "id": "OverlayApp::resethudposition",
+      "label": "resetHudPosition",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2412"
+    },
+    {
+      "id": "OverlayApp::startnewchat",
+      "label": "startNewChat",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2416"
+    },
+    {
+      "id": "overlayapp::async",
+      "label": "async",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:3950"
+    },
+    {
+      "id": "file::test_replay_viewport_coords",
+      "label": "test-replay-viewport-coords.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts:1"
+    },
+    {
+      "id": "test_replay_viewport_coords::stepviewportpercent",
+      "label": "stepViewportPercent",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts:8"
+    },
+    {
+      "id": "test_replay_viewport_coords::check",
+      "label": "check",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts:16"
+    },
+    {
+      "id": "file::test_screen_coordinates",
+      "label": "test-screen-coordinates.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts:1"
+    },
+    {
+      "id": "test_screen_coordinates::check",
+      "label": "check",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts:39"
+    },
+    {
+      "id": "test_screen_coordinates::main",
+      "label": "main",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts:47"
+    },
+    {
+      "id": "file::tavus_conversation_end",
+      "label": "tavus-conversation-end.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-conversation-end.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-conversation-end.ts:1"
+    },
+    {
+      "id": "tavus_conversation_end::handler",
+      "label": "handler",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-conversation-end.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-conversation-end.ts:4"
+    },
+    {
+      "id": "file::tavus_face_preview",
+      "label": "tavus-face-preview.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-face-preview.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-face-preview.ts:1"
+    },
+    {
+      "id": "tavus_face_preview::handler",
+      "label": "handler",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-face-preview.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-face-preview.ts:4"
+    },
+    {
+      "id": "file::ghost_cursor_test",
+      "label": "ghost-cursor-test.tsx",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-cursor-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-cursor-test.tsx:1"
+    },
+    {
+      "id": "ghost_cursor_test::app",
+      "label": "App",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-cursor-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-cursor-test.tsx:16"
+    },
+    {
+      "id": "file::ghost_preview_test",
+      "label": "ghost-preview-test.tsx",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-preview-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-preview-test.tsx:1"
+    },
+    {
+      "id": "ghost_preview_test::app",
+      "label": "App",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-preview-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-preview-test.tsx:14"
+    },
+    {
+      "id": "file::walkthrough_guide_test",
+      "label": "walkthrough-guide-test.tsx",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/walkthrough-guide-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/walkthrough-guide-test.tsx:1"
+    },
+    {
+      "id": "walkthrough_guide_test::app",
+      "label": "App",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/walkthrough-guide-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/walkthrough-guide-test.tsx:13"
+    },
+    {
+      "id": "file::vite_ghost_test_config",
+      "label": "vite.ghost-test.config.ts",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/vite.ghost-test.config.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/vite.ghost-test.config.ts:1"
     }
   ],
   "edges": [
@@ -28543,78 +28704,6 @@
       "weight": 1
     },
     {
-      "source": "file::tavus",
-      "target": "tavus::resolvereplicaid",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:3",
-      "weight": 1
-    },
-    {
-      "source": "file::tavus",
-      "target": "tavus::isreplicaready",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:31",
-      "weight": 1
-    },
-    {
-      "source": "file::tavus",
-      "target": "tavus::publicbaseurl",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:37",
-      "weight": 1
-    },
-    {
-      "source": "file::tavus",
-      "target": "tavus::tavusfetch",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:44",
-      "weight": 1
-    },
-    {
-      "source": "file::tavus",
-      "target": "tavus::tavuserrortext",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:64",
-      "weight": 1
-    },
-    {
-      "source": "file::tavus",
-      "target": "tavus::isinvalidreplicaerror",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:68",
-      "weight": 1
-    },
-    {
-      "source": "file::tavus",
-      "target": "tavus::isconcurrencylimiterror",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:75",
-      "weight": 1
-    },
-    {
-      "source": "file::tavus",
-      "target": "tavus::createtavusconversation",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:80",
-      "weight": 1
-    },
-    {
       "source": "file::store",
       "target": "store::ensuredir",
       "relation": "contains",
@@ -28963,51 +29052,6 @@
       "confidence": "EXTRACTED",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/journey.ts",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/journey.ts:202",
-      "weight": 1
-    },
-    {
-      "source": "file::skills",
-      "target": "skills::clearskillscache",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:40",
-      "weight": 1
-    },
-    {
-      "source": "file::skills",
-      "target": "skills::fetchskills",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:44",
-      "weight": 1
-    },
-    {
-      "source": "file::skills",
-      "target": "skills::getskills",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:59",
-      "weight": 1
-    },
-    {
-      "source": "file::skills",
-      "target": "skills::getskill",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:63",
-      "weight": 1
-    },
-    {
-      "source": "file::skills",
-      "target": "skills::starttavusconversation",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:67",
       "weight": 1
     },
     {
@@ -29659,60 +29703,6 @@
       "weight": 1
     },
     {
-      "source": "file::tavuspalpanel",
-      "target": "tavuspalpanel::loadstored",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:21",
-      "weight": 1
-    },
-    {
-      "source": "file::tavuspalpanel",
-      "target": "tavuspalpanel::savestored",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:30",
-      "weight": 1
-    },
-    {
-      "source": "file::tavuspalpanel",
-      "target": "tavuspalpanel::phasefromstored",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:34",
-      "weight": 1
-    },
-    {
-      "source": "file::tavuspalpanel",
-      "target": "TavusPalPanel::handleupload",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:89",
-      "weight": 1
-    },
-    {
-      "source": "file::tavuspalpanel",
-      "target": "TavusPalPanel::starttalk",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:125",
-      "weight": 1
-    },
-    {
-      "source": "file::tavuspalpanel",
-      "target": "TavusPalPanel::endtalk",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:154",
-      "weight": 1
-    },
-    {
       "source": "file::skillrecordinghud",
       "target": "skillrecordinghud::formatelapsed",
       "relation": "contains",
@@ -30232,537 +30222,6 @@
       "confidence": "EXTRACTED",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/main.tsx",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/main.tsx:5",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::clamphudposition",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:112",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::messagefromerror",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:132",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::isnotehtmlcompilationintent",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:138",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::confirmautomationgate",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:152",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::finitepercent",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:163",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::cursortargetdistancepx",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:169",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::cursorrevealtuning",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:183",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::formatcoordinate",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:214",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::confidencepercent",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:220",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::realapptargetkey",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:225",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::samerealapptarget",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:234",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::behaviorpercent",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:242",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::signedbehaviorpercent",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:248",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::latestcheckpoint",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:254",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::firstcheckpoint",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:260",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::formataihealthstatus",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:266",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::realappinstruction",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:311",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::normalizedrealapptarget",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:319",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::walkthroughstepfromreplay",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:363",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::fetchmode",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:383",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::setinteractivity",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:537",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::speakifultra",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:553",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::logtargetcoordinatealignment",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:689",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::computepreviewghoststart",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:753",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::clearliveghost",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:782",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::scheduleliveghostdismiss",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:797",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::applylivetargetfromresult",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:816",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::handleultraspokeninput",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:851",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::handlechatinput",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:936",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::clamptoviewport",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1022",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::updatecursorreveal",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1055",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::onkeydown",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1363",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::runlegacyplannerflow",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1598",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::replaysavedworkflow",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1675",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::preparecontrolleddemo",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1720",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::runnotehtmlagent",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1747",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::handleinputsubmit",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1821",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::startrealapptest",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1835",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::selectrealapptarget",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1958",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::startmanualtargetpicking",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1971",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::cancelmanualtargetpicking",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1985",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::updatemanualpickpoint",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1991",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::handlemanualtargetpick",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1998",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::startrealappwalkthrough",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2056",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::runcoordinatecalibration",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2128",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::checkaibackend",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2144",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::movecursortoscreencenter",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2161",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::refreshbehaviordiff",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2176",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::seedspecdemo",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2194",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::createbehaviorcheckpoint",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2217",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::updateblendpreview",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2240",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::runmirrormode",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2259",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::submitmirrorfeedback",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2307",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::starthuddrag",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2339",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::movehuddrag",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2359",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::stophuddrag",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2373",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::resethudposition",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2389",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "OverlayApp::startnewchat",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2393",
-      "weight": 1
-    },
-    {
-      "source": "file::overlayapp",
-      "target": "overlayapp::async",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:3919",
       "weight": 1
     },
     {
@@ -32716,87 +32175,6 @@
       "confidence": "EXTRACTED",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/logger.ts",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/logger.ts:66",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::huburl",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:6",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::userid",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:11",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::hubjson",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:15",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::tavusuploadphoto",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:41",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::tavuscreatereplica",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:63",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::tavusgetreplicastatus",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:93",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::tavusstartconversation",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:122",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::tavushubconfigured",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:161",
-      "weight": 1
-    },
-    {
-      "source": "file::tavushub",
-      "target": "tavushub::tavuspalavailable",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:165",
       "weight": 1
     },
     {
@@ -35455,114 +34833,6 @@
       "weight": 1
     },
     {
-      "source": "file::replay",
-      "target": "replay::steptitle",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:38",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::stepwaitms",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:48",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::waitforuserneartarget",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:52",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::waitforuserclickontarget",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:94",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::waitformanualstepconfirmation",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:136",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::confirmreplaystep",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:189",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::stepsfornode",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:202",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::logwalkthroughstep",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:212",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::emitghoststep",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:230",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::parkghostatendpoint",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:272",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::replaywalkthrough",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:307",
-      "weight": 1
-    },
-    {
-      "source": "file::replay",
-      "target": "replay::registerreplayipc",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:473",
-      "weight": 1
-    },
-    {
       "source": "file::replaycontroller",
       "target": "replayController::getoverlaywindow",
       "relation": "contains",
@@ -36164,12 +35434,1029 @@
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/verificationLoop.ts",
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/verificationLoop.ts:228",
       "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::resolvereplicaid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:3",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::isreplicaready",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:31",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::publicbaseurl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:37",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::tavusfetch",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:44",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::tavuserrortext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:64",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::isinvalidreplicaerror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:68",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::isconcurrencylimiterror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:75",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::createtavusconversation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:80",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::endtavusconversation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:126",
+      "weight": 1
+    },
+    {
+      "source": "file::centerscreen",
+      "target": "CenterScreen::onkey",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/game/screens/CenterScreen.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/game/screens/CenterScreen.tsx:51",
+      "weight": 1
+    },
+    {
+      "source": "file::skills",
+      "target": "skills::clearskillscache",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:40",
+      "weight": 1
+    },
+    {
+      "source": "file::skills",
+      "target": "skills::fetchskills",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:44",
+      "weight": 1
+    },
+    {
+      "source": "file::skills",
+      "target": "skills::getskills",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:59",
+      "weight": 1
+    },
+    {
+      "source": "file::skills",
+      "target": "skills::getskill",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:63",
+      "weight": 1
+    },
+    {
+      "source": "file::skills",
+      "target": "skills::starttavusconversation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:67",
+      "weight": 1
+    },
+    {
+      "source": "file::skills",
+      "target": "skills::endtavusconversation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/src/skills.ts:103",
+      "weight": 1
+    },
+    {
+      "source": "file::index",
+      "target": "index::appendagentdebuglog",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/index.ts:223",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::steptitle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:38",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::stepwaitms",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:48",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::stepviewportpercent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:53",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::waitforuserneartarget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:60",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::waitforuserclickontarget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:102",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::waitformanualstepconfirmation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:144",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::confirmreplaystep",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:197",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::stepsfornode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:210",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::logwalkthroughstep",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:220",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::emitghoststep",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:238",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::parkghostatendpoint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:280",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::replaywalkthrough",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:315",
+      "weight": 1
+    },
+    {
+      "source": "file::replay",
+      "target": "replay::registerreplayipc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/session/replay.ts:481",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::huburl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:6",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::userid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:11",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::hubjson",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:15",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::tavusuploadphoto",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:41",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::tavuscreatereplica",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:63",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::tavusgetreplicastatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:93",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::tavusgetpersonapreview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:122",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::tavusstartconversation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:149",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::tavusendconversation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:188",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::tavushubconfigured",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:207",
+      "weight": 1
+    },
+    {
+      "source": "file::tavushub",
+      "target": "tavushub::tavuspalavailable",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/tavusHub.ts:211",
+      "weight": 1
+    },
+    {
+      "source": "file::tavuspalpanel",
+      "target": "TavusPalPanel::dbg",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:9",
+      "weight": 1
+    },
+    {
+      "source": "file::tavuspalpanel",
+      "target": "tavuspalpanel::conversationidfromurl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:30",
+      "weight": 1
+    },
+    {
+      "source": "file::tavuspalpanel",
+      "target": "TavusPalPanel::oncsp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:61",
+      "weight": 1
+    },
+    {
+      "source": "file::tavuspalpanel",
+      "target": "TavusPalPanel::starttalk",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/overlay/TavusPalPanel.tsx:104",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::clamphudposition",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:112",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::messagefromerror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:132",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::isnotehtmlcompilationintent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:138",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::confirmautomationgate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:152",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::finitepercent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:163",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::cursortargetdistancepx",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:169",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::cursorrevealtuning",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:183",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::formatcoordinate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:214",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::confidencepercent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:220",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::realapptargetkey",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:225",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::samerealapptarget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:234",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::behaviorpercent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:242",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::signedbehaviorpercent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:248",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::latestcheckpoint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:254",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::firstcheckpoint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:260",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::formataihealthstatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:266",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::realappinstruction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:311",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::normalizedrealapptarget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:319",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::walkthroughstepfromreplay",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:363",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::fetchmode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:384",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::setinteractivity",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:560",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::speakifultra",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:576",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::logtargetcoordinatealignment",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:712",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::computepreviewghoststart",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:776",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::clearliveghost",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:805",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::scheduleliveghostdismiss",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:820",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::applylivetargetfromresult",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:839",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::handleultraspokeninput",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:874",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::handlechatinput",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:959",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::clamptoviewport",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1045",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::updatecursorreveal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1078",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::onkeydown",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1386",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::runlegacyplannerflow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1621",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::replaysavedworkflow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1698",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::preparecontrolleddemo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1743",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::runnotehtmlagent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1770",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::handleinputsubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1844",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::startrealapptest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1858",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::selectrealapptarget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1981",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::startmanualtargetpicking",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:1994",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::cancelmanualtargetpicking",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2008",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::updatemanualpickpoint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2014",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::handlemanualtargetpick",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2021",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::startrealappwalkthrough",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2079",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::runcoordinatecalibration",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2151",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::checkaibackend",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2167",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::movecursortoscreencenter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2184",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::refreshbehaviordiff",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2199",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::seedspecdemo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2217",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::createbehaviorcheckpoint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2240",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::updateblendpreview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2263",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::runmirrormode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2282",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::submitmirrorfeedback",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2330",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::starthuddrag",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2362",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::movehuddrag",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2382",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::stophuddrag",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2396",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::resethudposition",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2412",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "OverlayApp::startnewchat",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:2416",
+      "weight": 1
+    },
+    {
+      "source": "file::overlayapp",
+      "target": "overlayapp::async",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/src/OverlayApp.tsx:3950",
+      "weight": 1
+    },
+    {
+      "source": "file::test_replay_viewport_coords",
+      "target": "test_replay_viewport_coords::stepviewportpercent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts:8",
+      "weight": 1
+    },
+    {
+      "source": "file::test_replay_viewport_coords",
+      "target": "test_replay_viewport_coords::check",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-replay-viewport-coords.ts:16",
+      "weight": 1
+    },
+    {
+      "source": "file::test_screen_coordinates",
+      "target": "test_screen_coordinates::check",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts:39",
+      "weight": 1
+    },
+    {
+      "source": "file::test_screen_coordinates",
+      "target": "test_screen_coordinates::main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/scripts/test-screen-coordinates.ts:47",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus_conversation_end",
+      "target": "tavus_conversation_end::handler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-conversation-end.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-conversation-end.ts:4",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus_face_preview",
+      "target": "tavus_face_preview::handler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-face-preview.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/tavus-face-preview.ts:4",
+      "weight": 1
+    },
+    {
+      "source": "file::ghost_cursor_test",
+      "target": "ghost_cursor_test::app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-cursor-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-cursor-test.tsx:16",
+      "weight": 1
+    },
+    {
+      "source": "file::ghost_preview_test",
+      "target": "ghost_preview_test::app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-preview-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/ghost-preview-test.tsx:14",
+      "weight": 1
+    },
+    {
+      "source": "file::walkthrough_guide_test",
+      "target": "walkthrough_guide_test::app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/walkthrough-guide-test.tsx",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/renderer/walkthrough-guide-test.tsx:13",
+      "weight": 1
     }
   ],
   "metadata": {
-    "files": 243,
-    "nodes": 2353,
-    "edges": 2188,
-    "builtAt": "2026-06-27T19:41:08.900Z"
+    "files": 187,
+    "nodes": 2376,
+    "edges": 2202,
+    "builtAt": "2026-06-27T20:21:08.280Z"
   }
 }

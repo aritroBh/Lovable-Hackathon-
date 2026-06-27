@@ -439,6 +439,28 @@ const server = createServer(async (req, res) => {
       return json(res, out.status, out.json);
     }
 
+    if (path === "/api/tavus-conversation/end" && req.method === "POST") {
+      const body = await readBody(req);
+      const conversationId =
+        typeof body.conversationId === "string" ? body.conversationId.trim() : "";
+      if (!conversationId) {
+        return json(res, 400, { ok: false, error: "Missing conversationId" });
+      }
+      const apiKey = process.env.TAVUS_API_KEY;
+      if (!apiKey) {
+        return json(res, 503, { ok: false, error: "Missing TAVUS_API_KEY" });
+      }
+      const tavusRes = await fetch(
+        `https://tavusapi.com/v2/conversations/${encodeURIComponent(conversationId)}`,
+        { method: "DELETE", headers: { "x-api-key": apiKey } },
+      );
+      if (!tavusRes.ok) {
+        const data = await tavusRes.json().catch(() => ({}));
+        return json(res, tavusRes.status, { ok: false, error: data });
+      }
+      return json(res, 200, { ok: true });
+    }
+
     if (path === "/api/tavus-upload" && req.method === "POST") {
       const body = await readBody(req);
       const out = await handleTavusUpload(body);
@@ -484,6 +506,34 @@ const server = createServer(async (req, res) => {
           process.env.TAVUS_REPLICA_ID,
       );
       return json(res, palReady ? 200 : 503, { ok: palReady, palReady });
+    }
+
+    if (path === "/api/tavus-face-preview" && req.method === "GET") {
+      const faceId = process.env.TAVUS_REPLICA_ID;
+      if (!faceId) {
+        return json(res, 503, { ok: false, error: "Missing TAVUS_REPLICA_ID" });
+      }
+      const apiKey = process.env.TAVUS_API_KEY;
+      if (!apiKey) {
+        return json(res, 503, { ok: false, error: "Missing TAVUS_API_KEY" });
+      }
+      const tavusRes = await fetch(
+        `https://tavusapi.com/v2/faces/${encodeURIComponent(faceId)}`,
+        { headers: { "x-api-key": apiKey } },
+      );
+      const data = await tavusRes.json();
+      if (!tavusRes.ok) {
+        return json(res, 502, {
+          ok: false,
+          error: data?.error || "Tavus face fetch failed",
+        });
+      }
+      return json(res, 200, {
+        ok: true,
+        face_id: faceId,
+        face_name: data.face_name ?? null,
+        thumbnail_video_url: data.thumbnail_video_url ?? null,
+      });
     }
 
     if (path === "/api/tavus-conversation" && req.method !== "POST") {

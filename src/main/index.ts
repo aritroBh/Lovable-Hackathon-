@@ -7,9 +7,11 @@ import {
   ipcMain,
   globalShortcut,
   screen,
+  session,
 } from "electron";
 import type { Display, Rectangle } from "electron";
 import { join } from "path";
+import { appendFileSync } from "fs";
 import { electronApp, optimizer, is } from "@electron-toolkit/utils";
 import { uIOhook, UiohookKey } from "uiohook-napi";
 
@@ -214,6 +216,20 @@ import { ChildProcess } from "child_process";
 
 let mainWindow: BrowserWindow | null = null;
 let overlayWindow: BrowserWindow | null = null;
+let overlayTavusFaceMode = false;
+const DEBUG_AGENT_LOG =
+  "/Users/aritro/Downloads/Loveable Hackathon/.cursor/debug-389870.log";
+
+function appendAgentDebugLog(payload: Record<string, unknown>) {
+  try {
+    appendFileSync(
+      DEBUG_AGENT_LOG,
+      `${JSON.stringify({ ...payload, timestamp: Date.now() })}\n`,
+    );
+  } catch {
+    /* ponytail: debug-only */
+  }
+}
 let clinicalWindow: BrowserWindow | null = null;
 let memorySidecarProcess: ChildProcess | null = null;
 let skillBridgeServer: ReturnType<typeof startSkillBridge> | null = null;
@@ -844,10 +860,22 @@ function createOverlayWindow(): void {
     overlayWindow = null;
   });
 
+  overlayWindow.webContents.on("did-fail-load", (_event, code, desc, url) => {
+    const entry = { location: "overlay:did-fail-load", code, desc, url };
+    safeLog("[OVERLAY] did-fail-load", entry);
+    appendAgentDebugLog({
+      sessionId: "389870",
+      runId: "post-fix",
+      hypothesisId: "A",
+      message: "overlay did-fail-load",
+      data: entry,
+    });
+  });
+
   if (is.dev && process.env["ELECTRON_RENDERER_URL"]) {
-    overlayWindow.loadURL(
-      `${process.env["ELECTRON_RENDERER_URL"]}/overlay.html`,
-    );
+    const overlayUrl = `${process.env["ELECTRON_RENDERER_URL"]}/overlay.html`;
+    safeLog("[WINDOW_ROUTING] loading overlay from", { overlayUrl });
+    overlayWindow.loadURL(overlayUrl);
   } else {
     overlayWindow.loadFile(join(__dirname, "../renderer/overlay.html"));
   }
@@ -881,6 +909,48 @@ app.whenReady().then(async () => {
 
   createWindow();
   createOverlayWindow();
+
+  session.defaultSession.setPermissionRequestHandler(
+    (webContents, permission, callback, details) => {
+      const mediaPerms = new Set([
+        "media",
+        "microphone",
+        "camera",
+        "speaker-selection",
+      ]);
+      if (!mediaPerms.has(permission)) {
+        callback(false);
+        return;
+      }
+      const url = details.requestingUrl || webContents.getURL();
+      if (/daily\.co|tavus|localhost|127\.0\.0\.1/i.test(url)) {
+        callback(true);
+        return;
+      }
+      if (
+        overlayWindow &&
+        !overlayWindow.isDestroyed() &&
+        webContents.id === overlayWindow.webContents.id
+      ) {
+        callback(true);
+        return;
+      }
+      callback(false);
+    },
+  );
+
+  session.defaultSession.setPermissionCheckHandler(
+    (_webContents, permission, requestingOrigin) => {
+      const mediaPerms = new Set([
+        "media",
+        "microphone",
+        "camera",
+        "speaker-selection",
+      ]);
+      if (!mediaPerms.has(permission)) return false;
+      return /daily\.co|tavus|localhost|127\.0\.0\.1/i.test(requestingOrigin);
+    },
+  );
 
   registerWindowRoutingListeners();
 
@@ -1560,6 +1630,28 @@ app.whenReady().then(async () => {
     const { tavusGetReplicaStatus } = await import("./tavusHub");
     return tavusGetReplicaStatus();
   });
+  ipcMain.handle("tavus:getPersonaPreview", async () => {
+    const { tavusGetPersonaPreview } = await import("./tavusHub");
+    return tavusGetPersonaPreview();
+  });
+  ipcMain.handle("tavus:setFaceMode", async (_event, active: boolean) => {
+    overlayTavusFaceMode = active === true;
+    appendAgentDebugLog({
+      sessionId: "389870",
+      runId: "post-fix",
+      hypothesisId: "F",
+      message: "tavus face mode",
+      data: { active: overlayTavusFaceMode },
+    });
+    return { ok: true };
+  });
+  ipcMain.handle(
+    "debug:agentLog",
+    async (_event, payload: Record<string, unknown>) => {
+      appendAgentDebugLog(payload);
+      return { ok: true };
+    },
+  );
   ipcMain.handle(
     "tavus:startConversation",
     async (
@@ -1571,9 +1663,36 @@ app.whenReady().then(async () => {
       },
     ) => {
       const { tavusStartConversation } = await import("./tavusHub");
-      return tavusStartConversation(opts || {});
+      const out = await tavusStartConversation(opts || {});
+      appendAgentDebugLog({
+        sessionId: "389870",
+        runId: "post-fix",
+        hypothesisId: "D",
+        message: "tavus startConversation ipc",
+        data: {
+          ok: out.ok,
+          hasUrl: Boolean(out.conversation_url),
+          urlHost: out.conversation_url
+            ? new URL(out.conversation_url).host
+            : null,
+          error: out.error ?? null,
+        },
+      });
+      return out;
     },
   );
+  ipcMain.handle("tavus:endConversation", async (_event, conversationId: string) => {
+    const { tavusEndConversation } = await import("./tavusHub");
+    const out = await tavusEndConversation(conversationId);
+    appendAgentDebugLog({
+      sessionId: "389870",
+      runId: "post-fix",
+      hypothesisId: "G",
+      message: "tavus endConversation ipc",
+      data: { ok: out.ok, conversationId, error: out.error ?? null },
+    });
+    return out;
+  });
   ipcMain.handle("tavus:hubConfigured", async () => {
     const { tavusHubConfigured } = await import("./tavusHub");
     return { ok: tavusHubConfigured() };
@@ -1990,6 +2109,17 @@ app.whenReady().then(async () => {
   );
 
   ipcMain.handle("tts:speak", async (_event, text) => {
+    if (overlayTavusFaceMode) {
+      safeLog("[TTS] skipped — overlay Tavus face mode");
+      appendAgentDebugLog({
+        sessionId: "389870",
+        runId: "post-fix",
+        hypothesisId: "F",
+        message: "tts skipped tavus face",
+        data: { preview: String(text || "").slice(0, 60) },
+      });
+      return { ok: true, skipped: true, reason: "tavus-face-mode" };
+    }
     safeLog("[IPC] tts:speak", { text: text?.slice(0, 50) });
     return speak(text);
   });

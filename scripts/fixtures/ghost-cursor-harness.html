@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ghost Cursor Stress Harness</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: #1a1a2e;
+        color: #eee;
+        overflow: hidden;
+      }
+      .target {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        border: 2px solid #7c3aed;
+        background: rgba(124, 58, 237, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 700;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+      .target::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #f59e0b;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #ghost-root {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+      }
+      .ghost-intent-pill {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+        background: linear-gradient(135deg, #6d28d9, #9333ea);
+        color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      }
+      .ghost-intent-pill.is-resolving {
+        background: linear-gradient(135deg, #b45309, #d97706);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="targets"></div>
+    <div id="ghost-root"></div>
+    <script>
+      const CURSOR_HOTSPOT = { x: 5.5, y: 3.21 };
+      const PILL_GAP_PX = 18;
+      const FLIP_X_AT = 62;
+      const FLIP_Y_AT = 82;
+
+      function clampPercent(v) {
+        return Math.min(100, Math.max(0, v));
+      }
+
+      /** Mirror GhostActionPlayer settled positioning. */
+      function placeGhost(percentX, percentY, label, resolving) {
+        percentX = clampPercent(percentX);
+        percentY = clampPercent(percentY);
+        const root = document.getElementById("ghost-root");
+        const flipX = percentX >= FLIP_X_AT;
+        const flipY = percentY >= FLIP_Y_AT;
+        const pillStyle = {
+          top: flipY ? "auto" : `${24 + PILL_GAP_PX - 16}px`,
+          bottom: flipY ? `${24 + PILL_GAP_PX - 16}px` : "auto",
+          left: flipX ? "auto" : `${22 + PILL_GAP_PX - 16}px`,
+          right: flipX ? `${22 + PILL_GAP_PX - 16}px` : "auto",
+        };
+        root.innerHTML = `
+          <div id="ghost" style="
+            position:fixed;
+            left:${percentX}%;
+            top:${percentY}%;
+            transform:translate(-${CURSOR_HOTSPOT.x}px, -${CURSOR_HOTSPOT.y}px);
+            filter:drop-shadow(0 3px 5px rgba(0,0,0,0.38));
+          ">
+            <div style="position:relative;display:inline-block">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L5.5 3.21z"
+                  fill="white" stroke="black" stroke-width="1" stroke-linejoin="round"/>
+              </svg>
+              <div class="ghost-intent-pill${resolving ? " is-resolving" : ""}" style="
+                position:absolute;
+                top:${pillStyle.top};
+                bottom:${pillStyle.bottom};
+                left:${pillStyle.left};
+                right:${pillStyle.right};
+              ">✓ Click "${label}"</div>
+            </div>
+          </div>`;
+      }
+
+      function tipPx() {
+        const ghost = document.getElementById("ghost");
+        if (!ghost) return null;
+        const rect = ghost.getBoundingClientRect();
+        // Div origin is hotspot-adjusted; SVG tip sits at hotspot offset within the 24×24 glyph.
+        return {
+          x: rect.left + CURSOR_HOTSPOT.x,
+          y: rect.top + CURSOR_HOTSPOT.y,
+          vw: window.innerWidth,
+          vh: window.innerHeight,
+        };
+      }
+
+      function spawnTargets(specs) {
+        const container = document.getElementById("targets");
+        container.innerHTML = "";
+        return specs.map((s, i) => {
+          const el = document.createElement("div");
+          el.className = "target";
+          el.dataset.id = String(i);
+          el.textContent = s.name;
+          el.style.left = s.left;
+          el.style.top = s.top;
+          container.appendChild(el);
+          const rect = el.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          return {
+            id: i,
+            name: s.name,
+            centerPx: { x: cx, y: cy },
+            percent: {
+              x: (cx / window.innerWidth) * 100,
+              y: (cy / window.innerHeight) * 100,
+            },
+          };
+        });
+      }
+
+      window.__GHOST_HARNESS__ = {
+        CURSOR_HOTSPOT,
+        FLIP_X_AT,
+        FLIP_Y_AT,
+        placeGhost,
+        tipPx,
+        spawnTargets,
+        measureAlignment(targetIndex) {
+          const targets = [...document.querySelectorAll(".target")];
+          const t = targets[targetIndex];
+          if (!t) return { error: "no target" };
+          const tr = t.getBoundingClientRect();
+          const tcx = tr.left + tr.width / 2;
+          const tcy = tr.top + tr.height / 2;
+          const tip = tipPx();
+          if (!tip) return { error: "no ghost" };
+          const dist = Math.hypot(tip.x - tcx, tip.y - tcy);
+          const pill = document.querySelector(".ghost-intent-pill");
+          let pillCoversTarget = false;
+          if (pill) {
+            const pr = pill.getBoundingClientRect();
+            pillCoversTarget =
+              tcx >= pr.left && tcx <= pr.right && tcy >= pr.top && tcy <= pr.bottom;
+          }
+          return {
+            targetCenter: { x: tcx, y: tcy },
+            tipPx: { x: tip.x, y: tip.y },
+            distancePx: dist,
+            pillCoversTarget,
+          };
+        },
+        pillBounds() {
+          const pill = document.querySelector(".ghost-intent-pill");
+          if (!pill) return null;
+          const r = pill.getBoundingClientRect();
+          return { left: r.left, top: r.top, right: r.right, bottom: r.bottom };
+        },
+      };
+    </script>
+  </body>
+</html>

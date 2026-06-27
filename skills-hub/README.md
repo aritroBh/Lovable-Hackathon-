@@ -31,6 +31,8 @@ Rules: [`design/GAME_LOGIC.md`](./design/GAME_LOGIC.md) · Sync: [`design/PROGRE
 | `/api/journey` | GET/POST | `JourneyState` sync (merge on `updatedAt`) |
 | `/api/publish` | POST | Catch — `publishGate()` server-side |
 | `/api/tavus-conversation` | POST | PAL iframe URL |
+| `/api/tavus-conversation/end` | POST | End PAL session (`conversationId`) |
+| `/api/tavus-face-preview` | GET | Replica thumbnail video + name |
 | `/api/tavus-health` | GET | Env probe (`palReady`) — no conversation created |
 
 Mac bridge: [`../src/main/hubSync.ts`](../src/main/hubSync.ts) · skill recording: **Cmd+Shift+R** → `publishBuiltSkillToHub`.

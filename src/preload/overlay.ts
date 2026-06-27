@@ -242,11 +242,18 @@ const api = {
   tavusCreateReplica: (uploadUrl: string) =>
     ipcRenderer.invoke("tavus:createReplica", uploadUrl),
   tavusGetReplicaStatus: () => ipcRenderer.invoke("tavus:getReplicaStatus"),
+  tavusGetPersonaPreview: () => ipcRenderer.invoke("tavus:getPersonaPreview"),
+  tavusSetFaceMode: (active: boolean) =>
+    ipcRenderer.invoke("tavus:setFaceMode", active),
+  debugAgentLog: (payload: Record<string, unknown>) =>
+    ipcRenderer.invoke("debug:agentLog", payload),
   tavusStartConversation: (opts: {
     memoryContext?: string;
     replicaId?: string | null;
     replicaReady?: boolean;
   }) => ipcRenderer.invoke("tavus:startConversation", opts),
+  tavusEndConversation: (conversationId: string) =>
+    ipcRenderer.invoke("tavus:endConversation", conversationId),
 
   // Part A — tutor session (one-step-at-a-time loop)
   startTutorSession: (goal: string, appHint?: string) =>

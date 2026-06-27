@@ -70,6 +70,21 @@ Computes changed code files via `git diff` + untracked files, then calls `update
 
 **Exploring unfamiliar code:** Run `/graphify query <concept>` to find entry points without guessing filenames.
 
+## Specter — Tavus PAL entry points (query these first)
+
+| Concept | Query | Primary files |
+|---------|-------|---------------|
+| Overlay persona UI | `TavusPalPanel` | `src/renderer/overlay/TavusPalPanel.tsx` |
+| Hub API proxy (Mac) | `tavusStartConversation` | `src/main/tavusHub.ts` |
+| Conversation create | `createTavusConversation` | `skills-hub/api/lib/tavus.ts`, `skills-hub/api/tavus-conversation.ts` |
+| Conversation end | `endTavusConversation` | `skills-hub/api/tavus-conversation-end.ts`, `skills-hub/api/lib/tavus.ts` |
+| Face preview | `tavus-face-preview` | `skills-hub/api/tavus-face-preview.ts` |
+| Hub PAL iframe | `startTavusConversation` | `skills-hub/src/skills.ts`, `skills-hub/src/game/screens/CenterScreen.tsx` |
+| Overlay Face mode | `tavusSetFaceMode` | `src/renderer/src/OverlayApp.tsx`, `src/main/index.ts` |
+| E2E Tavus tests | `tavus-e2e` | `scripts/tavus-e2e-playwright.cjs` |
+
+**Ports (dev):** Skills Hub UI `:5173`, Hub API `:3001`, Specter overlay Vite `:5174` (`electron.vite.config.ts` — do not collide with Hub).
+
 ## Supported Languages
 
 Python, JavaScript, TypeScript (JSX/TSX), Go, Rust, Java, C, C++, Ruby, C#, Kotlin, Scala, PHP

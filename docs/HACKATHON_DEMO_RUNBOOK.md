@@ -30,7 +30,7 @@ Full launch/troubleshooting: [`DEMO_RUNBOOK.md`](../DEMO_RUNBOOK.md)
 
 | Sec | Where | Action |
 |-----|-------|--------|
-| 0–20 | Mac | Double-shift → Specter appears; **Face → Talk** (Tavus PAL) or voice reply if PAL unavailable |
+| 0–20 | Mac | Double-shift → Specter appears; **Face** → click James circle → **Talk** (Tavus PAL voice in iframe) |
 | 20–50 | Mac | Ask: `what do you remember about the Luma event workflow?` — speak or type; PAL/TTS responds |
 | 50–80 | Mac | Type: `walk me through creating an event` → ghost cursor, one guided click |
 | 80–100 | Mac | Double-shift dismiss → **Cmd+Shift+M** → show memories + skill progress |
@@ -54,7 +54,7 @@ Show matching skill in dashboard (**Cmd+Shift+M**), then **Workflow: event-recap
 | Memory offline | `kill $(lsof -ti :8765)` → relaunch Specter |
 | Skill not on Hub after record | Check `SKILLS_HUB_URL`; run `node skills-hub/scripts/sync-user-id.cjs`; refresh Browse |
 
-- **Primary:** Tavus PAL (Mac overlay **Face → Talk**, or Hub **TRAIN with PAL**)
+- **Primary:** Tavus PAL (Mac overlay **Face → Talk**, or Hub **TRAIN PAL**)
 - **Fallback:** Local TTS (ElevenLabs → macOS `say`) when Tavus unavailable; Whisper for mic input if `OPENAI_API_KEY` set
 
 ## Do not demo on stage

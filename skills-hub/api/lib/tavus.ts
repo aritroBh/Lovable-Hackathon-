@@ -123,6 +123,17 @@ export async function createTavusConversation(
   return { ok: result.ok, status, data: result.data, replica_id: replicaUsed };
 }
 
+export async function endTavusConversation(
+  conversationId: string,
+): Promise<{ ok: boolean; status: number; data: Record<string, unknown> }> {
+  if (!conversationId) {
+    return { ok: false, status: 400, data: { error: "Missing conversationId" } };
+  }
+  return tavusFetch(`/conversations/${encodeURIComponent(conversationId)}`, {
+    method: "DELETE",
+  });
+}
+
 // ponytail: self-check invalid-replica detector
 if (process.env.TAVUS_RESOLVE_SELF_CHECK === "1") {
   if (

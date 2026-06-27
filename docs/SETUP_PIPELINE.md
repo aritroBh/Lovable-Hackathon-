@@ -133,8 +133,9 @@ cd skills-hub && node scripts/sync-user-id.cjs
 |------|-----|
 | **Mac tutor** | Summon overlay → Chat/Voice → Ghost mascot teaches on screen |
 | **Skill record** | **Cmd+Shift+R** → actions → **Cmd+Shift+R** → auto-publish to Hub |
-| **Tavus PAL (browser)** | http://127.0.0.1:5173 → skill → **TRAIN with PAL** |
-| **Tavus PAL (overlay)** | Auto **Face** when PAL ready → **Talk** (stock `TAVUS_REPLICA_ID`) |
+| **Tavus PAL (browser)** | http://127.0.0.1:5173 → skill → **TRAIN PAL** |
+| **Tavus PAL (overlay)** | Auto **Face** when PAL ready → click **James circle** → Talk (Vite overlay :5174) |
+| **Tavus E2E** | `npm run test:tavus` from repo root |
 | **Memory / Luma recap** | Memory panel or Cmd+Shift+M dashboard |
 
 ---
@@ -163,7 +164,7 @@ SKILLS_HUB_PROD_URL=https://your-app.vercel.app npm run verify:prod-smoke
 | Chat: "API key not configured" | `ANTHROPIC_API_KEY` in `Main/.env` |
 | Memory panel offline | Run `python3 -m venv .venv && .venv/bin/pip install -r memory_service/requirements.txt`; restart app |
 | PAL 503 Missing Tavus env | Fill `skills-hub/.env`; restart `npm run start` |
-| PAL 503 concurrent conversations | End stale Tavus rooms in dashboard; wait ~1 min |
+| PAL 503 concurrent conversations | End PAL (overlay circle or leave Center); `POST /api/tavus-conversation/end`; or `npm run test:tavus` |
 | Mac dex not syncing to Hub | Run `node skills-hub/scripts/sync-user-id.cjs`; set matching `SPECTER_USER_ID` |
 | Overlay won't summon | Launch from Terminal.app; grant Screen Recording |
 

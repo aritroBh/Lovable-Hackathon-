@@ -11,7 +11,7 @@ Run all tests before every demo. The controlled demo is a dev fallback — if al
 - [ ] `.env` has `OPENAI_API_KEY` (for Whisper; TTS quota may be exhausted)
 - [ ] macOS Screen Recording permission granted (System Settings → Privacy → Screen Recording)
 - [ ] macOS Accessibility permission granted (for cursor tracking)
-- [ ] Run `npm run dev` — overlay at `http://localhost:5173/overlay.html`
+- [ ] Run `npm run dev` — overlay at `http://localhost:5174/overlay.html` (Hub UI stays on :5173)
 - [ ] Double-shift triggers the overlay (check uIOhook is running)
 - [ ] Use the computer normally for at least 60 seconds before creating a behavioral checkpoint
 

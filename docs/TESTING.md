@@ -67,6 +67,8 @@ From repo root:
 
 ```bash
 bash scripts/hackathon-prep.sh   # test:specter + verify:e2e
+npm run test:tavus               # Tavus PAL — API, CSP, overlay persona, Hub TRAIN PAL
+npm run verify:ghost-cursor      # ghost cursor stress (optional)
 ```
 
 Manual paths: [HACKATHON_DEMO_RUNBOOK.md](./HACKATHON_DEMO_RUNBOOK.md) · [manual-stress-test-checklist.md](./manual-stress-test-checklist.md) § I

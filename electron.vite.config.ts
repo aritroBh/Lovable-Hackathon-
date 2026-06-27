@@ -27,6 +27,11 @@ export default defineConfig({
       },
     },
     plugins: [react()],
+    // ponytail: Skills Hub owns :5173 — Specter overlay must stay on :5174
+    server: {
+      port: 5174,
+      strictPort: true,
+    },
     build: {
       rollupOptions: {
         input: {
@@ -34,6 +39,10 @@ export default defineConfig({
           overlay: resolve(__dirname, "src/renderer/overlay.html"),
           clinical: resolve(__dirname, "src/renderer/clinical.html"),
           dashboard: resolve(__dirname, "src/renderer/dashboard.html"),
+          ghostCursorTest: resolve(
+            __dirname,
+            "src/renderer/ghost-cursor-test.html",
+          ),
         },
       },
     },

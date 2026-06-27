@@ -13,6 +13,12 @@
     "api/tavus-upload.ts": {
       "maxDuration": 10
     },
+    "api/tavus-face-preview.ts": {
+      "maxDuration": 10
+    },
+    "api/tavus-conversation-end.ts": {
+      "maxDuration": 10
+    },
     "api/uploads/[filename].ts": {
       "maxDuration": 10
     }

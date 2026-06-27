@@ -58,11 +58,18 @@ cp .env.example .env    # fill TAVUS_* — auto-loaded by dev-api-server
 npm run start           # API :3001 + UI :5173
 ```
 
-Open http://127.0.0.1:5173 → **Workflow: event-recap-session-1** → **Talk to Specter**.
+Open http://127.0.0.1:5173/skill/workflow-event-recap-session-1 → **TRAIN PAL** (battle extras) or Pokémon Center.
 
 Pre-demo gate from repo root: `bash scripts/hackathon-prep.sh`.
 
 **503 "Missing Tavus env"** = keys missing in `.env` or Vercel/Lovable secrets panel.
+
+**503 "maximum concurrent conversations"** = stale Tavus room still open. End PAL (click circle again in overlay, or leave Center screen), or:
+
+```bash
+# from repo root — automated Tavus E2E also cleans recent rooms
+npm run test:tavus
+```
 
 ## 5. Add secrets (production)
 

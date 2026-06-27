@@ -49,6 +49,14 @@ function stepWaitMs(step: Step): number {
   return step.waitForMs || step.delayMs || DEFAULT_WAIT_STEP_MS;
 }
 
+/** Same coords the overlay ghost uses (viewportX ?? x). */
+function stepViewportPercent(step: Step): { x: number; y: number } {
+  return {
+    x: step.viewportX ?? step.x,
+    y: step.viewportY ?? step.y,
+  };
+}
+
 function waitForUserNearTarget(
   step: Step,
   controller: ReplayController,
@@ -75,8 +83,8 @@ function waitForUserNearTarget(
     controller.cancelHandlers.add(cancel);
 
     waitForMouseAtTarget(
-      step.x,
-      step.y,
+      stepViewportPercent(step).x,
+      stepViewportPercent(step).y,
       TARGET_APPROACH_TOLERANCE_PX,
       timeoutMs,
       abort.signal,
@@ -117,8 +125,8 @@ function waitForUserClickOnTarget(
     controller.cancelHandlers.add(cancel);
 
     waitForUserClickAtTarget(
-      step.x,
-      step.y,
+      stepViewportPercent(step).x,
+      stepViewportPercent(step).y,
       TARGET_CLICK_TOLERANCE_PX,
       timeoutMs,
       abort.signal,

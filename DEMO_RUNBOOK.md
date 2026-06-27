@@ -13,7 +13,7 @@ pkill -f "electron-vite dev"; pkill -f "MacOS/Electron ."; kill $(lsof -ti :8765
 npm run dev
 ```
 
-Wait for the terminal to show `All required permissions granted`. The memory
+Wait for the terminal to show `All required permissions granted` and **overlay Vite on `http://localhost:5174/`** (Skills Hub uses :5173). The memory
 service starts automatically on port 8765.
 
 **Launch from Terminal.app** (not an IDE) — macOS screen/input permissions
@@ -24,6 +24,7 @@ follow whichever app launches Specter, and Terminal already has all grants.
 | Keys | Action |
 |---|---|
 | Double-tap **Shift** | Summon / dismiss the ghost (caret lands in input automatically) |
+| **Face → Talk** | When Tavus PAL ready: James circle roams edge — click to start/end Tavus voice |
 | **Cmd+Shift+M** | Memory Dashboard (saved memories + skill progress) |
 | **Cmd+Shift+K** | Specter Clinical (Epic/APeX demo window) |
 

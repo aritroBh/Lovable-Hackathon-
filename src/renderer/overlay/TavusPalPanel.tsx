@@ -1,130 +1,110 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "../src/api";
+import type { PerimeterRoamResult } from "./usePerimeterRoam";
 
-const STORAGE_KEY = "specter-tavus-replica";
+export const TAVUS_PERSONA_SIZE = 96;
+export const TAVUS_PERSONA_LIVE_SIZE = 148;
 
-type PanelPhase = "idle" | "uploading" | "training" | "ready" | "live";
+// #region agent log
+const dbg = (location: string, message: string, data: Record<string, unknown>, hypothesisId: string) => {
+  const payload = {
+    sessionId: "389870",
+    location,
+    message,
+    data,
+    hypothesisId,
+    timestamp: Date.now(),
+    runId: "post-fix",
+  };
+  void api.debugAgentLog?.(payload);
+  fetch("http://127.0.0.1:7771/ingest/f986ff11-c671-47ba-bf50-4c5b755ea15c", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "389870" },
+    body: JSON.stringify(payload),
+  }).catch(() => {});
+};
+// #endregion
 
-interface StoredReplica {
-  replica_id: string | null;
-  status: string;
-  ready: boolean;
-  uploadUrl?: string;
-  previewDataUrl?: string;
-}
+type PanelPhase = "idle" | "starting" | "live";
 
-interface TavusPalPanelProps {
-  visible: boolean;
-  onLiveChange?: (live: boolean) => void;
-}
-
-function loadStored(): StoredReplica | null {
+function conversationIdFromUrl(url: string | null): string | null {
+  if (!url) return null;
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as StoredReplica) : null;
+    const id = new URL(url).pathname.replace(/^\//, "");
+    return id || null;
   } catch {
     return null;
   }
 }
 
-function saveStored(data: StoredReplica) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-function phaseFromStored(stored: StoredReplica | null): PanelPhase {
-  if (!stored?.replica_id) return "idle";
-  if (stored.ready) return "ready";
-  return "training";
+interface TavusPalPanelProps {
+  visible: boolean;
+  onLiveChange?: (live: boolean) => void;
+  roam?: PerimeterRoamResult;
 }
 
 export const TavusPalPanel: React.FC<TavusPalPanelProps> = ({
   visible,
   onLiveChange,
+  roam,
 }) => {
-  const [phase, setPhase] = useState<PanelPhase>(() => phaseFromStored(loadStored()));
-  const [stored, setStored] = useState<StoredReplica | null>(() => loadStored());
+  const [phase, setPhase] = useState<PanelPhase>("idle");
   const [conversationUrl, setConversationUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [usingStock, setUsingStock] = useState(false);
-  const fileRef = useRef<HTMLInputElement>(null);
-  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const syncStored = useCallback((next: StoredReplica) => {
-    setStored(next);
-    saveStored(next);
-    setPhase(next.ready ? "ready" : next.replica_id ? "training" : "idle");
-  }, []);
-
-  const pollStatus = useCallback(async () => {
-    const result = await api.tavusGetReplicaStatus();
-    if (!result.ok) return;
-    const next: StoredReplica = {
-      replica_id: result.replica_id ?? stored?.replica_id ?? null,
-      status: result.status || "training",
-      ready: result.ready === true,
-      uploadUrl: result.uploadUrl || stored?.uploadUrl,
-      previewDataUrl: stored?.previewDataUrl,
-    };
-    syncStored(next);
-  }, [stored?.previewDataUrl, stored?.replica_id, stored?.uploadUrl, syncStored]);
+  const [personaVideoUrl, setPersonaVideoUrl] = useState<string | null>(null);
+  const [personaName, setPersonaName] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const conversationIdRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (phase !== "training") {
-      if (pollRef.current) clearInterval(pollRef.current);
-      pollRef.current = null;
-      return;
-    }
-    void pollStatus();
-    pollRef.current = setInterval(() => void pollStatus(), 60_000);
-    return () => {
-      if (pollRef.current) clearInterval(pollRef.current);
+    // #region agent log
+    const onCsp = (e: SecurityPolicyViolationEvent) => {
+      dbg("TavusPalPanel.tsx:csp", "CSP violation", {
+        blockedURI: e.blockedURI,
+        violatedDirective: e.violatedDirective,
+        effectiveDirective: e.effectiveDirective,
+      }, "A");
     };
-  }, [phase, pollStatus]);
+    document.addEventListener("securitypolicyviolation", onCsp);
+    dbg("TavusPalPanel.tsx:mount", "persona mounted", { visible }, "E");
+    return () => document.removeEventListener("securitypolicyviolation", onCsp);
+    // #endregion
+  }, [visible]);
+
+  useEffect(() => {
+    if (!visible) return;
+    let cancelled = false;
+    void api.tavusGetPersonaPreview().then((result) => {
+      // #region agent log
+      dbg("TavusPalPanel.tsx:preview", "persona preview response", {
+        ok: result?.ok,
+        hasVideo: Boolean(result?.thumbnail_video_url),
+        faceName: result?.face_name ?? null,
+        error: result?.error ?? null,
+      }, "B");
+      // #endregion
+      if (cancelled || !result?.ok) return;
+      if (typeof result.thumbnail_video_url === "string") {
+        setPersonaVideoUrl(result.thumbnail_video_url);
+      }
+      if (typeof result.face_name === "string") {
+        setPersonaName(result.face_name);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [visible]);
 
   useEffect(() => {
     onLiveChange?.(phase === "live");
     return () => onLiveChange?.(false);
   }, [phase, onLiveChange]);
 
-  const handleUpload = async (file: File) => {
-    setError(null);
-    setPhase("uploading");
-    const previewDataUrl = await new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(String(reader.result));
-      reader.onerror = () => reject(new Error("Failed to read image"));
-      reader.readAsDataURL(file);
-    });
-
-    const base64 = previewDataUrl.split(",")[1] || "";
-    const mimeType = file.type === "image/png" ? "image/png" : "image/jpeg";
-
-    const upload = await api.tavusUploadPhoto(base64, mimeType);
-    if (!upload.ok || !upload.uploadUrl) {
-      setError(upload.error || "Upload failed");
-      setPhase(phaseFromStored(stored));
-      return;
-    }
-
-    const replica = await api.tavusCreateReplica(upload.uploadUrl);
-    if (!replica.ok || !replica.replica_id) {
-      setError(replica.error || "Replica training failed to start");
-      setPhase(phaseFromStored(stored));
-      return;
-    }
-
-    syncStored({
-      replica_id: replica.replica_id,
-      status: replica.status || "training",
-      ready: replica.ready === true,
-      uploadUrl: upload.uploadUrl,
-      previewDataUrl,
-    });
-  };
-
   const startTalk = async () => {
+    if (phase !== "idle") return;
     setError(null);
-    setPhase("uploading");
+    setPhase("starting");
     let memoryContext = "";
     try {
       const mem = await api.ghostwikiQuery("summarize current session skills", undefined);
@@ -134,106 +114,141 @@ export const TavusPalPanel: React.FC<TavusPalPanelProps> = ({
       /* ponytail: PAL works without memory */
     }
 
-    const result = await api.tavusStartConversation({
-      memoryContext,
-      replicaId: stored?.replica_id,
-      replicaReady: stored?.ready === true,
-    });
+    const result = await api.tavusStartConversation({ memoryContext });
+
+    // #region agent log
+    dbg("TavusPalPanel.tsx:startTalk", "conversation start result", {
+      ok: result?.ok,
+      hasUrl: Boolean(result?.conversation_url),
+      urlHost: result?.conversation_url ? new URL(result.conversation_url).host : null,
+      error: result?.error ?? null,
+    }, "D");
+    // #endregion
 
     if (!result.ok || !result.conversation_url) {
       setError(result.error || "Could not start Tavus conversation");
-      setPhase(stored?.ready ? "ready" : stored?.replica_id ? "training" : "idle");
+      setPhase("idle");
       return;
     }
 
-    setUsingStock(!result.using_custom_replica);
+    const id =
+      typeof result.conversation_id === "string"
+        ? result.conversation_id
+        : conversationIdFromUrl(result.conversation_url);
+    conversationIdRef.current = id;
     setConversationUrl(result.conversation_url);
     setPhase("live");
   };
 
-  const endTalk = () => {
+  const endTalk = useCallback(() => {
+    const id =
+      conversationIdRef.current ?? conversationIdFromUrl(conversationUrl);
+    if (id) {
+      void api.tavusEndConversation?.(id).then((result) => {
+        // #region agent log
+        dbg("TavusPalPanel.tsx:endTalk", "conversation end result", {
+          ok: result?.ok,
+          conversationId: id,
+          error: result?.error ?? null,
+        }, "G");
+        // #endregion
+      });
+    }
+    conversationIdRef.current = null;
     setConversationUrl(null);
-    setPhase(stored?.ready ? "ready" : stored?.replica_id ? "training" : "idle");
-  };
+    setPhase("idle");
+  }, [conversationUrl]);
+
+  useEffect(() => {
+    if (!visible && phase === "live") endTalk();
+  }, [visible, phase, endTalk]);
+
+  useEffect(() => {
+    return () => {
+      const id =
+        conversationIdRef.current ?? conversationIdFromUrl(conversationUrl);
+      if (phase === "live" && id) void api.tavusEndConversation?.(id);
+    };
+  }, [phase, conversationUrl]);
 
   if (!visible) return null;
 
-  return (
-    <div className="tavus-pal-panel" data-phase={phase}>
-      <div className="tavus-pal-panel__header">
-        <span className="tavus-pal-panel__title">Specter Face</span>
-        {phase === "live" && (
-          <button type="button" className="tavus-pal-panel__end" onClick={endTalk}>
-            End
-          </button>
-        )}
-      </div>
+  const bobbing = roam?.isMoving && phase !== "live";
+  const isLive = phase === "live" && Boolean(conversationUrl);
+  const label =
+    phase === "starting"
+      ? "Starting PAL…"
+      : isLive
+        ? "End conversation"
+        : personaName
+          ? `Talk to ${personaName}`
+          : "Talk to Specter PAL";
 
-      {phase === "live" && conversationUrl ? (
-        <div className="tavus-pal-panel__video">
+  return (
+    <div
+      className={`tavus-persona ${isLive ? "tavus-persona--live" : ""}`}
+      data-phase={phase}
+    >
+      <button
+        type="button"
+        className={`tavus-persona__circle ${bobbing ? "is-bobbing" : ""} ${phase === "starting" ? "is-starting" : ""}`}
+        onClick={() => {
+          if (phase === "idle") void startTalk();
+          else if (isLive) endTalk();
+        }}
+        disabled={phase === "starting"}
+        aria-label={label}
+        title={label}
+      >
+        {isLive && conversationUrl ? (
           <iframe
             src={conversationUrl}
             allow="camera; microphone; fullscreen; display-capture; autoplay"
             title="Specter PAL"
+            className="tavus-persona__iframe"
+            onLoad={() => {
+              // #region agent log
+              dbg("TavusPalPanel.tsx:iframe", "conversation iframe loaded", {
+                urlHost: new URL(conversationUrl).host,
+              }, "A");
+              // #endregion
+            }}
           />
-        </div>
-      ) : (
-        <div className="tavus-pal-panel__body">
-          {stored?.previewDataUrl && (
-            <img
-              className="tavus-pal-panel__preview"
-              src={stored.previewDataUrl}
-              alt="Your uploaded face"
-            />
-          )}
-
-          {phase === "training" && (
-            <p className="tavus-pal-panel__badge">
-              Your face is training (~3h). Using Specter PAL meanwhile.
-            </p>
-          )}
-          {phase === "ready" && (
-            <p className="tavus-pal-panel__badge tavus-pal-panel__badge--ready">
-              Your replica is ready.
-            </p>
-          )}
-          {usingStock && phase !== "live" && stored?.replica_id && !stored.ready && (
-            <p className="tavus-pal-panel__hint">Stock PAL face until training completes.</p>
-          )}
-
-          {error && <p className="tavus-pal-panel__error">{error}</p>}
-
-          <div className="tavus-pal-panel__actions">
-            <input
-              ref={fileRef}
-              type="file"
-              accept="image/jpeg,image/png"
-              hidden
-              onChange={(e) => {
-                const f = e.target.files?.[0];
-                if (f) void handleUpload(f);
-                e.target.value = "";
-              }}
-            />
-            <button
-              type="button"
-              className="tavus-pal-panel__btn"
-              disabled={phase === "uploading"}
-              onClick={() => fileRef.current?.click()}
-            >
-              {stored?.replica_id ? "Replace photo" : "Upload photo"}
-            </button>
-            <button
-              type="button"
-              className="tavus-pal-panel__btn tavus-pal-panel__btn--primary"
-              disabled={phase === "uploading"}
-              onClick={() => void startTalk()}
-            >
-              {phase === "uploading" ? "Starting…" : "Talk"}
-            </button>
-          </div>
-        </div>
-      )}
+        ) : personaVideoUrl ? (
+          <video
+            ref={videoRef}
+            className="tavus-persona__video"
+            src={personaVideoUrl}
+            autoPlay
+            muted
+            loop
+            playsInline
+            onLoadedData={() => {
+              // #region agent log
+              dbg("TavusPalPanel.tsx:video", "persona video loaded", {
+                src: personaVideoUrl.slice(0, 80),
+                readyState: videoRef.current?.readyState ?? null,
+              }, "C");
+              // #endregion
+            }}
+            onError={() => {
+              // #region agent log
+              dbg("TavusPalPanel.tsx:video", "persona video error", {
+                src: personaVideoUrl.slice(0, 80),
+                networkState: videoRef.current?.networkState ?? null,
+                errorCode: videoRef.current?.error?.code ?? null,
+              }, "A");
+              // #endregion
+            }}
+          />
+        ) : (
+          <div className="tavus-persona__loading" aria-hidden="true" />
+        )}
+        {phase === "starting" && (
+          <span className="tavus-persona__starting" aria-hidden="true" />
+        )}
+      </button>
+      {error && <p className="tavus-persona__error">{error}</p>}
     </div>
   );
 };

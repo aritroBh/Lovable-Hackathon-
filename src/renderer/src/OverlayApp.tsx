@@ -5,7 +5,7 @@ import { GhostCursor } from "../overlay/GhostCursor";
 import { GhostActionPlayer } from "../overlay/GhostActionPlayer";
 import { WalkthroughGuide } from "../overlay/WalkthroughGuide";
 import { SpecBuddy } from "../overlay/SpecBuddy";
-import { TavusPalPanel } from "../overlay/TavusPalPanel";
+import { TavusPalPanel, TAVUS_PERSONA_SIZE } from "../overlay/TavusPalPanel";
 import { ModeToggle } from "../overlay/ModeToggle";
 import { SessionPanel } from "../overlay/SessionPanel";
 
@@ -376,6 +376,7 @@ const OverlayApp: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mode, setMode] = useState<SpecterMode>("silent");
   const [faceMode, setFaceMode] = useState<FaceMode>("ghost");
+  const [tavusLive, setTavusLive] = useState(false);
   const [showMemoryPanel, setShowMemoryPanel] = useState(false);
   const [intent, setIntent] = useState("");
 
@@ -508,6 +509,21 @@ const OverlayApp: React.FC = () => {
     { ghostSize: 56, avoidBottomCenter: true },
   );
 
+  const tavusRoamEnabled =
+    faceMode === "tavus" &&
+    (isVisible || isReplayActiveForRoam || isLoading) &&
+    !tavusLive &&
+    !(
+      roamShowWorkflowCard &&
+      selectedRealAppTarget &&
+      !isReplayActiveForRoam
+    );
+  const tavusRoam = usePerimeterRoam(
+    tavusRoamEnabled,
+    '[data-specter-boundary="true"]',
+    { ghostSize: TAVUS_PERSONA_SIZE, avoidBottomCenter: true },
+  );
+
   useEffect(() => {
     const w = window.innerWidth;
     const h = window.innerHeight;
@@ -519,6 +535,7 @@ const OverlayApp: React.FC = () => {
   }, [specBuddyRoam.x, specBuddyRoam.y]);
 
   const modeRef = useRef(mode);
+  const faceModeRef = useRef(faceMode);
   const demoPresentationRef = useRef(demoPresentationMode);
   const tavusLiveRef = useRef(false);
 
@@ -527,11 +544,17 @@ const OverlayApp: React.FC = () => {
   }, [mode]);
 
   useEffect(() => {
+    faceModeRef.current = faceMode;
+    void api.tavusSetFaceMode?.(faceMode === "tavus");
+  }, [faceMode]);
+
+  useEffect(() => {
     demoPresentationRef.current = demoPresentationMode;
   }, [demoPresentationMode]);
 
   const handleTavusLiveChange = useCallback((live: boolean) => {
     tavusLiveRef.current = live;
+    setTavusLive(live);
   }, []);
 
   const setInteractivity = (interactive: boolean) => {
@@ -551,8 +574,8 @@ const OverlayApp: React.FC = () => {
   }, []);
 
   const speakIfUltra = (text: string, moment: string) => {
-    if (tavusLiveRef.current) {
-      console.log("[TTS] skipped — Tavus PAL live", { moment });
+    if (tavusLiveRef.current || faceModeRef.current === "tavus") {
+      console.log("[TTS] skipped — Tavus face mode", { moment });
       return;
     }
     const currentMode = modeRef.current;
@@ -2702,13 +2725,21 @@ const OverlayApp: React.FC = () => {
           !(showWorkflowCard && selectedRealAppTarget && !isReplayRunning) &&
           (faceMode === "tavus" ? (
             <div
-              className="tavus-pal-panel-wrap"
+              className={`tavus-persona-wrap ${tavusRoamEnabled ? "is-roaming" : ""}`}
+              style={
+                tavusRoamEnabled
+                  ? {
+                      transform: `translate3d(${tavusRoam.x - TAVUS_PERSONA_SIZE / 2}px, ${tavusRoam.y - TAVUS_PERSONA_SIZE / 2}px, 0)`,
+                    }
+                  : undefined
+              }
               onMouseEnter={() => setInteractivity(true)}
               onMouseLeave={() => setInteractivity(false)}
             >
               <TavusPalPanel
                 visible={isVisible || isReplayRunning || isLoading}
                 onLiveChange={handleTavusLiveChange}
+                roam={tavusRoamEnabled ? tavusRoam : undefined}
               />
             </div>
           ) : (
