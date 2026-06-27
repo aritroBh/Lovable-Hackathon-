@@ -25,8 +25,8 @@ When the user returns, pick up where you left off.
 
 4. Pick a **prebuilt replica** from the library (do not train a custom face — takes hours)
 5. Enable **perception** / webcam if offered (hackathon "PAL sees you")
-6. Save → copy **persona_id** (PAL id) → `TAVUS_PERSONA_ID`
-7. Copy **replica_id** if separate → `TAVUS_REPLICA_ID`
+6. Save → copy **pal_id** (PAL id) → `TAVUS_PERSONA_ID`
+7. Copy **face_id** if separate → `TAVUS_REPLICA_ID`
 
 ## 3. Test with curl
 
@@ -39,8 +39,8 @@ curl -X POST https://tavusapi.com/v2/conversations \
   -H "Content-Type: application/json" \
   -H "x-api-key: $TAVUS_API_KEY" \
   -d "{
-    \"persona_id\": \"$TAVUS_PERSONA_ID\",
-    \"replica_id\": \"$TAVUS_REPLICA_ID\",
+    \"pal_id\": \"$TAVUS_PERSONA_ID\",
+    \"face_id\": \"$TAVUS_REPLICA_ID\",
     \"conversation_name\": \"Specter test\",
     \"custom_greeting\": \"Hey — I'm Specter. Ready to learn a skill?\",
     \"memory_stores\": [\"specter-demo\"],
@@ -72,7 +72,7 @@ Pre-demo gate from repo root: `bash scripts/hackathon-prep.sh`.
 |----------|--------|
 | `TAVUS_API_KEY` | from step 1 |
 | `TAVUS_PERSONA_ID` | from step 2 |
-| `TAVUS_REPLICA_ID` | from step 2 (required unless persona has `default_replica_id`) |
+| `TAVUS_REPLICA_ID` | from step 2 (required unless PAL has a default face) |
 | `TAVUS_CALLBACK_URL` | optional webhook |
 
 Never commit these to the Specter repo.
