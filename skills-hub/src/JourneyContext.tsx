@@ -26,6 +26,7 @@ interface JourneyCtx {
   markSeen: (skillId: string, meta: Partial<JourneyEntry>) => void;
   learnMove: (skillId: string, moveIndex: number, totalMoves: number) => void;
   equip: (skillId: string) => void;
+  unequip: (skillId: string) => void;
   awardBadge: (name: string) => void;
   canCatchSkill: (skillId: string) => boolean;
   isTrainer: (skillId: string, author?: string) => boolean;
@@ -109,6 +110,16 @@ export function JourneyProvider({ children }: { children: ReactNode }) {
     [persist],
   );
 
+  const unequip = useCallback(
+    (skillId: string) => {
+      persist((prev) => ({
+        ...prev,
+        party: prev.party.filter((id) => id !== skillId),
+      }));
+    },
+    [persist],
+  );
+
   const awardBadge = useCallback(
     (name: string) => {
       const badge = name.trim();
@@ -149,12 +160,13 @@ export function JourneyProvider({ children }: { children: ReactNode }) {
       markSeen,
       learnMove,
       equip,
+      unequip,
       awardBadge,
       canCatchSkill,
       isTrainer,
       sync,
     }),
-    [journey, syncReady, markSeen, learnMove, equip, awardBadge, canCatchSkill, isTrainer, sync],
+    [journey, syncReady, markSeen, learnMove, equip, unequip, awardBadge, canCatchSkill, isTrainer, sync],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
