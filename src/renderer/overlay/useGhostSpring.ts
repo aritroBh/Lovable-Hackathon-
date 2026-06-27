@@ -62,6 +62,14 @@ export function useGhostSpring(
       return;
     }
 
+    if (options?.start) {
+      posRef.current = {
+        x: clampPercent(options.start.x),
+        y: clampPercent(options.start.y),
+      };
+      velRef.current = { x: 0, y: 0 };
+    }
+
     const tx = clampPercent(target.x);
     const ty = clampPercent(target.y);
     setState((s) => ({ ...s, isMoving: true, isSettled: false }));
@@ -113,7 +121,15 @@ export function useGhostSpring(
       lastTimeRef.current = null;
     };
     // Re-arm only on a genuine target change.
-  }, [target?.x, target?.y, stiffness, damping, restDelta]);
+  }, [
+    target?.x,
+    target?.y,
+    options?.start?.x,
+    options?.start?.y,
+    stiffness,
+    damping,
+    restDelta,
+  ]);
 
   return state;
 }

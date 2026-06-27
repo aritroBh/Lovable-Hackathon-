@@ -6,6 +6,7 @@ import { GhostActionPlayer } from "../overlay/GhostActionPlayer";
 import { WalkthroughGuide } from "../overlay/WalkthroughGuide";
 import { SpecBuddy } from "../overlay/SpecBuddy";
 import { TavusPalPanel, TAVUS_PERSONA_SIZE } from "../overlay/TavusPalPanel";
+import { useGhostSpring } from "../overlay/useGhostSpring";
 import { ModeToggle } from "../overlay/ModeToggle";
 import { SessionPanel } from "../overlay/SessionPanel";
 
@@ -376,7 +377,6 @@ const OverlayApp: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mode, setMode] = useState<SpecterMode>("silent");
   const [faceMode, setFaceMode] = useState<FaceMode>("ghost");
-  const [tavusLive, setTavusLive] = useState(false);
   const [showMemoryPanel, setShowMemoryPanel] = useState(false);
   const [intent, setIntent] = useState("");
 
@@ -496,8 +496,56 @@ const OverlayApp: React.FC = () => {
         realAppTargets || selectedRealAppTarget || isManualTargetPicking,
       )) &&
     !isManualTargetPicking;
+  const isWalkthroughOrMirrorRunning =
+    replayState === "running" || mirrorStatus === "running";
+  const isLiveGhostGuiding = Boolean(
+    !isWalkthroughOrMirrorRunning && liveGhostStep,
+  );
+  const targetPreviewActive =
+    roamShowWorkflowCard &&
+    Boolean(selectedRealAppTarget) &&
+    !isReplayActiveForRoam;
+  // Only the ghost (SpecBuddy) avatar physically travels to the target. In
+  // Tavus mode the face is a fixed talking head and a separate ghost cursor
+  // does the pointing, so the avatar is NOT the on-screen guide there.
+  const avatarGuidesOnScreen = faceMode === "ghost";
+  const avatarGuideTarget = useMemo(() => {
+    if (!avatarGuidesOnScreen) return null;
+
+    if (targetPreviewActive && selectedRealAppTarget) {
+      const px = selectedRealAppTarget.viewportX ?? selectedRealAppTarget.x;
+      const py = selectedRealAppTarget.viewportY ?? selectedRealAppTarget.y;
+      if (px != null && py != null) return { x: px, y: py };
+    }
+
+    const step = isWalkthroughOrMirrorRunning
+      ? currentStep
+      : isLiveGhostGuiding
+        ? liveGhostStep
+        : null;
+    if (!step) return null;
+    const px = step.viewportX ?? step.x;
+    const py = step.viewportY ?? step.y;
+    if (px == null || py == null) return null;
+    return { x: px, y: py };
+  }, [
+    avatarGuidesOnScreen,
+    targetPreviewActive,
+    selectedRealAppTarget,
+    isWalkthroughOrMirrorRunning,
+    isLiveGhostGuiding,
+    currentStep,
+    liveGhostStep,
+  ]);
+  const avatarWaitingForUser = Boolean(
+    avatarGuideTarget &&
+      !targetPreviewActive &&
+      ((isWalkthroughOrMirrorRunning && currentStep?.ghostLocked) ||
+        (isLiveGhostGuiding && liveGhostStep?.ghostLocked)),
+  );
   const specBuddyRoamEnabled =
     (isVisible || isReplayActiveForRoam || isLoading) &&
+    !avatarGuideTarget &&
     !(
       roamShowWorkflowCard &&
       selectedRealAppTarget &&
@@ -512,7 +560,10 @@ const OverlayApp: React.FC = () => {
   const tavusRoamEnabled =
     faceMode === "tavus" &&
     (isVisible || isReplayActiveForRoam || isLoading) &&
-    !tavusLive &&
+    !avatarGuideTarget &&
+    !isSpeaking &&
+    !liveGhostStep &&
+    !isWalkthroughOrMirrorRunning &&
     !(
       roamShowWorkflowCard &&
       selectedRealAppTarget &&
@@ -524,20 +575,58 @@ const OverlayApp: React.FC = () => {
     { ghostSize: TAVUS_PERSONA_SIZE, avoidBottomCenter: true },
   );
 
+  const [avatarGuideStart, setAvatarGuideStart] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+  const prevGuideTargetKeyRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!avatarGuideTarget) {
+      prevGuideTargetKeyRef.current = null;
+      setAvatarGuideStart(null);
+      return;
+    }
+    const key = `${avatarGuideTarget.x},${avatarGuideTarget.y}`;
+    if (prevGuideTargetKeyRef.current === key) return;
+    prevGuideTargetKeyRef.current = key;
+    setAvatarGuideStart({ ...roamingGhostPosRef.current });
+  }, [avatarGuideTarget]);
+
+  const tavusGuideSpring = useGhostSpring(
+    faceMode === "tavus" ? avatarGuideTarget : null,
+    {
+      start: avatarGuideStart ?? undefined,
+      stiffness: 140,
+      damping: 24,
+    },
+  );
+
   useEffect(() => {
     const w = window.innerWidth;
     const h = window.innerHeight;
-    if (w <= 0 || h <= 0 || specBuddyRoam.x <= -500) return;
+    if (w <= 0 || h <= 0) return;
+    const roam =
+      faceMode === "tavus" && tavusRoam.x > -500
+        ? tavusRoam
+        : specBuddyRoam.x > -500
+          ? specBuddyRoam
+          : null;
+    if (!roam) return;
     roamingGhostPosRef.current = {
-      x: (specBuddyRoam.x / w) * 100,
-      y: (specBuddyRoam.y / h) * 100,
+      x: (roam.x / w) * 100,
+      y: (roam.y / h) * 100,
     };
-  }, [specBuddyRoam.x, specBuddyRoam.y]);
+  }, [
+    faceMode,
+    tavusRoam.x,
+    tavusRoam.y,
+    specBuddyRoam.x,
+    specBuddyRoam.y,
+  ]);
 
   const modeRef = useRef(mode);
   const faceModeRef = useRef(faceMode);
   const demoPresentationRef = useRef(demoPresentationMode);
-  const tavusLiveRef = useRef(false);
 
   useEffect(() => {
     modeRef.current = mode;
@@ -551,11 +640,6 @@ const OverlayApp: React.FC = () => {
   useEffect(() => {
     demoPresentationRef.current = demoPresentationMode;
   }, [demoPresentationMode]);
-
-  const handleTavusLiveChange = useCallback((live: boolean) => {
-    tavusLiveRef.current = live;
-    setTavusLive(live);
-  }, []);
 
   const setInteractivity = (interactive: boolean) => {
     // Only go click-through if mouse is out AND input is not focused
@@ -574,18 +658,25 @@ const OverlayApp: React.FC = () => {
   }, []);
 
   const speakIfUltra = (text: string, moment: string) => {
-    if (tavusLiveRef.current || faceModeRef.current === "tavus") {
-      console.log("[TTS] skipped — Tavus face mode", { moment });
+    const tavusMicOnly =
+      faceModeRef.current === "tavus" &&
+      moment !== "tutor reply" &&
+      moment !== "chat reply" &&
+      moment !== "demo chat reply";
+    if (tavusMicOnly) {
+      console.log("[TTS] skipped — Tavus mic-only mode", { moment });
       return;
     }
     const currentMode = modeRef.current;
     const demoMode = demoPresentationRef.current;
-    console.log("[MODE] current mode", { mode: currentMode, moment, demoMode });
-    if (currentMode === "ultra" || demoMode) {
+    const tavusFace = faceModeRef.current === "tavus";
+    console.log("[MODE] current mode", { mode: currentMode, moment, demoMode, tavusFace });
+    if (currentMode === "ultra" || demoMode || tavusFace) {
       setUltraState("speaking");
       const timeout = setTimeout(() => {
         console.warn("[TTS] speak timeout");
         cancelGhostListen();
+        setIsSpeaking(false);
         setUltraState("waitingForUser");
       }, 20_000);
 
@@ -604,6 +695,12 @@ const OverlayApp: React.FC = () => {
           } else if (result?.providerUsed === "openai") {
             console.log("[TTS] used OpenAI fallback");
           }
+
+          if (tavusFace || (currentMode !== "ultra" && !demoMode)) {
+            setUltraState("waitingForUser");
+            return;
+          }
+
           void (async () => {
             if (modeRef.current !== "ultra" && !demoPresentationRef.current) {
               setUltraState("waitingForUser");
@@ -873,7 +970,7 @@ const OverlayApp: React.FC = () => {
 
   const handleUltraSpokenInput = async (text: string) => {
     cancelGhostListen();
-    if (mode !== "ultra" && !demoPresentationMode) return;
+    if (mode !== "ultra" && !demoPresentationMode && faceMode !== "tavus") return;
 
     const gen = ++converseGenRef.current;
     clearLiveGhost();
@@ -920,7 +1017,7 @@ const OverlayApp: React.FC = () => {
         { role: "assistant", content: result.reply },
       ]);
 
-      if (result.shouldSpeak || demoPresentationMode) {
+      if (result.shouldSpeak || demoPresentationMode || faceMode === "tavus") {
         console.log("[TTS] speak called");
         speakIfUltra(result.reply, "tutor reply");
       } else {
@@ -1318,7 +1415,7 @@ const OverlayApp: React.FC = () => {
     let cancelled = false;
 
     void (async () => {
-      setUltraState("thinking");
+      setUltraState("waitingForUser");
       setContextReadActive(true);
       try {
         const predictionRes = await api.getProactivePrediction();
@@ -1344,7 +1441,10 @@ const OverlayApp: React.FC = () => {
               ? prev
               : [{ role: "assistant", content: prediction, proactive: true }];
           });
-          if (modeRef.current === "ultra" || demoPresentationRef.current) {
+          if (
+            faceModeRef.current !== "tavus" &&
+            (modeRef.current === "ultra" || demoPresentationRef.current)
+          ) {
             speakIfUltra(prediction, "proactive summon");
           } else {
             setUltraState("waitingForUser");
@@ -2652,9 +2752,6 @@ const OverlayApp: React.FC = () => {
           style={{ pointerEvents: "none" }}
         />
         {(() => {
-          const targetPreviewActive = Boolean(
-            showWorkflowCard && selectedRealAppTarget && !isReplayRunning,
-          );
           const isGhostActionReplay = Boolean(
             isReplayRunning &&
             currentStep &&
@@ -2666,15 +2763,18 @@ const OverlayApp: React.FC = () => {
             : isLiveGhostActive
               ? liveGhostStep
               : currentStep;
+          const showPointerGhost = !avatarGuidesOnScreen;
+          const showWalkthroughGuide =
+            !avatarGuidesOnScreen && !targetPreviewActive;
           return (
             <>
-              {isGhostActionReplay ? (
+              {showPointerGhost && isGhostActionReplay ? (
                 <GhostActionPlayer
                   step={currentStep}
                   isActive={isReplayRunning}
                   start={roamingGhostPosRef.current}
                 />
-              ) : isLiveGhostActive ? (
+              ) : showPointerGhost && isLiveGhostActive ? (
                 <div
                   className={`ghost-live-pop${liveGhostLeaving ? " is-leaving" : ""}`}
                 >
@@ -2684,7 +2784,7 @@ const OverlayApp: React.FC = () => {
                     start={roamingGhostPosRef.current}
                   />
                 </div>
-              ) : (
+              ) : showPointerGhost ? (
                 <GhostCursor
                   mood={specMood}
                   isVisible={
@@ -2693,52 +2793,59 @@ const OverlayApp: React.FC = () => {
                   step={currentStep}
                   isSpeaking={isSpeaking}
                 />
+              ) : null}
+              {showWalkthroughGuide &&
+                (isGhostActionReplay || isLiveGhostActive ? (
+                  guideReady ? (
+                    <WalkthroughGuide step={guideStep} />
+                  ) : null
+                ) : (
+                  <WalkthroughGuide step={currentStep} />
+                ))}
+              {!avatarGuidesOnScreen && (
+                <TargetPreviewGhost
+                  target={
+                    selectedRealAppTarget
+                      ? {
+                          x:
+                            selectedRealAppTarget.viewportX ??
+                            selectedRealAppTarget.x,
+                          y:
+                            selectedRealAppTarget.viewportY ??
+                            selectedRealAppTarget.y,
+                          label: selectedRealAppTarget.label,
+                        }
+                      : null
+                  }
+                  start={previewGhostStart || undefined}
+                  active={targetPreviewActive}
+                />
               )}
-              {isGhostActionReplay || isLiveGhostActive ? (
-                guideReady ? (
-                  <WalkthroughGuide step={guideStep} />
-                ) : null
-              ) : (
-                <WalkthroughGuide step={currentStep} />
-              )}
-              <TargetPreviewGhost
-                target={
-                  selectedRealAppTarget
-                    ? {
-                        x:
-                          selectedRealAppTarget.viewportX ??
-                          selectedRealAppTarget.x,
-                        y:
-                          selectedRealAppTarget.viewportY ??
-                          selectedRealAppTarget.y,
-                        label: selectedRealAppTarget.label,
-                      }
-                    : null
-                }
-                start={previewGhostStart || undefined}
-                active={targetPreviewActive}
-              />
             </>
           );
         })()}
         {(isVisible || isReplayRunning || isLoading) &&
-          !(showWorkflowCard && selectedRealAppTarget && !isReplayRunning) &&
           (faceMode === "tavus" ? (
             <div
-              className={`tavus-persona-wrap ${tavusRoamEnabled ? "is-roaming" : ""}`}
+              className={`tavus-persona-wrap ${tavusRoamEnabled ? "is-roaming" : ""}${avatarGuideTarget ? " is-guiding" : ""}${avatarWaitingForUser ? " is-waiting-for-user" : ""}`}
               style={
-                tavusRoamEnabled
+                avatarGuideTarget
                   ? {
-                      transform: `translate3d(${tavusRoam.x - TAVUS_PERSONA_SIZE / 2}px, ${tavusRoam.y - TAVUS_PERSONA_SIZE / 2}px, 0)`,
+                      transform: `translate3d(${(tavusGuideSpring.x / 100) * window.innerWidth - TAVUS_PERSONA_SIZE / 2}px, ${(tavusGuideSpring.y / 100) * window.innerHeight - TAVUS_PERSONA_SIZE / 2}px, 0)`,
                     }
-                  : undefined
+                  : tavusRoamEnabled
+                    ? {
+                        transform: `translate3d(${tavusRoam.x - TAVUS_PERSONA_SIZE / 2}px, ${tavusRoam.y - TAVUS_PERSONA_SIZE / 2}px, 0)`,
+                      }
+                    : undefined
               }
               onMouseEnter={() => setInteractivity(true)}
               onMouseLeave={() => setInteractivity(false)}
             >
               <TavusPalPanel
                 visible={isVisible || isReplayRunning || isLoading}
-                onLiveChange={handleTavusLiveChange}
+                isSpeaking={isSpeaking}
+                isThinking={ultraState === "thinking" || ultraState === "transcribing"}
                 roam={tavusRoamEnabled ? tavusRoam : undefined}
               />
             </div>
@@ -2747,7 +2854,10 @@ const OverlayApp: React.FC = () => {
               mood={specMood}
               state={displayedBehavior || undefined}
               enabled={isVisible || isReplayRunning || isLoading}
-              roam={specBuddyRoam}
+              roam={avatarGuideTarget ? undefined : specBuddyRoam}
+              guideTarget={avatarGuideTarget}
+              guideStart={avatarGuideStart ?? undefined}
+              waitingForUser={avatarWaitingForUser}
               checkpointLabel={activeCheckpoint?.label}
               compact={!showDebugTools && !demoPresentationMode}
               pitchMode={pitchMode}
@@ -4093,8 +4203,7 @@ const OverlayApp: React.FC = () => {
 
         {isVisible &&
           !isReplayRunning &&
-          demoPresentationMode &&
-          !showWorkflowCard && (
+          (demoPresentationMode || faceMode === "tavus") && (
             <VoiceMicButton
               disabled={isLoading}
               onSpokenInput={handleUltraSpokenInput}

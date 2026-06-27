@@ -5,6 +5,7 @@ import {
   type PerimeterRoamResult,
 } from "./usePerimeterRoam";
 import { ReasoningBubbles, type ReasoningLine } from "./ReasoningBubbles";
+import { useGhostSpring } from "./useGhostSpring";
 
 interface SpecBuddyProps {
   mood: SpecMood;
@@ -16,6 +17,9 @@ interface SpecBuddyProps {
   reasoningLines?: ReasoningLine[];
   /** When set, roam position is owned by parent (avoids duplicate usePerimeterRoam). */
   roam?: PerimeterRoamResult;
+  guideTarget?: { x: number; y: number } | null;
+  guideStart?: { x: number; y: number };
+  waitingForUser?: boolean;
 }
 
 function labelForMood(mood: SpecMood, state?: BehavioralState): string {
@@ -210,17 +214,43 @@ export const SpecBuddy: React.FC<SpecBuddyProps> = ({
   pitchMode = false,
   reasoningLines = [],
   roam: externalRoam,
+  guideTarget = null,
+  guideStart,
+  waitingForUser = false,
 }) => {
+  const roamEnabled = enabled && !guideTarget && !externalRoam;
   const internalRoam = usePerimeterRoam(
-    enabled && !externalRoam,
+    roamEnabled,
     '[data-specter-boundary="true"]',
     { ghostSize: 56, avoidBottomCenter: true },
   );
   const { x, y, edge, isMoving, transitionDuration } =
     externalRoam ?? internalRoam;
 
-  const animClass = resolveAnimationClass(mood, isMoving);
-  const tiltClass = isMoving
+  const guideSpring = useGhostSpring(guideTarget, {
+    start: guideStart,
+    stiffness: 140,
+    damping: 24,
+  });
+
+  const [viewport, setViewport] = React.useState(() => ({
+    w: window.innerWidth,
+    h: window.innerHeight,
+  }));
+  React.useEffect(() => {
+    const onResize = () =>
+      setViewport({ w: window.innerWidth, h: window.innerHeight });
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const guiding = Boolean(guideTarget);
+  const displayX = guiding ? (guideSpring.x / 100) * viewport.w : x;
+  const displayY = guiding ? (guideSpring.y / 100) * viewport.h : y;
+  const displayMoving = guiding ? guideSpring.isMoving : isMoving;
+
+  const animClass = resolveAnimationClass(mood, displayMoving);
+  const tiltClass = displayMoving
     ? edge === "left"
       ? "spec-buddy__body-group--tilt-left"
       : edge === "right"
@@ -230,12 +260,12 @@ export const SpecBuddy: React.FC<SpecBuddyProps> = ({
 
   return (
     <div
-      className={`spec-buddy spec-buddy--${mood} ${compact ? "spec-buddy--compact" : ""} ${pitchMode ? "spec-buddy--pitch" : ""}`}
+      className={`spec-buddy spec-buddy--${mood} ${compact ? "spec-buddy--compact" : ""} ${pitchMode ? "spec-buddy--pitch" : ""}${waitingForUser ? " is-waiting-for-user" : ""}`}
       style={{
-        transform: `translate3d(${x - 28}px, ${y - 28}px, 0)`,
+        transform: `translate3d(${displayX - 28}px, ${displayY - 28}px, 0)`,
         left: 0,
         top: 0,
-        transitionDuration: `${transitionDuration}ms`,
+        transitionDuration: guiding ? "0ms" : `${transitionDuration}ms`,
       }}
     >
       {pitchMode && (
