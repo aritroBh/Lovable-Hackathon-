@@ -65,12 +65,15 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
     <div
       style={{
         position: "fixed",
-        left: `${percentX}%`,
-        top: `${percentY}%`,
-        transform: `translate(-${CURSOR_HOTSPOT.x}px, -${CURSOR_HOTSPOT.y}px)`,
+        left: 0,
+        top: 0,
+        // GPU-composited positioning (see GhostActionPlayer): drive x/y through
+        // `transform` (vw/vh) + hotspot offset, not `left/top %`, so re-targeting
+        // the ghost is a compositor transform rather than an overlay relayout.
+        transform: `translate(calc(${percentX}vw - ${CURSOR_HOTSPOT.x}px), calc(${percentY}vh - ${CURSOR_HOTSPOT.y}px))`,
         pointerEvents: "none",
         zIndex: 9999,
-        willChange: "left, top",
+        willChange: "transform",
       }}
     >
       {isSpeaking ? (

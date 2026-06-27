@@ -95,7 +95,6 @@ export const GhostActionPlayer: React.FC<GhostActionPlayerProps> = ({
 
   const action = step.action || "click";
   const resolving = Boolean(step.resolving);
-  const transform = `translate(-${CURSOR_HOTSPOT.x}px, -${CURSOR_HOTSPOT.y}px)`;
 
   const travelDx = target.x - prevPosRef.current.x;
   const travelDy = target.y - prevPosRef.current.y;
@@ -105,12 +104,17 @@ export const GhostActionPlayer: React.FC<GhostActionPlayerProps> = ({
 
   const baseStyle: React.CSSProperties = {
     position: "fixed",
-    left: `${percentX}%`,
-    top: `${percentY}%`,
-    transform,
+    left: 0,
+    top: 0,
+    // GPU-composited positioning: x/y go through `transform` (vw/vh) rather than
+    // `left/top %`, so each spring frame is a compositor transform instead of a
+    // layout + paint of the whole overlay. The hotspot offset is folded into the
+    // same translate. For a position:fixed element, `Nvw`/`Nvh` equal the old
+    // `left/top: N%`, so this is visually identical but far cheaper per frame.
+    transform: `translate(calc(${percentX}vw - ${CURSOR_HOTSPOT.x}px), calc(${percentY}vh - ${CURSOR_HOTSPOT.y}px))`,
     pointerEvents: "none",
     zIndex: 9999,
-    willChange: "left, top",
+    willChange: "transform",
     // Spring drives the motion frame-by-frame, so no CSS position transition
     // (it would double-animate / lag the RAF integration).
     transition: "none",
@@ -203,7 +207,7 @@ export const GhostActionPlayer: React.FC<GhostActionPlayerProps> = ({
           className="ghost-travel-trail"
           style={{
             ...baseStyle,
-            transform: `translate(calc(-${CURSOR_HOTSPOT.x}px + ${trailOffsetX}px), calc(-${CURSOR_HOTSPOT.y}px + ${trailOffsetY}px))`,
+            transform: `translate(calc(${percentX}vw - ${CURSOR_HOTSPOT.x}px + ${trailOffsetX}px), calc(${percentY}vh - ${CURSOR_HOTSPOT.y}px + ${trailOffsetY}px))`,
           }}
         >
           <GhostCursorSvg />
