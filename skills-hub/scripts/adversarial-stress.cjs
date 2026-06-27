@@ -310,6 +310,104 @@ async function testPartyGt6Merge() {
   console.log(`OK party_gt_6_merge: party capped at ${party.length}`);
 }
 
+async function testMacRecordedSkillPublishAllowed() {
+  await resetUser();
+  const skillId = `adversarial-custom-${TEST_USER}`;
+  const totalMoves = 3;
+  const now = new Date().toISOString();
+
+  await post("/api/journey", {
+    userId: TEST_USER,
+    journey: {
+      userId: TEST_USER,
+      entries: {
+        [skillId]: {
+          skillId,
+          state: "learned",
+          movesLearned: totalMoves,
+          totalMoves,
+          origin: "mac",
+          author: TEST_USER,
+          app: "DaVinci Resolve",
+          updatedAt: now,
+        },
+      },
+      party: [skillId],
+      badges: [],
+      trainerRank: "Skill Builder",
+      lastSyncedAt: now,
+      version: 1,
+    },
+  });
+
+  const res = await post("/api/publish", {
+    userId: TEST_USER,
+    skill: {
+      id: skillId,
+      title: "Adversarial Mac Skill",
+      app: "DaVinci Resolve",
+      tags: ["recorded"],
+      author: TEST_USER,
+      sourceSessionId: "sess-adv",
+      timestamp: now,
+      confidence: 0.85,
+      steps: [
+        { action: "click", target: "Cut" },
+        { action: "type", target: "Type here" },
+        { action: "wait", target: "Pause" },
+      ],
+      replaySteps: [
+        { action: "click", x: 50, y: 50, viewportX: 50, viewportY: 50 },
+        { action: "type", x: 51, y: 51, viewportX: 51, viewportY: 51 },
+        {
+          action: "wait",
+          x: 52,
+          y: 52,
+          viewportX: 52,
+          viewportY: 52,
+          delayMs: 500,
+        },
+      ],
+      body: "# test",
+      contextBody: "# test",
+    },
+  });
+
+  if (!expectStatus("mac_recorded_skill_publish", res, 200)) return;
+  if (!res.body?.ok) {
+    fail("mac_recorded_skill_publish: expected ok:true for mac-origin learned skill");
+  } else {
+    console.log("OK mac_recorded_skill_publish: mac-origin custom skill published");
+  }
+}
+
+async function testPublishCustomSkillWithoutJourney() {
+  await resetUser();
+  const skillId = `orphan-skill-${TEST_USER}`;
+  const res = await post("/api/publish", {
+    userId: TEST_USER,
+    skill: {
+      id: skillId,
+      title: "Orphan Skill",
+      app: "Desktop",
+      tags: [],
+      author: TEST_USER,
+      sourceSessionId: "",
+      timestamp: new Date().toISOString(),
+      confidence: 0.5,
+      steps: [{ action: "click", target: "x" }],
+      replaySteps: [{ action: "click", x: 1, y: 1 }],
+      body: "orphan",
+      contextBody: "orphan",
+    },
+  });
+  expectPublishBlocked(
+    "publish_custom_skill_no_journey",
+    res,
+    "custom skill with replaySteps published without server journey entry",
+  );
+}
+
 async function testJourneyMergeMacVsHubTrainer() {
   await resetUser();
   const skillId = "merge-conflict-skill";
@@ -403,6 +501,8 @@ async function run() {
   await testPublishSeedSkillWithoutMacOrigin();
   await testPublishHubTrainerEntry();
   await testPartyGt6Merge();
+  await testMacRecordedSkillPublishAllowed();
+  await testPublishCustomSkillWithoutJourney();
   await testJourneyMergeMacVsHubTrainer();
 
   await resetUser();

@@ -922,7 +922,6 @@ app.whenReady().then(async () => {
   });
 
   skillBridgeServer = startSkillBridge({
-    onToggleRecord: () => toggleSkillRecording(DEFAULT_APP_NAME),
     onPlaySkill: async (skillId, steps) => {
       if (overlayWindow && !overlayWindow.isDestroyed() && !overlayWindow.isVisible()) {
         overlayWindow.showInactive();
@@ -1759,13 +1758,22 @@ app.whenReady().then(async () => {
   );
   ipcMain.handle("session:record-stop", async () => stopRecording());
 
-  ipcMain.handle("skill:toggle-record", async () =>
-    toggleSkillRecording(DEFAULT_APP_NAME),
-  );
-  ipcMain.handle("skill:recording-state", async () =>
-    getSkillRecordingState(),
-  );
-  ipcMain.handle("skill:play-steps", async (_event, steps) => {
+  ipcMain.handle("skill:toggle-record", async (event) => {
+    if (!validateSender(event, overlayWindow)) {
+      throw new Error("Skill recording can only be toggled from the overlay.");
+    }
+    return toggleSkillRecording(DEFAULT_APP_NAME);
+  });
+  ipcMain.handle("skill:recording-state", async (event) => {
+    if (!validateSender(event, overlayWindow)) {
+      throw new Error("Unauthorized sender");
+    }
+    return getSkillRecordingState();
+  });
+  ipcMain.handle("skill:play-steps", async (event, steps) => {
+    if (!validateSender(event, overlayWindow)) {
+      throw new Error("Unauthorized sender");
+    }
     const normalized = normalizeReplaySteps(
       Array.isArray(steps) ? steps : [],
     );
@@ -2160,6 +2168,7 @@ app.on("will-quit", () => {
   if (memorySidecarProcess) {
     memorySidecarProcess.kill();
   }
+  globalShortcut.unregisterAll();
   uIOhook.stop();
 });
 
