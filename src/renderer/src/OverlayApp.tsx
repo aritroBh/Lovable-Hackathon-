@@ -32,6 +32,9 @@ type ReplayMode = "walkthrough" | "auto" | null;
 type AutomationMode = "auto" | "mirror" | "calibration" | "agent";
 type RealAppAction = "click" | "type" | "scroll" | "wait";
 type EdgeLightState = "hidden" | "summon" | "idle" | "walkthrough";
+
+// The single line spoken on every summon. All other speech is mic-driven.
+const SUMMON_GREETING = "Thanks for using Specter! Let me know what you need.";
 type MirrorFeedbackKind = "accept" | "override" | "hesitation" | "correction";
 type CoordinateFrame = "viewport" | "capture" | "practice-window" | "manual";
 
@@ -668,13 +671,16 @@ const OverlayApp: React.FC = () => {
   }, [cancelGhostListen]);
 
   const speakIfUltra = (text: string, moment: string) => {
-    const tavusMicOnly =
-      faceModeRef.current === "tavus" &&
-      moment !== "tutor reply" &&
-      moment !== "chat reply" &&
-      moment !== "demo chat reply";
-    if (tavusMicOnly) {
-      console.log("[TTS] skipped — Tavus mic-only mode", { moment });
+    // Voice is mic-driven: only the one-time summon greeting and direct replies
+    // to the user's spoken/typed input are ever spoken. No proactive auto-talk.
+    const allowedMoments = new Set([
+      "summon greeting",
+      "tutor reply",
+      "chat reply",
+      "demo chat reply",
+    ]);
+    if (!allowedMoments.has(moment)) {
+      console.log("[TTS] skipped — not a mic-driven moment", { moment });
       return;
     }
     const currentMode = modeRef.current;
@@ -705,103 +711,9 @@ const OverlayApp: React.FC = () => {
           } else if (result?.providerUsed === "openai") {
             console.log("[TTS] used OpenAI fallback");
           }
-
-          if (tavusFace || (currentMode !== "ultra" && !demoMode)) {
-            setUltraState("waitingForUser");
-            return;
-          }
-
-          void (async () => {
-            if (modeRef.current !== "ultra" && !demoPresentationRef.current) {
-              setUltraState("waitingForUser");
-              return;
-            }
-
-            cancelGhostListen();
-            const listenCtx = { cancelled: false };
-            ghostListenAbortRef.current = listenCtx;
-            setUltraState("listening");
-
-            const { MicRecorder } = await import("../overlay/MicRecorder");
-            const recorder = new MicRecorder();
-
-            const SILENCE_CONFIRM_MS = 1200;
-            const MAX_LISTEN_MS = 7000;
-            const startedAt = Date.now();
-            let speechDetected = false;
-            let silenceStartAt: number | null = null;
-
-            try {
-              await recorder.start();
-            } catch {
-              ghostListenAbortRef.current = null;
-              setUltraState("waitingForUser");
-              return;
-            }
-
-            await new Promise<void>((resolve) => {
-              const poll = setInterval(() => {
-                if (listenCtx.cancelled || Date.now() - startedAt >= MAX_LISTEN_MS) {
-                  clearInterval(poll);
-                  resolve();
-                  return;
-                }
-                const levels = recorder.getAudioLevels();
-                if (levels && levels.length > 0) {
-                  // Use peak value rather than average — much more reliable for speech detection.
-                  // Frequency bins during speech will have several bins with high energy (200+),
-                  // while ambient noise stays mostly under 60 across all bins.
-                  let peak = 0;
-                  for (let i = 0; i < levels.length; i++) {
-                    if (levels[i] > peak) peak = levels[i];
-                  }
-                  // Peak > 80 reliably indicates speech on most microphones in most environments.
-                  // Much more robust than averaging which gets pulled down by silent bins.
-                  if (peak > 80) {
-                    speechDetected = true;
-                    silenceStartAt = null;
-                  } else if (speechDetected) {
-                    if (!silenceStartAt) silenceStartAt = Date.now();
-                    else if (Date.now() - silenceStartAt >= SILENCE_CONFIRM_MS) {
-                      clearInterval(poll);
-                      resolve();
-                    }
-                  }
-                }
-              }, 150);
-            });
-
-            if (listenCtx.cancelled) {
-              await recorder.stop().catch(() => {});
-              return;
-            }
-
-            const buffer = await recorder.stop().catch(() => new ArrayBuffer(0));
-
-            if (!buffer.byteLength || !speechDetected) {
-              ghostListenAbortRef.current = null;
-              setUltraState("waitingForUser");
-              return;
-            }
-
-            setUltraState("transcribing");
-            const transcribeResult = await (window as any).api
-              .transcribe(buffer)
-              .catch(() => ({ ok: false }));
-
-            if (listenCtx.cancelled) return;
-            ghostListenAbortRef.current = null;
-
-            if (
-              transcribeResult?.ok &&
-              typeof transcribeResult.text === "string" &&
-              transcribeResult.text.trim()
-            ) {
-              await handleUltraSpokenInput(transcribeResult.text);
-            } else {
-              setUltraState("waitingForUser");
-            }
-          })();
+          // Mic-driven only: after speaking, wait for the user to press the mic
+          // again — never auto-listen / auto-reply (that caused the "yapping").
+          setUltraState("waitingForUser");
         })
         .catch((error: unknown) => {
           setIsSpeaking(false);
@@ -1450,11 +1362,12 @@ const OverlayApp: React.FC = () => {
     void (async () => {
       setUltraState("waitingForUser");
       setContextReadActive(true);
+      // Read screen context only (no proactive AI prediction) so the ghost has
+      // grounding for later mic replies — but it doesn't yap on summon.
       try {
-        const predictionRes = await api.getProactivePrediction();
+        const ctxRes = await api.getContextSnapshot();
         if (cancelled) return;
-
-        const snapshot = predictionRes?.context;
+        const snapshot = ctxRes?.snapshot;
         if (snapshot) {
           setScreenState({
             app: snapshot.appName || "Unknown",
@@ -1465,33 +1378,17 @@ const OverlayApp: React.FC = () => {
             coordinates: [],
           });
         }
-
-        const prediction = predictionRes?.prediction?.trim();
-        if (prediction) {
-          setUltraSessionHistory((prev) => {
-            if (prev.length > 0) return prev;
-            return demoPresentationRef.current
-              ? prev
-              : [{ role: "assistant", content: prediction, proactive: true }];
-          });
-          if (
-            faceModeRef.current !== "tavus" &&
-            (modeRef.current === "ultra" || demoPresentationRef.current)
-          ) {
-            speakIfUltra(prediction, "proactive summon");
-          } else {
-            setUltraState("waitingForUser");
-          }
-        } else {
-          setUltraState("waitingForUser");
-        }
       } catch (error) {
-        console.error("[PROACTIVE] summon prediction failed", error);
+        console.error("[SUMMON] context read failed", error);
         setScreenState({ app: "Unknown", coordinates: [] });
-        setUltraState("waitingForUser");
       } finally {
         if (!cancelled) setContextReadActive(false);
       }
+
+      if (cancelled) return;
+      // The only audio on summon: a fixed greeting. Everything else is
+      // mic-driven (the user must press the mic button to talk).
+      speakIfUltra(SUMMON_GREETING, "summon greeting");
     })();
 
     return () => {
