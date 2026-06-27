@@ -657,6 +657,16 @@ const OverlayApp: React.FC = () => {
     }
   }, []);
 
+  // Pressing the mic (unmute) should interrupt any ongoing speech and just
+  // listen — stop TTS playback and drop the speaking state immediately.
+  const handleMicRecordingStart = useCallback(() => {
+    cancelGhostListen();
+    if (api.stopSpeaking) {
+      void api.stopSpeaking().catch(() => undefined);
+    }
+    setIsSpeaking(false);
+  }, [cancelGhostListen]);
+
   const speakIfUltra = (text: string, moment: string) => {
     const tavusMicOnly =
       faceModeRef.current === "tavus" &&
@@ -933,6 +943,27 @@ const OverlayApp: React.FC = () => {
     }, 6000);
   };
 
+  // Keep the pointer ghost on the target for the whole spoken instruction:
+  // while audio is playing, cancel the auto-dismiss; once speech ends, re-arm
+  // the grace timer so the user still has time to act on it.
+  useEffect(() => {
+    if (!liveGhostStep) return;
+    if (isSpeaking) {
+      if (liveGhostTimeoutRef.current) {
+        window.clearTimeout(liveGhostTimeoutRef.current);
+        liveGhostTimeoutRef.current = null;
+      }
+      if (liveGhostLeaveTimerRef.current) {
+        window.clearTimeout(liveGhostLeaveTimerRef.current);
+        liveGhostLeaveTimerRef.current = null;
+      }
+      setLiveGhostLeaving(false);
+    } else {
+      scheduleLiveGhostDismiss();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSpeaking, liveGhostStep]);
+
   const applyLiveTargetFromResult = async (result: any) => {
     if (result?.liveTargetUnresolved) {
       const label = String(result.liveTargetUnresolved);
@@ -1017,6 +1048,12 @@ const OverlayApp: React.FC = () => {
         { role: "assistant", content: result.reply },
       ]);
 
+      // Start the pointer ghost traveling toward the target FIRST (don't await)
+      // so it's already moving as the audio speaks the instruction.
+      if (gen === converseGenRef.current) {
+        void applyLiveTargetFromResult(result);
+      }
+
       if (result.shouldSpeak || demoPresentationMode || faceMode === "tavus") {
         console.log("[TTS] speak called");
         speakIfUltra(result.reply, "tutor reply");
@@ -1036,10 +1073,6 @@ const OverlayApp: React.FC = () => {
         result.shouldStartWalkthrough
       ) {
         await startRealAppTest(text);
-      }
-
-      if (gen === converseGenRef.current) {
-        await applyLiveTargetFromResult(result);
       }
     } catch (error) {
       clearTimeout(timeout);
@@ -3496,7 +3529,7 @@ const OverlayApp: React.FC = () => {
                     disabled={isLoading}
                     mode={mode}
                     onUltraSpokenInput={handleUltraSpokenInput}
-                    onRecordingStart={cancelGhostListen}
+                    onRecordingStart={handleMicRecordingStart}
                     onTranscriptionStart={() => {
                       if (mode === "ultra") setUltraState("transcribing");
                     }}
@@ -4207,7 +4240,7 @@ const OverlayApp: React.FC = () => {
             <VoiceMicButton
               disabled={isLoading}
               onSpokenInput={handleUltraSpokenInput}
-              onRecordingStart={cancelGhostListen}
+              onRecordingStart={handleMicRecordingStart}
               onTranscriptionStart={() => setUltraState("transcribing")}
               onTranscriptionEnd={() => {
                 setUltraState((s) =>
