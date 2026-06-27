@@ -1,0 +1,110 @@
+{
+  "skills": [
+    {
+      "id": "luma-event-profile",
+      "title": "Luma Event Profile",
+      "app": "Luma",
+      "tags": [],
+      "author": "Specter",
+      "sourceSessionId": "",
+      "timestamp": "",
+      "confidence": null,
+      "steps": [],
+      "body": "# Luma Event Profile\n\n## Event\n- Title: Hackathon: Building your own Agent LLM Wiki\n- Platform: Luma\n- Date: Saturday, May 16\n- Time: 12:00 PM - 6:00 PM\n- Location: Pebblebed, 1417 15th St, San Francisco, CA 94103\n- Presented by: cognee\n- Hosted by: cognee, Nicole Levin, Pebblebed VC, Sahar Mor, Marie Owens\n- Attendees: 141\n- Category: AI\n\n## Actions Available\n- Add to Calendar\n- Invite a Friend\n- Contact Host\n- Report Event\n\n## Prize Pool\n- First: $800\n- Second: $500\n- Third: $200\n\n## Schedule\n- 12:00 PM — Doors open + Networking\n- 12:30 PM — Opening remarks + partner demos\n- 1:00 PM — Hacking begins\n- 4:30 PM — Project Submission Deadline\n- 5:00 PM — Finalist presentation & judging\n- 5:30 PM — Awards ceremony\n- 6:00 PM — Event wrap-up\n\n## Partners\n- Redis\n- Pebblebed\n",
+      "contextBody": "# Luma Event Profile\n\n## Event\n- Title: Hackathon: Building your own Agent LLM Wiki\n- Platform: Luma\n- Date: Saturday, May 16\n- Time: 12:00 PM - 6:00 PM\n- Location: Pebblebed, 1417 15th St, San Francisco, CA 94103\n- Presented by: cognee\n- Hosted by: cognee, Nicole Levin, Pebblebed VC, Sahar Mor, Marie Owens\n- Attendees: 141\n- Category: AI\n\n## Actions Available\n- Add to Calendar\n- Invite a Friend\n- Contact Host\n- Report Event\n\n## Prize Pool\n- First: $800\n- Second: $500\n- Third: $200\n\n## Schedule\n- 12:00 PM — Doors open + Networking\n- 12:30 PM — Opening remarks + partner demos\n- 1:00 PM — Hacking begins\n- 4:30 PM — Project Submission Deadline\n- 5:00 PM — Finalist presentation & judging\n- 5:30 PM — Awards ceremony\n- 6:00 PM — Event wrap-up\n\n## Partners\n- Redis\n- Pebblebed\n"
+    },
+    {
+      "id": "target-add-to-calendar",
+      "title": "UI Element: Add to Calendar",
+      "app": "Luma",
+      "tags": [
+        "ui-element",
+        "Luma"
+      ],
+      "author": "Specter",
+      "sourceSessionId": "event-recap-session-1",
+      "timestamp": "2024-05-16T12:00:00Z",
+      "confidence": 0.9,
+      "steps": [],
+      "body": "# UI Element: Add to Calendar\n\nObserved UI element: **Add to Calendar** in app **Luma**.\n\nIt was clicked in [[workflow-event-recap-session-1]] at step 11.",
+      "contextBody": "# UI Element: Add to Calendar\n\nObserved UI element: **Add to Calendar** in app **Luma**.\n\nIt was clicked in [[workflow-event-recap-session-1]] at step 11."
+    },
+    {
+      "id": "target-create-event",
+      "title": "UI Element: Create Event",
+      "app": "Luma",
+      "tags": [
+        "ui-element",
+        "Luma"
+      ],
+      "author": "Specter",
+      "sourceSessionId": "event-recap-session-1",
+      "timestamp": "2024-05-16T12:00:00Z",
+      "confidence": 0.9,
+      "steps": [],
+      "body": "# UI Element: Create Event\n\nObserved UI element: **Create Event** in app **Luma**.\n\nIt was clicked in [[workflow-event-recap-session-1]] at step 1.",
+      "contextBody": "# UI Element: Create Event\n\nObserved UI element: **Create Event** in app **Luma**.\n\nIt was clicked in [[workflow-event-recap-session-1]] at step 1."
+    },
+    {
+      "id": "workflow-event-recap-session-1",
+      "title": "Workflow: event-recap-session-1",
+      "app": "Luma",
+      "tags": [
+        "workflow",
+        "Luma"
+      ],
+      "author": "Specter",
+      "sourceSessionId": "event-recap-session-1",
+      "timestamp": "2024-05-16T12:00:00Z",
+      "confidence": 1,
+      "steps": [
+        {
+          "action": "click",
+          "target": "Create Event"
+        },
+        {
+          "action": "type",
+          "target": "Event Title"
+        },
+        {
+          "action": "type",
+          "target": "Event Date"
+        },
+        {
+          "action": "type",
+          "target": "Event Time"
+        },
+        {
+          "action": "type",
+          "target": "Event Location"
+        },
+        {
+          "action": "type",
+          "target": "Host / Presented By"
+        },
+        {
+          "action": "type",
+          "target": "About Event"
+        },
+        {
+          "action": "type",
+          "target": "Schedule"
+        },
+        {
+          "action": "type",
+          "target": "Prize Pool"
+        },
+        {
+          "action": "type",
+          "target": "Partners"
+        },
+        {
+          "action": "click",
+          "target": "Add to Calendar"
+        }
+      ],
+      "body": "# Workflow: event-recap-session-1\n\nThis is a recorded workflow for **Luma**.\n\n## Steps\n1. **Action**: `click` on **Create Event**\n2. **Action**: `type` on **Event Title** (typed: \"Hackathon: Building your own Agent LLM Wiki\")\n3. **Action**: `type` on **Event Date** (typed: \"Saturday, May 16\")\n4. **Action**: `type` on **Event Time** (typed: \"12:00 PM - 6:00 PM\")\n5. **Action**: `type` on **Event Location** (typed: \"Pebblebed, 1417 15th St, San Francisco, CA 94103\")\n6. **Action**: `type` on **Host / Presented By** (typed: \"cognee, Nicole Levin, Pebblebed VC, Sahar Mor, Marie Owens\")\n7. **Action**: `type` on **About Event** (typed: \"AI Event\")\n8. **Action**: `type` on **Schedule** (typed: \"12:00 PM Doors open, 6:00 PM Wrap-up\")\n9. **Action**: `type` on **Prize Pool** (typed: \"$800, $500, $200\")\n10. **Action**: `type` on **Partners** (typed: \"Redis, Pebblebed\")\n11. **Action**: `click` on **Add to Calendar**\n\n## Related\n- [[app-luma]]",
+      "contextBody": "# Workflow: event-recap-session-1\n\nThis is a recorded workflow for **Luma**.\n\n## Steps\n1. **Action**: `click` on **Create Event**\n2. **Action**: `type` on **Event Title** (typed: \"Hackathon: Building your own Agent LLM Wiki\")\n3. **Action**: `type` on **Event Date** (typed: \"Saturday, May 16\")\n4. **Action**: `type` on **Event Time** (typed: \"12:00 PM - 6:00 PM\")\n5. **Action**: `type` on **Event Location** (typed: \"Pebblebed, 1417 15th St, San Francisco, CA 94103\")\n6. **Action**: `type` on **Host / Presented By** (typed: \"cognee, Nicole Levin, Pebblebed VC, Sahar Mor, Marie Owens\")\n7. **Action**: `type` on **About Event** (typed: \"AI Event\")\n8. **Action**: `type` on **Schedule** (typed: \"12:00 PM Doors open, 6:00 PM Wrap-up\")\n9. **Action**: `type` on **Prize Pool** (typed: \"$800, $500, $200\")\n10. **Action**: `type` on **Partners** (typed: \"Redis, Pebblebed\")\n11. **Action**: `click` on **Add to Calendar**\n\n## Related\n- [[app-luma]]"
+    }
+  ]
+}

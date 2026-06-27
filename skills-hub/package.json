@@ -1,0 +1,33 @@
+{
+  "name": "specter-skills-hub",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run seed:skills && tsc -b && vite build",
+    "preview": "vite preview",
+    "seed:skills": "node scripts/seed-skills-json.cjs",
+    "verify:hub": "node scripts/verify-hub.cjs",
+    "verify:api": "tsc --noEmit -p tsconfig.api.json",
+    "verify:e2e": "npm run verify:api && npm run build && node scripts/publish-gate.mjs && node scripts/verify-hub.cjs && node scripts/adversarial-stress.cjs",
+    "verify:stress": "node scripts/adversarial-stress.cjs",
+    "deploy": "vercel deploy --prod",
+    "start": "bash scripts/start-dev.sh",
+    "preview:hub": "vite preview --port 5173 --strictPort --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@open-pencil/cli": "^0.13.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vercel/node": "^3.2.29",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.3.3",
+    "vite": "^5.4.11"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "specter-skills-hub-design",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "export:pngs": "bun run export-pngs.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.61.1"
+  }
+}

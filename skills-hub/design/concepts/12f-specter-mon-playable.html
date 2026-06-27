@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>Specter Skills Hub — Playable Pokémon Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gbc-bg: #9bbc0f;
+      --gbc-dark: #0f380f;
+      --gbc-mid: #306230;
+      --gbc-light: #8bac0f;
+      --menu: #5880a8;
+      --menu-hi: #6888b0;
+      --grass: #58a058;
+      --grass-hi: #78c878;
+      --path: #d8c898;
+      --water: #3880c0;
+      --white: #f8f8f8;
+      --border: #404040;
+      --hp-g: #48d048;
+      --hp-y: #e8c030;
+      --hp-r: #e04040;
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    body {
+      font-family: 'VT323', monospace;
+      background: #1a1a2e;
+      color: var(--gbc-dark);
+      min-width: 1440px;
+      overflow-x: hidden;
+    }
+    .concept-badge {
+      position: fixed; top: 12px; right: 12px; z-index: 9999;
+      background: #ff0044; color: #fff; padding: 8px 12px;
+      font-family: 'Press Start 2P', monospace; font-size: 7px;
+      border: 3px solid #ffd040; box-shadow: 4px 4px 0 #000;
+    }
+    .page { width: 1440px; margin: 0 auto; padding: 24px 40px 48px; }
+    .header {
+      text-align: center; margin-bottom: 20px;
+      font-family: 'Press Start 2P', monospace;
+    }
+    .header h1 { font-size: 14px; color: #ffd040; margin-bottom: 8px; text-shadow: 2px 2px 0 #000; }
+    .header p { font-size: 18px; color: #aaa; max-width: 700px; margin: 0 auto; line-height: 1.5; }
+    .legend {
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+      margin: 16px 0 24px; font-size: 16px; color: #8bac0f;
+    }
+    .legend span { background: rgba(0,0,0,.4); padding: 6px 12px; border-radius: 4px; }
+
+    /* GBC shell */
+    .gbc-shell {
+      max-width: 720px; margin: 0 auto 32px;
+      background: #c0c0c0; border-radius: 12px; padding: 24px 32px 32px;
+      box-shadow: 0 12px 0 #808080, 0 20px 40px rgba(0,0,0,.5);
+      border: 4px solid #a0a0a0;
+    }
+    .gbc-label {
+      font-family: 'Press Start 2P', monospace; font-size: 8px;
+      text-align: center; color: #404040; margin-bottom: 12px; letter-spacing: 2px;
+    }
+    .gbc-screen {
+      position: relative; width: 480px; height: 432px; margin: 0 auto;
+      background: var(--gbc-bg); border: 8px solid var(--gbc-dark);
+      image-rendering: pixelated; overflow: hidden;
+      box-shadow: inset 0 0 0 4px var(--gbc-light);
+    }
+    .screen { position: absolute; inset: 0; display: none; }
+    .screen.active { display: block; }
+
+    /* Overworld */
+    #overworld { background: var(--grass); }
+    .map-grid {
+      display: grid; grid-template-columns: repeat(16, 30px); grid-template-rows: repeat(12, 30px);
+      width: 480px; height: 360px;
+    }
+    .tile { width: 30px; height: 30px; image-rendering: pixelated; }
+    .tile.grass { background: var(--grass); }
+    .tile.grass::after {
+      content: ''; display: block; width: 100%; height: 100%;
+      background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,.04) 4px, rgba(0,0,0,.04) 5px);
+    }
+    .tile.tall { background: var(--grass-hi); animation: rustle 1.2s ease-in-out infinite; }
+    @keyframes rustle { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.15)} }
+    .tile.path { background: var(--path); }
+    .tile.water { background: var(--water); animation: wave 2s ease-in-out infinite; }
+    @keyframes wave { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.2)} }
+    .tile.tree { background: var(--grass); position: relative; }
+    .tile.tree::before {
+      content: ''; position: absolute; inset: 2px;
+      background: #287028; border-radius: 4px 4px 0 0;
+      box-shadow: inset -4px -4px 0 #186018;
+    }
+    .tile.building { background: var(--path); position: relative; }
+    .tile.building::before {
+      content: ''; position: absolute; bottom: 0; left: 2px; right: 2px; height: 22px;
+      background: #c84848; border: 2px solid #802020;
+    }
+    .tile.building.gym::before { background: #8040a0; border-color: #502070; }
+    .tile.building.lab::before { background: #4080c0; border-color: #204080; }
+    .tile.sign { background: var(--path); font-family: 'Press Start 2P'; font-size: 4px; color: #000; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.3; padding: 2px; }
+
+    .player {
+      position: absolute; width: 24px; height: 28px; z-index: 10;
+      transition: left 0.12s linear, top 0.12s linear;
+      pointer-events: none;
+    }
+    .player-body {
+      width: 16px; height: 14px; background: #e04040; margin: 0 auto;
+      border: 2px solid #802020; border-radius: 2px 2px 0 0;
+    }
+    .player-head {
+      width: 14px; height: 10px; background: #f0a878; margin: 0 auto 2px;
+      border: 2px solid #804020; border-radius: 50% 50% 0 0;
+    }
+    .player-legs { display: flex; justify-content: center; gap: 2px; }
+    .player-legs span { width: 6px; height: 8px; background: #2040a0; border: 1px solid #102060; }
+
+    /* Dialog bar (overworld) */
+    .dialog-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 72px;
+      background: var(--white); border-top: 4px solid var(--border);
+      padding: 10px 14px; font-size: 20px; line-height: 1.3;
+      display: none;
+    }
+    .dialog-bar.show { display: block; }
+    .dialog-bar .cursor {
+      display: inline-block; animation: blink 0.6s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Battle screen */
+    #battle { background: var(--white); }
+    .battle-field {
+      height: 200px; background:
+        repeating-linear-gradient(45deg, #a8d8a8 0, #a8d8a8 8px, #98c898 8px, #98c898 16px);
+      position: relative; border-bottom: 4px solid var(--border);
+    }
+    .platform {
+      position: absolute; width: 120px; height: 40px;
+      background: radial-gradient(ellipse, #787878 0%, #484848 70%, transparent 71%);
+      border-radius: 50%;
+    }
+    .platform.enemy { top: 100px; right: 60px; }
+    .platform.player { bottom: 8px; left: 40px; width: 100px; height: 32px; }
+
+    .mon-sprite {
+      position: absolute; image-rendering: pixelated;
+    }
+    .mon-sprite.enemy { top: 40px; right: 80px; width: 80px; height: 80px; animation: bob 1s ease-in-out infinite; }
+    .mon-sprite.player { bottom: 20px; left: 50px; width: 64px; height: 64px; animation: bob 1.2s ease-in-out infinite reverse; }
+    @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+
+    .ghost-sprite {
+      background: #f8f8f8; border-radius: 50% 50% 0 0;
+      border: 3px solid #303030; position: relative;
+    }
+    .ghost-sprite::before, .ghost-sprite::after {
+      content: ''; position: absolute; top: 22%; width: 18%; height: 22%;
+      background: #303030; border-radius: 50%;
+    }
+    .ghost-sprite::before { left: 22%; }
+    .ghost-sprite::after { right: 22%; }
+    .ghost-sprite.dragon { background: #8040c0; border-color: #402060; }
+    .ghost-sprite.water { background: #4080f0; border-color: #204080; }
+    .ghost-sprite.enemy-big { width: 80px; height: 72px; }
+
+    .hud-box {
+      position: absolute; background: var(--white);
+      border: 3px solid var(--border); padding: 6px 10px;
+      font-family: 'Press Start 2P', monospace; font-size: 6px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,.3);
+    }
+    .hud-box.enemy-hud { top: 12px; left: 12px; width: 140px; }
+    .hud-box.player-hud { bottom: 12px; right: 12px; width: 130px; }
+    .hp-label { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .hp-bar { height: 6px; background: #c0c0c0; border: 1px solid #404040; }
+    .hp-fill { height: 100%; background: var(--hp-g); transition: width 0.4s ease, background 0.3s; }
+    .hp-fill.mid { background: var(--hp-y); }
+    .hp-fill.low { background: var(--hp-r); }
+
+    .battle-panel {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 232px;
+      display: flex;
+    }
+    .msg-box {
+      flex: 1; background: var(--white); border: 4px solid var(--border);
+      margin: 8px; padding: 12px; font-size: 22px; line-height: 1.35;
+      position: relative;
+    }
+    .action-box {
+      width: 200px; background: var(--menu); border: 4px solid var(--border);
+      margin: 8px 8px 8px 0; padding: 8px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+    }
+    .action-box.hidden { display: none; }
+    .action-btn {
+      background: var(--menu-hi); border: 2px solid var(--white);
+      color: var(--white); font-family: 'Press Start 2P'; font-size: 7px;
+      padding: 12px 6px; cursor: pointer; text-align: left; position: relative;
+    }
+    .action-btn:hover, .action-btn.selected { background: #7898c0; }
+    .action-btn .arrow {
+      position: absolute; left: 2px; top: 50%; transform: translateY(-50%);
+      display: none; color: #ffd040;
+    }
+    .action-btn.selected .arrow { display: block; }
+
+    .moves-box {
+      width: 200px; background: var(--menu); border: 4px solid var(--border);
+      margin: 8px 8px 8px 0; padding: 6px; display: none;
+      flex-direction: column; gap: 2px;
+    }
+    .moves-box.show { display: flex; }
+    .move-btn {
+      background: transparent; border: none; color: var(--white);
+      font-family: 'Press Start 2P'; font-size: 6px; padding: 8px 4px 8px 16px;
+      text-align: left; cursor: pointer; position: relative;
+    }
+    .move-btn.selected { background: rgba(255,255,255,.15); }
+    .move-btn .arrow { position: absolute; left: 2px; color: #ffd040; display: none; }
+    .move-btn.selected .arrow { display: block; }
+
+    /* Catch screen */
+    #catch { background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .catch-scene { text-align: center; color: var(--white); }
+    .pokeball {
+      width: 48px; height: 48px; border-radius: 50%; margin: 24px auto;
+      background: linear-gradient(180deg, #e04040 0%, #e04040 46%, #303030 46%, #303030 54%, #f8f8f8 54%);
+      border: 4px solid #303030; position: relative;
+    }
+    .pokeball::after {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 14px; height: 14px; background: #f8f8f8; border: 3px solid #303030; border-radius: 50%;
+    }
+    .pokeball.shake { animation: ball-shake 0.5s ease-in-out; }
+    @keyframes ball-shake {
+      0%,100%{transform:rotate(0)} 25%{transform:rotate(-20deg)} 75%{transform:rotate(20deg)}
+    }
+    .catch-text { font-family: 'Press Start 2P'; font-size: 10px; line-height: 2; margin-top: 16px; }
+    .sparkles { font-size: 32px; animation: sparkle 0.6s ease-out; }
+    @keyframes sparkle { from{opacity:0;transform:scale(0)} to{opacity:1;transform:scale(1)} }
+
+    /* Train / PAL */
+    #train { background: #f0e8d0; padding: 16px; }
+    .center-sign {
+      font-family: 'Press Start 2P'; font-size: 8px; text-align: center;
+      color: #c04040; margin-bottom: 12px;
+    }
+    .pal-frame {
+      background: #303030; border: 4px solid #404040; height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      color: #888; font-size: 18px; margin-bottom: 12px;
+    }
+    .train-btn {
+      display: block; width: 100%; padding: 14px;
+      background: #c04040; color: #fff; border: 4px solid #802020;
+      font-family: 'Press Start 2P'; font-size: 8px; cursor: pointer;
+    }
+    .train-btn:hover { background: #e05050; }
+
+    /* Dex overlay */
+    .dex-overlay {
+      position: absolute; inset: 0; background: var(--gbc-bg);
+      display: none; flex-direction: column; padding: 8px;
+    }
+    .dex-overlay.show { display: flex; }
+    .dex-title { font-family: 'Press Start 2P'; font-size: 8px; text-align: center; margin-bottom: 8px; }
+    .dex-list { flex: 1; overflow-y: auto; font-size: 18px; }
+    .dex-row { padding: 6px 8px; border-bottom: 2px solid var(--gbc-mid); cursor: pointer; }
+    .dex-row.caught::before { content: '● '; color: #e04040; }
+    .dex-row.seen { opacity: 0.5; }
+
+    /* HUD outside screen */
+    .external-hud {
+      display: flex; justify-content: space-between; max-width: 720px; margin: 0 auto 12px;
+      font-family: 'Press Start 2P'; font-size: 7px; color: #888;
+    }
+    .controls-hint {
+      text-align: center; font-size: 16px; color: #666; margin-top: 16px; line-height: 1.8;
+    }
+    kbd {
+      background: #333; color: #ffd040; padding: 2px 8px; border-radius: 4px;
+      font-family: 'Press Start 2P'; font-size: 8px; border-bottom: 2px solid #111;
+    }
+
+    .damage-flash { animation: dmg 0.3s ease; }
+    @keyframes dmg { 0%,100%{filter:none} 50%{filter:brightness(2) sepia(1) hue-rotate(-30deg)} }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tile.tall, .tile.water, .mon-sprite, .pokeball.shake, .sparkles, .damage-flash, .cursor { animation: none !important; }
+      .player { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="concept-badge">Concept 12F · PLAYABLE</div>
+  <div class="page">
+    <div class="header">
+      <h1>SPECTER MON — LUMA REGION</h1>
+      <p>Walk the route. Battle to learn. Catch to publish. Train with PAL.</p>
+    </div>
+    <div class="legend">
+      <span>⚔ BATTLE = Learn workflow steps</span>
+      <span>◓ CATCH = Publish skill to Hub</span>
+      <span>♥ TRAIN = PAL reinforces</span>
+      <span>▣ POKéDEX = Browse skills</span>
+    </div>
+
+    <div class="external-hud">
+      <span id="hud-region">LUMA REGION</span>
+      <span id="hud-party">PARTY 2/6</span>
+      <span id="hud-dex">POKéDEX 3/4</span>
+      <span id="hud-badge">BADGES 0</span>
+    </div>
+
+    <div class="gbc-shell">
+      <div class="gbc-label">NINTENDO GAME BOY COLOR · SPECTER SKILLS HUB</div>
+      <div class="gbc-screen" id="gameScreen" tabindex="0">
+        <!-- OVERWORLD -->
+        <div class="screen active" id="overworld">
+          <div class="map-grid" id="mapGrid"></div>
+          <div class="player" id="player">
+            <div class="player-head"></div>
+            <div class="player-body"></div>
+            <div class="player-legs"><span></span><span></span></div>
+          </div>
+          <div class="dialog-bar show" id="owDialog">
+            Welcome to LUMA REGION!<span class="cursor">▼</span>
+          </div>
+        </div>
+
+        <!-- BATTLE -->
+        <div class="screen" id="battle">
+          <div class="battle-field">
+            <div class="hud-box enemy-hud">
+              <div class="hp-label"><span id="enemyName">FOE RECAPORDON</span><span>Lv11</span></div>
+              <div class="hp-bar"><div class="hp-fill" id="enemyHp" style="width:100%"></div></div>
+            </div>
+            <div class="platform enemy"></div>
+            <div class="mon-sprite enemy ghost-sprite dragon enemy-big" id="enemySprite"></div>
+            <div class="platform player"></div>
+            <div class="mon-sprite player ghost-sprite" id="playerSprite"></div>
+            <div class="hud-box player-hud">
+              <div class="hp-label"><span id="playerName">CREATO</span><span>Lv5</span></div>
+              <div class="hp-bar"><div class="hp-fill" id="playerHp" style="width:85%"></div></div>
+            </div>
+          </div>
+          <div class="battle-panel">
+            <div class="msg-box" id="battleMsg">Wild RECAPORDON appeared!</div>
+            <div class="action-box" id="actionBox">
+              <button class="action-btn selected" data-action="fight"><span class="arrow">▶</span>FIGHT</button>
+              <button class="action-btn" data-action="catch"><span class="arrow">▶</span>CATCH</button>
+              <button class="action-btn" data-action="dex"><span class="arrow">▶</span>POKéDEX</button>
+              <button class="action-btn" data-action="run"><span class="arrow">▶</span>RUN</button>
+            </div>
+            <div class="moves-box" id="movesBox"></div>
+          </div>
+        </div>
+
+        <!-- CATCH -->
+        <div class="screen" id="catch">
+          <div class="catch-scene">
+            <div id="catchMonName" style="font-family:'Press Start 2P';font-size:10px;margin-bottom:8px">CALENDAW</div>
+            <div class="pokeball" id="catchBall"></div>
+            <div class="catch-text" id="catchText">Press ENTER to throw Poké Ball!</div>
+            <div id="catchSparkle" style="display:none" class="sparkles">✦ ✦ ✦</div>
+          </div>
+        </div>
+
+        <!-- TRAIN -->
+        <div class="screen" id="train">
+          <div class="center-sign">★ POKéMON CENTER ★</div>
+          <div class="pal-frame">PAL VIDEO — Tavus training session</div>
+          <p style="font-size:18px;margin-bottom:12px;line-height:1.4">Specter restored your party!<br>Ready to TRAIN with PAL?</p>
+          <button class="train-btn" id="trainDone">CONTINUE ADVENTURE</button>
+        </div>
+
+        <!-- Dex overlay -->
+        <div class="dex-overlay" id="dexOverlay">
+          <div class="dex-title">PROF. SPECTER's POKéDEX</div>
+          <div class="dex-list" id="dexList"></div>
+          <button class="train-btn" style="margin-top:8px" id="dexClose">CLOSE</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-hint">
+      <kbd>↑↓←→</kbd> or <kbd>WASD</kbd> move &nbsp;·&nbsp;
+      <kbd>ENTER</kbd> confirm &nbsp;·&nbsp;
+      Walk in <span style="color:#78c878">tall grass</span> for encounters &nbsp;·&nbsp;
+      Enter <span style="color:#c84848">red</span>/<span style="color:#8040a0">purple</span>/<span style="color:#4080c0">blue</span> buildings
+    </div>
+  </div>
+
+  <script>
+    // ponytail: single-file game state — no framework; upgrade path = React + canvas
+    const TILE = 30;
+    const COLS = 16, ROWS = 12;
+    const MAP = [
+      'tttttttttttttttt',
+      'tttttttttttttttt',
+      'tttttttttttttttt',
+      'ttttttgttgtttttt',
+      'ttttpppppppppttt',
+      'tttppypplppptttt',
+      'tttppppppppptttt',
+      'tttppgppgppptttt',
+      'tttppcpcpppptttt',
+      'tttppppppppptttt',
+      'tttttttttttttttt',
+      'tttttttttttttttt',
+    ];
+    // t=grass p=path g=tall c=center y=gym l=lab
+
+    const SKILLS = [
+      { id: 'target-create-event', num: 1, name: 'CREATO', type: 'NORMAL', lv: 5, caught: true },
+      { id: 'target-add-to-calendar', num: 2, name: 'CALENDAW', type: 'WATER', lv: 5, caught: true },
+      { id: 'luma-event-profile', num: 3, name: 'LUMARA', type: 'PSYCHIC', lv: 8, caught: false, seen: true },
+      { id: 'workflow-event-recap-session-1', num: 0, name: 'RECAPORDON', type: 'DRAGON', lv: 11, boss: true, caught: false, seen: true },
+    ];
+
+    const MOVES = [
+      'CREATE EVENT', 'EVENT TITLE', 'EVENT DATE', 'EVENT TIME', 'LOCATION',
+      'HOST', 'ABOUT', 'SCHEDULE', 'PRIZE POOL', 'PARTNERS', 'ADD TO CALENDAR'
+    ];
+
+    const JOURNEY_KEY = 'specter-journey-state';
+    const USER_KEY = 'specter-user-id';
+
+    function loadJourney() {
+      try {
+        const raw = localStorage.getItem(JOURNEY_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (_) {}
+      const uid = localStorage.getItem(USER_KEY) || (crypto.randomUUID?.() || 'demo');
+      localStorage.setItem(USER_KEY, uid);
+      return { userId: uid, entries: {}, party: [], badges: [], trainerRank: 'Route 1', version: 1, lastSyncedAt: new Date().toISOString() };
+    }
+
+    function saveJourney(j) {
+      j.lastSyncedAt = new Date().toISOString();
+      j.version = (j.version || 1) + 1;
+      localStorage.setItem(JOURNEY_KEY, JSON.stringify(j));
+      fetch('/api/journey', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ userId: j.userId, journey: j }) }).catch(() => {});
+    }
+
+    function skillIdForName(name) {
+      const s = SKILLS.find(x => x.name === name);
+      return s ? s.id : null;
+    }
+
+    function upsertSkill(j, id, patch) {
+      const prev = j.entries[id] || {};
+      const rank = { unseen: 0, seen: 1, learning: 2, learned: 3, caught: 4, equipped: 5 };
+      const state = rank[patch.state] >= rank[prev.state || 'unseen'] ? patch.state : (prev.state || 'seen');
+      let origin = patch.origin || prev.origin || 'hub_trainer';
+      if (prev.origin === 'mac' && origin === 'hub_trainer') origin = 'mac';
+      j.entries[id] = { skillId: id, movesLearned: Math.max(prev.movesLearned || 0, patch.movesLearned || 0), totalMoves: patch.totalMoves || prev.totalMoves || 1, origin, author: patch.author || 'Specter', app: 'Luma', updatedAt: new Date().toISOString(), state };
+      return j;
+    }
+
+    function canCatchEntry(entry) {
+      if (!entry || entry.state === 'caught' || entry.origin === 'hub_trainer') return false;
+      return entry.movesLearned >= entry.totalMoves || entry.state === 'learned';
+    }
+
+    let journey = loadJourney();
+
+    const BUILDINGS = {
+      '5,8': { type: 'center', msg: 'Welcome to the POKéMON CENTER! Heal & TRAIN with PAL?' },
+      '5,5': { type: 'gym', msg: 'GYM LEADER awaits! RECAPORDON Lv.11 — 11 moves!' },
+      '8,5': { type: 'lab', msg: 'PROF. SPECTER LAB — Publish skills = Catch Pokémon!' },
+    };
+
+    let state = {
+      screen: 'overworld',
+      px: 7, py: 7,
+      party: journey.party.length ? journey.party.map(n => SKILLS.find(s => s.id === n)?.name || n) : ['CREATO', 'CALENDAW'],
+      dexCaught: Object.values(journey.entries).filter(e => e.state === 'caught').length || 2,
+      badges: 0,
+      battle: { enemyHp: 11, moveIdx: 0, phase: 'menu', actionSel: 0, moveSel: 0, wild: null },
+      catch: { step: 0, target: 'CALENDAW' },
+      dialogQueue: [],
+      dialogIdx: 0,
+    };
+
+    const mapGrid = document.getElementById('mapGrid');
+    const player = document.getElementById('player');
+    const owDialog = document.getElementById('owDialog');
+
+    function parseMap() {
+      mapGrid.innerHTML = '';
+      const chars = { t: 'grass', p: 'path', g: 'tall', w: 'water', c: 'building', y: 'building', l: 'building' };
+      for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLS; x++) {
+          const ch = MAP[y]?.[x] || 't';
+          const tile = document.createElement('div');
+          tile.className = 'tile ' + (chars[ch] || 'grass');
+          if (ch === 'y') tile.classList.add('gym');
+          if (ch === 'l') tile.classList.add('lab');
+          if (ch === 'c') tile.style.background = '#f0a0a0';
+          tile.dataset.x = x; tile.dataset.y = y;
+          mapGrid.appendChild(tile);
+        }
+      }
+      updatePlayerPos();
+    }
+
+    function updatePlayerPos() {
+      player.style.left = (state.px * TILE + 3) + 'px';
+      player.style.top = (state.py * TILE - 4) + 'px';
+    }
+
+    function showScreen(name) {
+      state.screen = name;
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(name)?.classList.add('active');
+      document.getElementById('dexOverlay').classList.remove('show');
+    }
+
+    function setDialog(text, queue) {
+      if (queue) { state.dialogQueue = queue; state.dialogIdx = 0; text = queue[0]; }
+      owDialog.innerHTML = text + '<span class="cursor">▼</span>';
+      owDialog.classList.add('show');
+    }
+
+    function advanceDialog() {
+      if (state.dialogQueue.length && state.dialogIdx < state.dialogQueue.length - 1) {
+        state.dialogIdx++;
+        owDialog.innerHTML = state.dialogQueue[state.dialogIdx] + '<span class="cursor">▼</span>';
+        return true;
+      }
+      state.dialogQueue = [];
+      return false;
+    }
+
+    function tileAt(x, y) {
+      if (x < 0 || y < 0 || x >= COLS || y >= ROWS) return 'w';
+      return MAP[y][x];
+    }
+
+    function canWalk(x, y) {
+      const t = tileAt(x, y);
+      return t === 'p' || t === 'g' || t === 'c' || t === 'y' || t === 'l';
+    }
+
+    function movePlayer(dx, dy) {
+      if (state.screen !== 'overworld') return;
+      const nx = state.px + dx, ny = state.py + dy;
+      if (!canWalk(nx, ny)) return;
+      state.px = nx; state.py = ny;
+      updatePlayerPos();
+      document.getElementById('hud-party').textContent = 'PARTY ' + state.party.length + '/6';
+
+      const key = nx + ',' + ny;
+      if (BUILDINGS[key]) {
+        const b = BUILDINGS[key];
+        if (b.type === 'center') {
+          setDialog('', ['Welcome to the POKéMON CENTER!', 'Your party was healed!', 'TRAIN with PAL?']);
+        } else if (b.type === 'gym') {
+          setDialog('', ['GYM LEADER RECAPORDON blocks the path!', '11 moves — learn them all!']);
+          setTimeout(() => startBattle('RECAPORDON', true), 800);
+        } else if (b.type === 'lab') {
+          setDialog('', ['PROF. SPECTER: Publish skills to catch them!', 'Ready to catch CALENDAW?']);
+          setTimeout(() => startCatch('CALENDAW'), 800);
+        }
+        return;
+      }
+
+      if (tileAt(nx, ny) === 'g') {
+        const wilds = ['CREATO', 'CALENDAW', 'LUMARA'];
+        const wild = wilds[Math.floor(Math.random() * wilds.length)];
+        setDialog('', ['The grass rustled…', 'A wild ' + wild + ' appeared!']);
+        setTimeout(() => startBattle(wild, false), 1000);
+      }
+    }
+
+    function startBattle(enemyName, isBoss) {
+      const sid = skillIdForName(enemyName);
+      if (sid) journey = upsertSkill(journey, sid, { state: 'learning', origin: isBoss ? 'hub_trainer' : 'mac', totalMoves: isBoss ? 11 : 3, movesLearned: 0 });
+      state.battle = { enemyHp: isBoss ? 11 : 3, moveIdx: 0, phase: 'intro', actionSel: 0, moveSel: 0, wild: enemyName, isBoss, skillId: sid };
+      showScreen('battle');
+      document.getElementById('enemyName').textContent = (isBoss ? 'FOE ' : 'WILD ') + enemyName;
+      document.getElementById('enemyHp').style.width = '100%';
+      document.getElementById('enemyHp').className = 'hp-fill';
+      document.getElementById('enemySprite').className = 'mon-sprite enemy ghost-sprite dragon enemy-big';
+      document.getElementById('battleMsg').textContent = (isBoss ? '' : 'Wild ') + enemyName + ' appeared!';
+      document.getElementById('actionBox').classList.remove('hidden');
+      document.getElementById('movesBox').classList.remove('show');
+      buildMoves();
+      setTimeout(() => {
+        state.battle.phase = 'menu';
+        document.getElementById('battleMsg').textContent = 'What will CREATO do?';
+      }, 1200);
+    }
+
+    function buildMoves() {
+      const box = document.getElementById('movesBox');
+      box.innerHTML = MOVES.map((m, i) =>
+        `<button class="move-btn${i===0?' selected':''}" data-move="${i}"><span class="arrow">▶</span>${m}</button>`
+      ).join('');
+    }
+
+    function updateBattleMenu() {
+      document.querySelectorAll('#actionBox .action-btn').forEach((b, i) => {
+        b.classList.toggle('selected', i === state.battle.actionSel);
+      });
+    }
+
+    function updateMoveMenu() {
+      document.querySelectorAll('#movesBox .move-btn').forEach((b, i) => {
+        b.classList.toggle('selected', i === state.battle.moveSel);
+      });
+    }
+
+    function useMove() {
+      const idx = state.battle.moveSel;
+      const move = MOVES[idx];
+      document.getElementById('movesBox').classList.remove('show');
+      document.getElementById('actionBox').classList.remove('hidden');
+      document.getElementById('battleMsg').textContent = 'CREATO used ' + move + '!';
+      document.getElementById('enemySprite').classList.add('damage-flash');
+      setTimeout(() => document.getElementById('enemySprite').classList.remove('damage-flash'), 300);
+
+      state.battle.enemyHp--;
+      const pct = (state.battle.enemyHp / (state.battle.isBoss ? 11 : 3)) * 100;
+      const hpEl = document.getElementById('enemyHp');
+      hpEl.style.width = pct + '%';
+      hpEl.className = 'hp-fill' + (pct < 25 ? ' low' : pct < 50 ? ' mid' : '');
+
+      if (state.battle.enemyHp <= 0) {
+        setTimeout(() => {
+          document.getElementById('battleMsg').textContent = 'You defeated ' + state.battle.wild + '!';
+          const sid = state.battle.skillId;
+          if (sid) {
+            journey = upsertSkill(journey, sid, { state: 'learned', movesLearned: state.battle.isBoss ? 11 : 3, totalMoves: state.battle.isBoss ? 11 : 3, origin: state.battle.isBoss ? 'hub_trainer' : 'mac' });
+            saveJourney(journey);
+          }
+          setTimeout(() => {
+            document.getElementById('battleMsg').textContent = state.battle.wild + ' learned the workflow! TRAIN with PAL?';
+            setTimeout(() => showScreen('train'), 1500);
+          }, 1500);
+        }, 800);
+        return;
+      }
+
+      setTimeout(() => {
+        document.getElementById('battleMsg').textContent = state.battle.wild + ' used ' + MOVES[state.battle.enemyHp % MOVES.length] + '!';
+        setTimeout(() => {
+          state.battle.phase = 'menu';
+          state.battle.moveSel = Math.min(idx + 1, MOVES.length - 1);
+          document.getElementById('battleMsg').textContent = 'What will CREATO do?';
+        }, 1200);
+      }, 1000);
+    }
+
+    function startCatch(name) {
+      state.catch = { step: 0, target: name };
+      showScreen('catch');
+      document.getElementById('catchMonName').textContent = name;
+      document.getElementById('catchText').textContent = 'Press ENTER to throw Poké Ball!';
+      document.getElementById('catchSparkle').style.display = 'none';
+      document.getElementById('catchBall').className = 'pokeball';
+    }
+
+    function throwBall() {
+      const ball = document.getElementById('catchBall');
+      state.catch.step++;
+      ball.classList.add('shake');
+      document.getElementById('catchText').textContent = '…';
+      setTimeout(() => ball.classList.remove('shake'), 500);
+
+      if (state.catch.step >= 3) {
+        document.getElementById('catchSparkle').style.display = 'block';
+        document.getElementById('catchText').innerHTML = 'Gotcha!<br>' + state.catch.target + ' was caught!<br><span style="font-size:8px;opacity:.7">Published to Skills Hub</span>';
+        const sid = skillIdForName(state.catch.target);
+        if (sid) {
+          journey = upsertSkill(journey, sid, { state: 'caught', origin: 'hub_self', movesLearned: 11, totalMoves: 11 });
+          saveJourney(journey);
+        }
+        if (!state.party.includes(state.catch.target)) state.party.push(state.catch.target);
+        state.dexCaught = Object.values(journey.entries).filter(e => e.state === 'caught').length;
+        document.getElementById('hud-dex').textContent = 'POKéDEX ' + state.dexCaught + '/4';
+        document.getElementById('hud-party').textContent = 'PARTY ' + state.party.length + '/6';
+        setTimeout(() => { showScreen('overworld'); setDialog('Skill published! Check your PokéDEX.'); }, 2500);
+      } else {
+        setTimeout(() => {
+          document.getElementById('catchText').textContent = 'Press ENTER to throw again!';
+        }, 600);
+      }
+    }
+
+    function showDex() {
+      const list = document.getElementById('dexList');
+      list.innerHTML = SKILLS.map(s => {
+        const caught = s.caught || state.party.includes(s.name);
+        const cls = caught ? 'caught' : (s.seen ? 'seen' : '');
+        const label = caught ? `#${String(s.num).padStart(3,'0')} ${s.name}` : `#${String(s.num).padStart(3,'0')} ???`;
+        return `<div class="dex-row ${cls}">${label} — ${s.type}${s.boss?' BOSS':''}</div>`;
+      }).join('');
+      document.getElementById('dexOverlay').classList.add('show');
+    }
+
+    function handleKey(e) {
+      const k = e.key;
+      if (state.screen === 'overworld') {
+        if (k === 'ArrowUp' || k === 'w') movePlayer(0, -1);
+        else if (k === 'ArrowDown' || k === 's') movePlayer(0, 1);
+        else if (k === 'ArrowLeft' || k === 'a') movePlayer(-1, 0);
+        else if (k === 'ArrowRight' || k === 'd') movePlayer(1, 0);
+        else if (k === 'Enter' || k === ' ') {
+          if (state.dialogQueue.length) {
+            if (!advanceDialog()) {
+              if (owDialog.textContent.includes('TRAIN')) showScreen('train');
+              else if (owDialog.textContent.includes('catch')) startCatch('CALENDAW');
+            }
+          }
+        }
+      } else if (state.screen === 'battle') {
+        if (state.battle.phase === 'menu') {
+          const actions = ['fight', 'catch', 'dex', 'run'];
+          if (k === 'ArrowRight' || k === 'd') state.battle.actionSel = (state.battle.actionSel + 1) % 4;
+          if (k === 'ArrowLeft' || k === 'a') state.battle.actionSel = (state.battle.actionSel + 3) % 4;
+          if (k === 'ArrowDown' || k === 's') state.battle.actionSel = (state.battle.actionSel + 2) % 4;
+          if (k === 'ArrowUp' || k === 'w') state.battle.actionSel = (state.battle.actionSel + 2) % 4;
+          updateBattleMenu();
+          if (k === 'Enter') {
+            const act = actions[state.battle.actionSel];
+            if (act === 'fight') {
+              state.battle.phase = 'moves';
+              document.getElementById('actionBox').classList.add('hidden');
+              document.getElementById('movesBox').classList.add('show');
+              document.getElementById('battleMsg').textContent = 'Choose a move to LEARN:';
+            } else if (act === 'catch') {
+              const sid = state.battle.skillId;
+              const ent = sid && journey.entries[sid];
+              if (!canCatchEntry(ent)) {
+                document.getElementById('battleMsg').textContent = 'Must learn all moves before CATCH!';
+                return;
+              }
+              startCatch(state.battle.wild);
+            else if (act === 'dex') showDex();
+            else { showScreen('overworld'); setDialog('Got away safely!'); }
+          }
+        } else if (state.battle.phase === 'moves' || document.getElementById('movesBox').classList.contains('show')) {
+          if (k === 'ArrowDown' || k === 's') state.battle.moveSel = Math.min(MOVES.length - 1, state.battle.moveSel + 1);
+          if (k === 'ArrowUp' || k === 'w') state.battle.moveSel = Math.max(0, state.battle.moveSel - 1);
+          updateMoveMenu();
+          if (k === 'Enter') { state.battle.phase = 'menu'; useMove(); }
+          if (k === 'Escape') {
+            state.battle.phase = 'menu';
+            document.getElementById('movesBox').classList.remove('show');
+            document.getElementById('actionBox').classList.remove('hidden');
+          }
+        }
+      } else if (state.screen === 'catch') {
+        if (k === 'Enter') throwBall();
+      } else if (state.screen === 'train') {
+        if (k === 'Enter') { showScreen('overworld'); setDialog('Party healed! Onward!'); }
+      }
+      if (document.getElementById('dexOverlay').classList.contains('show') && (k === 'Enter' || k === 'Escape')) {
+        document.getElementById('dexOverlay').classList.remove('show');
+      }
+    }
+
+    document.getElementById('trainDone').onclick = () => { showScreen('overworld'); setDialog('Training complete! Skills reinforced.'); };
+    document.getElementById('dexClose').onclick = () => document.getElementById('dexOverlay').classList.remove('show');
+
+    document.getElementById('actionBox').addEventListener('click', e => {
+      const btn = e.target.closest('.action-btn');
+      if (!btn) return;
+      state.battle.actionSel = [...document.querySelectorAll('#actionBox .action-btn')].indexOf(btn);
+      updateBattleMenu();
+      handleKey({ key: 'Enter' });
+    });
+
+    document.getElementById('movesBox').addEventListener('click', e => {
+      const btn = e.target.closest('.move-btn');
+      if (!btn) return;
+      state.battle.moveSel = parseInt(btn.dataset.move);
+      updateMoveMenu();
+      state.battle.phase = 'menu';
+      useMove();
+    });
+
+    document.addEventListener('keydown', handleKey);
+    document.getElementById('gameScreen').focus();
+
+    parseMap();
+    document.getElementById('hud-dex').textContent = 'POKéDEX ' + (Object.keys(journey.entries).length || state.dexCaught) + '/4';
+    // ponytail: self-check
+    console.assert((journey.party || []).length <= 6, 'party max 6');
+  </script>
+</body>
+</html>

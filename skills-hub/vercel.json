@@ -1,0 +1,20 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run seed:skills && npm run build",
+  "rewrites": [{ "source": "/((?!api).*)", "destination": "/index.html" }],
+  "functions": {
+    "api/tavus-conversation.ts": {
+      "includeFiles": "api/skills.json",
+      "maxDuration": 10
+    },
+    "api/tavus-replica.ts": {
+      "maxDuration": 30
+    },
+    "api/tavus-upload.ts": {
+      "maxDuration": 10
+    },
+    "api/uploads/[filename].ts": {
+      "maxDuration": 10
+    }
+  }
+}
