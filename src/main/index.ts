@@ -2109,18 +2109,12 @@ app.whenReady().then(async () => {
   );
 
   ipcMain.handle("tts:speak", async (_event, text) => {
-    if (overlayTavusFaceMode) {
-      safeLog("[TTS] skipped — overlay Tavus face mode");
-      appendAgentDebugLog({
-        sessionId: "389870",
-        runId: "post-fix",
-        hypothesisId: "F",
-        message: "tts skipped tavus face",
-        data: { preview: String(text || "").slice(0, 60) },
-      });
-      return { ok: true, skipped: true, reason: "tavus-face-mode" };
-    }
-    safeLog("[IPC] tts:speak", { text: text?.slice(0, 50) });
+    // Tavus face mode now drives its voice via local TTS + lip-sync (the live
+    // Daily conversation was removed), so we no longer mute TTS here.
+    safeLog("[IPC] tts:speak", {
+      text: text?.slice(0, 50),
+      tavusFace: overlayTavusFaceMode,
+    });
     return speak(text);
   });
 
