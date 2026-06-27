@@ -9668,6 +9668,34 @@
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:44"
     },
     {
+      "id": "tavus::tavuserrortext",
+      "label": "tavusErrorText",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:64"
+    },
+    {
+      "id": "tavus::isinvalidreplicaerror",
+      "label": "isInvalidReplicaError",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:68"
+    },
+    {
+      "id": "tavus::isconcurrencylimiterror",
+      "label": "isConcurrencyLimitError",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:75"
+    },
+    {
+      "id": "tavus::createtavusconversation",
+      "label": "createTavusConversation",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:80"
+    },
+    {
       "id": "file::store",
       "label": "store.ts",
       "fileType": "code",
@@ -11845,11 +11873,18 @@
       "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts:1"
     },
     {
+      "id": "memorysidecar::resolvepythonexec",
+      "label": "resolvePythonExec",
+      "fileType": "code",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts:8"
+    },
+    {
       "id": "memorysidecar::startmemorysidecar",
       "label": "startMemorySidecar",
       "fileType": "code",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts:7"
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts:18"
     },
     {
       "id": "file::browserurlprobe",
@@ -28365,6 +28400,42 @@
       "weight": 1
     },
     {
+      "source": "file::tavus",
+      "target": "tavus::tavuserrortext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:64",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::isinvalidreplicaerror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:68",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::isconcurrencylimiterror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:75",
+      "weight": 1
+    },
+    {
+      "source": "file::tavus",
+      "target": "tavus::createtavusconversation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/skills-hub/api/lib/tavus.ts:80",
+      "weight": 1
+    },
+    {
       "source": "file::store",
       "target": "store::ensuredir",
       "relation": "contains",
@@ -30598,11 +30669,20 @@
     },
     {
       "source": "file::memorysidecar",
+      "target": "memorysidecar::resolvepythonexec",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts:8",
+      "weight": 1
+    },
+    {
+      "source": "file::memorysidecar",
       "target": "memorysidecar::startmemorysidecar",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts",
-      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts:7",
+      "sourceLocation": "/Users/aritro/Downloads/Loveable Hackathon/Main/src/main/memorySidecar.ts:18",
       "weight": 1
     },
     {
@@ -35629,9 +35709,9 @@
     }
   ],
   "metadata": {
-    "files": 236,
-    "nodes": 2316,
-    "edges": 2157,
-    "builtAt": "2026-06-27T18:52:53.441Z"
+    "files": 237,
+    "nodes": 2321,
+    "edges": 2162,
+    "builtAt": "2026-06-27T19:22:29.822Z"
   }
 }

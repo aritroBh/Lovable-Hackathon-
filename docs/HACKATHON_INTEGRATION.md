@@ -1,5 +1,7 @@
 # Specter × Tavus × Lovable — Hackathon Integration
 
+**Setup pipeline:** [SETUP_PIPELINE.md](SETUP_PIPELINE.md) — install, env, verify, demo.
+
 Tavus × Lovable hackathon, June 27 2026. Dual-primary ship: **Specter on your Mac** (live demo) + **Skills Hub URL** (submission).
 
 ## One line
@@ -157,7 +159,9 @@ Verify (no Tavus keys): `npm run verify:e2e` from `skills-hub/` — typecheck, b
 - GhostWiki → Tavus Skills API attach
 - HMAC-signed userId (hackathon uses UUID secrecy)
 
-## Photo → Tavus face (overlay)
+## Photo → Tavus face (overlay) — optional
+
+**Hackathon demo:** use prebuilt `TAVUS_REPLICA_ID` in Hub secrets — **skip photo upload** (~3h training).
 
 Mac overlay can swap SpecBuddy for a **Tavus CVI iframe** (`Face` toggle in mode bar).
 

@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { loadAllSkills } from "./lib/store";
-import { resolveReplicaId } from "./lib/tavus";
+import { createTavusConversation, resolveReplicaId } from "./lib/tavus";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -72,7 +72,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const body: Record<string, unknown> = {
-    persona_id: personaId,
+    pal_id: personaId,
     conversation_name,
     conversational_context,
     custom_greeting,
@@ -80,29 +80,28 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     max_participants: 2,
     properties,
   };
-  if (resolvedReplicaId) body.replica_id = resolvedReplicaId;
+  if (resolvedReplicaId) body.face_id = resolvedReplicaId;
   const callbackUrl = process.env.TAVUS_CALLBACK_URL;
   if (callbackUrl) body.callback_url = callbackUrl;
 
   try {
-    const tavusRes = await fetch("https://tavusapi.com/v2/conversations", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": apiKey,
-      },
-      body: JSON.stringify(body),
+    const result = await createTavusConversation(body, {
+      resolvedReplicaId,
+      envReplicaId,
+      clientReplicaReady,
     });
-    const data = (await tavusRes.json()) as Record<string, unknown>;
-    if (!tavusRes.ok) {
-      return res.status(tavusRes.status).json({ ok: false, error: data });
+    if (!result.ok) {
+      return res.status(result.status).json({ ok: false, error: result.data });
     }
+    const data = result.data;
     return res.status(200).json({
       ok: true,
       conversation_url: data.conversation_url,
       conversation_id: data.conversation_id,
-      replica_id: resolvedReplicaId || null,
-      using_custom_replica: Boolean(clientReplicaId && clientReplicaReady),
+      replica_id: result.replica_id,
+      using_custom_replica: Boolean(
+        clientReplicaId && clientReplicaReady && result.replica_id === clientReplicaId,
+      ),
     });
   } catch (e) {
     return res.status(502).json({

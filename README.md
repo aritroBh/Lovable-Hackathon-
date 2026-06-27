@@ -521,11 +521,16 @@ The hackathon demo uses **fallback mode** for deterministic, offline-friendly be
 
 ### Install
 
+Full pipeline (deps, env, verify): **[docs/SETUP_PIPELINE.md](docs/SETUP_PIPELINE.md)**
+
 ```bash
-git clone https://github.com/aritroBh/cursor-x-a16z.git
-cd cursor-x-a16z
+git clone git@github.com:aritroBh/Lovable-Hackathon-.git
+cd Lovable-Hackathon-/Main   # or your clone path
 npm install
+python3 -m venv .venv && .venv/bin/pip install -r memory_service/requirements.txt
+cd skills-hub && npm install && cp .env.example .env && cd ..
 cp .env.example .env
+bash scripts/hackathon-prep.sh   # stress gate before demo
 ```
 
 Edit `.env` and set at minimum:

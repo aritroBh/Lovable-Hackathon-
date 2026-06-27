@@ -60,3 +60,75 @@ export async function tavusFetch(
   const data = (await res.json()) as Record<string, unknown>;
   return { ok: res.ok, status: res.status, data };
 }
+
+function tavusErrorText(data: Record<string, unknown>): string {
+  return JSON.stringify(data).toLowerCase();
+}
+
+export function isInvalidReplicaError(data: Record<string, unknown>): boolean {
+  const s = tavusErrorText(data);
+  const aboutFace =
+    s.includes("replica") || s.includes("face") || s.includes("face_id");
+  return aboutFace && (s.includes("invalid") || s.includes("not found"));
+}
+
+export function isConcurrencyLimitError(data: Record<string, unknown>): boolean {
+  return tavusErrorText(data).includes("maximum concurrent conversations");
+}
+
+/** ponytail: retry without bad client replica, then env replica, then persona default */
+export async function createTavusConversation(
+  body: Record<string, unknown>,
+  opts: {
+    resolvedReplicaId?: string;
+    envReplicaId?: string;
+    clientReplicaReady?: boolean;
+  },
+): Promise<{
+  ok: boolean;
+  status: number;
+  data: Record<string, unknown>;
+  replica_id: string | null;
+}> {
+  const tryCreate = async (replicaId?: string) => {
+    const payload = { ...body };
+    if (replicaId) payload.face_id = replicaId;
+    else delete payload.face_id;
+    return tavusFetch("/conversations", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  };
+
+  let replicaUsed = opts.resolvedReplicaId || null;
+  let result = await tryCreate(opts.resolvedReplicaId);
+
+  if (
+    !result.ok &&
+    opts.resolvedReplicaId &&
+    isInvalidReplicaError(result.data) &&
+    opts.envReplicaId &&
+    opts.envReplicaId !== opts.resolvedReplicaId
+  ) {
+    replicaUsed = opts.envReplicaId;
+    result = await tryCreate(opts.envReplicaId);
+  }
+
+  if (!result.ok && replicaUsed && isInvalidReplicaError(result.data)) {
+    replicaUsed = null;
+    result = await tryCreate(undefined);
+  }
+
+  const status = !result.ok && isConcurrencyLimitError(result.data) ? 503 : result.status;
+  return { ok: result.ok, status, data: result.data, replica_id: replicaUsed };
+}
+
+// ponytail: self-check invalid-replica detector
+if (process.env.TAVUS_RESOLVE_SELF_CHECK === "1") {
+  if (
+    !isInvalidReplicaError({ error: "Invalid replica_uuid" }) ||
+    !isInvalidReplicaError({ error: "Invalid face_id" })
+  ) {
+    throw new Error("isInvalidReplicaError self-check failed");
+  }
+}

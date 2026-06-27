@@ -1,15 +1,24 @@
 import { spawn } from "child_process";
+import { existsSync } from "fs";
 import { join } from "path";
 import { safeLog, safeError } from "./logger";
 
 const DEFAULT_WIKI_ROOT = "./demo-workflows/event-recap/wiki";
 
+function resolvePythonExec(): string {
+  if (process.env.VIRTUAL_ENV) {
+    return join(process.env.VIRTUAL_ENV, "bin", "python");
+  }
+  // ponytail: auto-use project venv when present (see docs/SETUP_PIPELINE.md)
+  const localVenv = join(process.cwd(), ".venv", "bin", "python");
+  if (existsSync(localVenv)) return localVenv;
+  return "python3";
+}
+
 export function startMemorySidecar() {
   const port = process.env.MEMORY_SERVICE_PORT || "8765";
   const wikiRoot = process.env.GHOSTWIKI_WIKI_ROOT || DEFAULT_WIKI_ROOT;
-  const pythonExec = process.env.VIRTUAL_ENV
-    ? join(process.env.VIRTUAL_ENV, "bin", "python")
-    : "python";
+  const pythonExec = resolvePythonExec();
 
   safeLog("[GhostWiki] Starting memory sidecar on port", {
     port,

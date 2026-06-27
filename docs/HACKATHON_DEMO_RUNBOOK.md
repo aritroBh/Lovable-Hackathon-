@@ -6,6 +6,7 @@ Full launch/troubleshooting: [`DEMO_RUNBOOK.md`](../DEMO_RUNBOOK.md)
 
 ## Morning checklist
 
+- [ ] **Pre-demo gate:** `bash scripts/hackathon-prep.sh` (395 tests + Hub verify + adversarial stress)
 - [ ] Launch from **Terminal.app** (not IDE)
 - [ ] `cd "/Users/aritro/Downloads/Loveable Hackathon/Main"`
 - [ ] Kill orphans: `pkill -f "electron-vite dev"; pkill -f "MacOS/Electron ."; kill $(lsof -ti :8765) 2>/dev/null`
@@ -14,7 +15,7 @@ Full launch/troubleshooting: [`DEMO_RUNBOOK.md`](../DEMO_RUNBOOK.md)
 - [ ] Skills Hub: `cd skills-hub && npm run start` (or prod URL bookmarked)
 - [ ] `.env` has `ANTHROPIC_API_KEY`, `SKILLS_HUB_URL`, `SPECTER_USER_ID` (match Hub localStorage `specter-user-id`)
 - [ ] Lovable/Vercel secrets set for Tavus (`TAVUS_API_KEY`, `TAVUS_PERSONA_ID`)
-- [ ] `cd skills-hub && npm run verify:e2e` once before doors
+- [ ] `cd skills-hub && npm run verify:e2e` once before doors (also run via `hackathon-prep.sh`)
 
 ## Hotkeys (quick ref)
 

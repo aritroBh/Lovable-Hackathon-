@@ -4,6 +4,19 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+if [ ! -x ".venv/bin/python" ]; then
+  echo "== Creating Python venv =="
+  python3 -m venv .venv
+  .venv/bin/pip install -r memory_service/requirements.txt
+fi
+
+echo "== Graphify index =="
+if command -v graphify >/dev/null 2>&1; then
+  graphify build .
+else
+  echo "(graphify not installed — npm i -g graphify-ts)"
+fi
+
 echo "== Specter test:specter =="
 npm run test:specter | tail -5
 
@@ -24,4 +37,4 @@ npm run verify:e2e
 [ -n "$API_PID" ] && kill "$API_PID" 2>/dev/null || true
 echo "Local hub: cd skills-hub && npm run start  → http://localhost:5173"
 echo "Deploy: cd skills-hub && npx vercel deploy --prod"
-echo "OK — see docs/HACKATHON_DEMO_RUNBOOK.md"
+echo "OK — see docs/SETUP_PIPELINE.md and docs/HACKATHON_DEMO_RUNBOOK.md"

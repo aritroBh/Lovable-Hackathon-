@@ -178,7 +178,7 @@ async function handleTavus(body) {
   }
 
   const payload = {
-    persona_id: personaId,
+    pal_id: personaId,
     conversation_name,
     conversational_context,
     custom_greeting,
@@ -192,25 +192,53 @@ async function handleTavus(body) {
       enable_closed_captions: true,
     },
   };
-  if (resolvedReplicaId) payload.replica_id = resolvedReplicaId;
+  if (resolvedReplicaId) payload.face_id = resolvedReplicaId;
   const callbackUrl = process.env.TAVUS_CALLBACK_URL;
   if (callbackUrl) payload.callback_url = callbackUrl;
 
-  const tavusRes = await fetch("https://tavusapi.com/v2/conversations", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-api-key": apiKey },
-    body: JSON.stringify(payload),
-  });
-  const data = await tavusRes.json();
-  if (!tavusRes.ok) return { status: tavusRes.status, json: { ok: false, error: data } };
+  const tavusErr = (data) => JSON.stringify(data).toLowerCase();
+  const invalidReplica = (data) => {
+    const s = tavusErr(data);
+    const about = s.includes("replica") || s.includes("face") || s.includes("face_id");
+    return about && (s.includes("invalid") || s.includes("not found"));
+  };
+  const concurrency = (data) => tavusErr(data).includes("maximum concurrent conversations");
+
+  const tryCreate = async (replicaId) => {
+    const p = { ...payload };
+    if (replicaId) p.face_id = replicaId;
+    else delete p.face_id;
+    const tavusRes = await fetch("https://tavusapi.com/v2/conversations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-api-key": apiKey },
+      body: JSON.stringify(p),
+    });
+    const data = await tavusRes.json();
+    return { ok: tavusRes.ok, status: tavusRes.status, data, replicaId: replicaId || null };
+  };
+
+  let replicaUsed = resolvedReplicaId || null;
+  let out = await tryCreate(resolvedReplicaId);
+  if (!out.ok && resolvedReplicaId && invalidReplica(out.data) && envReplicaId && envReplicaId !== resolvedReplicaId) {
+    replicaUsed = envReplicaId;
+    out = await tryCreate(envReplicaId);
+  }
+  if (!out.ok && replicaUsed && invalidReplica(out.data)) {
+    replicaUsed = null;
+    out = await tryCreate(undefined);
+  }
+  if (!out.ok) {
+    const status = concurrency(out.data) ? 503 : out.status;
+    return { status, json: { ok: false, error: out.data } };
+  }
   return {
     status: 200,
     json: {
       ok: true,
-      conversation_url: data.conversation_url,
-      conversation_id: data.conversation_id,
-      replica_id: resolvedReplicaId || null,
-      using_custom_replica: Boolean(body.replicaId && body.replicaReady === true),
+      conversation_url: out.data.conversation_url,
+      conversation_id: out.data.conversation_id,
+      replica_id: replicaUsed,
+      using_custom_replica: Boolean(body.replicaId && body.replicaReady === true && replicaUsed === body.replicaId),
     },
   };
 }
@@ -248,11 +276,11 @@ async function handleTavusReplicaPost(body) {
   const apiKey = process.env.TAVUS_API_KEY;
   if (!apiKey) return { status: 503, json: { ok: false, error: "Missing Tavus env" } };
 
-  const tavusRes = await fetch("https://tavusapi.com/v2/replicas", {
+  const tavusRes = await fetch("https://tavusapi.com/v2/faces", {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-api-key": apiKey },
     body: JSON.stringify({
-      replica_name: replicaName,
+      face_name: replicaName,
       train_image_url: uploadUrl,
       voice_name: voiceName,
       auto_fix_training_image: true,
@@ -260,7 +288,7 @@ async function handleTavusReplicaPost(body) {
   });
   const data = await tavusRes.json();
   if (!tavusRes.ok) return { status: tavusRes.status, json: { ok: false, error: data } };
-  const replicaId = data.replica_id;
+  const replicaId = data.face_id || data.replica_id;
   const replicaStatus = data.status || "training";
   if (!replicaId) return { status: 502, json: { ok: false, error: "No replica_id returned" } };
   const now = new Date().toISOString();
@@ -290,7 +318,7 @@ async function handleTavusReplicaGet(userId) {
   }
   const apiKey = process.env.TAVUS_API_KEY;
   if (!apiKey) return { status: 503, json: { ok: false, error: "Missing Tavus env" } };
-  const tavusRes = await fetch(`https://tavusapi.com/v2/replicas/${stored.replica_id}`, {
+  const tavusRes = await fetch(`https://tavusapi.com/v2/faces/${stored.replica_id}`, {
     headers: { "x-api-key": apiKey },
   });
   const data = await tavusRes.json();
@@ -317,10 +345,23 @@ function json(res, status, body) {
   res.end(JSON.stringify(body));
 }
 
+const MAX_BODY_BYTES = 8 * 1024 * 1024;
+
 async function readBody(req) {
   const chunks = [];
-  for await (const c of req) chunks.push(c);
-  return JSON.parse(Buffer.concat(chunks).toString() || "{}");
+  let size = 0;
+  for await (const c of req) {
+    size += c.length;
+    if (size > MAX_BODY_BYTES) throw new Error("BODY_TOO_LARGE");
+    chunks.push(c);
+  }
+  const raw = Buffer.concat(chunks).toString();
+  if (!raw.trim()) throw new Error("INVALID_JSON");
+  try {
+    return JSON.parse(raw);
+  } catch {
+    throw new Error("INVALID_JSON");
+  }
 }
 
 const server = createServer(async (req, res) => {
@@ -441,6 +482,12 @@ const server = createServer(async (req, res) => {
       return json(res, 405, { ok: false, error: "Method not allowed" });
     }
   } catch (e) {
+    if (e instanceof Error && e.message === "INVALID_JSON") {
+      return json(res, 400, { ok: false, error: "Invalid JSON" });
+    }
+    if (e instanceof Error && e.message === "BODY_TOO_LARGE") {
+      return json(res, 413, { ok: false, error: "Request body too large" });
+    }
     return json(res, 500, { ok: false, error: String(e) });
   }
 
