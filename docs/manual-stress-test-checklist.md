@@ -66,3 +66,35 @@ Use this before a live demo. Run the app in the same mode you plan to demo, then
 3. Confirm there are no orphan windows, stale focus bugs, or off-screen overlays.
 4. Disconnect or rearrange a monitor while Specter is visible if available.
 5. Confirm the overlay reroutes or can be reliably summoned again with double-shift.
+
+## I. Hackathon E2E (Specter × Skills Hub)
+
+Run after `bash scripts/hackathon-prep.sh` passes. Requires Skills Hub on `:5173/:3001` and Specter from Terminal.app.
+
+### I1. Voice-first activation
+
+1. Double-shift summon overlay.
+2. Confirm **Face** mode is Tavus when Hub `TAVUS_*` env is set (`/api/tavus-health` → `palReady`).
+3. Click **Talk** — PAL iframe loads; local TTS silent while live.
+4. Dismiss overlay — no orphan mic streams.
+
+### I2. Cmd+Shift+R → Hub catalog
+
+1. **Cmd+Shift+R** — REC pill + notification.
+2. Click 3× in any app — frame count increases.
+3. **Cmd+Shift+R** — "Published … to Skills Hub" notification.
+4. Hub Browse — new encounter card within ~5s; state **caught** on detail page.
+5. **GHOST WALKTHROUGH** replays on Mac when Specter running.
+
+### I3. Pokémon game loop
+
+1. Route map HUD shows PARTY / LEARNED / CAUGHT / **BADGES**.
+2. RECAPORDON — learn all 11 moves sequentially → badge + party equip.
+3. **TRAIN with PAL** — Tavus iframe on skill detail.
+4. Adversarial: catch without learn → blocked (automated in `verify:stress`).
+
+### I4. Dex sync
+
+1. Run `node skills-hub/scripts/sync-user-id.cjs`.
+2. Set `SPECTER_USER_ID` in Mac `.env` to match Hub `specter-user-id`.
+3. Mac session save or record → Hub dex updates on tab focus or within 30s.

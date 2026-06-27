@@ -21,7 +21,8 @@ Canonical index for the Specter desktop ghost tutor. Open **Cmd+Shift+M → Docs
 | [CLINICAL_WORKFLOW.md](./CLINICAL_WORKFLOW.md) | Clinical mode + safety gates |
 | [UCSF_APEX_COMPLIANCE.md](./UCSF_APEX_COMPLIANCE.md) | APeX compliance notes |
 | [HACKATHON_INTEGRATION.md](./HACKATHON_INTEGRATION.md) | Tavus × Lovable × Specter + Mac→Hub sync |
-| [../skills-hub/README.md](../skills-hub/README.md) | Skills Hub game, API routes, verify |
+| [SETUP_PIPELINE.md](./SETUP_PIPELINE.md) | Install → configure → verify → deploy |
+| [../skills-hub/README.md](../skills-hub/README.md) | Skills Hub game, API routes, verify scripts |
 | [../skills-hub/design/GAME_LOGIC.md](../skills-hub/design/GAME_LOGIC.md) | JourneyState, catch gates, adversarial table |
 | [reality-lock.md](./reality-lock.md) | Mirror mode / behavioral replay design |
 | [../memory_service/README.md](../memory_service/README.md) | GhostWiki sidecar API |

@@ -2,9 +2,9 @@
 
 Chosen direction: **playable Pokémon-style GBC journey** (`12f-specter-mon-playable.html`).
 
-**Shipped React slice:** [`../src/pages/Browse.tsx`](../src/pages/Browse.tsx) (route map HUD) + [`SkillDetail.tsx`](../src/pages/SkillDetail.tsx) (battle / PAL / catch). [`JourneyContext.tsx`](../src/JourneyContext.tsx) handles sync (`syncReady`, poll on focus).
+**Shipped React slice:** [`../src/pages/Browse.tsx`](../src/pages/Browse.tsx) (route map HUD with **BADGES**) + [`SkillDetail.tsx`](../src/pages/SkillDetail.tsx) (battle / PAL / catch / gym badge). [`JourneyContext.tsx`](../src/JourneyContext.tsx) handles sync (`syncReady`, poll on focus).
 
-Verify: `npm run verify:e2e` from `skills-hub/`.
+Verify: `npm run verify:e2e` from `skills-hub/` (includes `e2e-matrix.cjs` for full 4-skill loop).
 
 ## Open
 

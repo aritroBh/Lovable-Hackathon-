@@ -477,6 +477,15 @@ const server = createServer(async (req, res) => {
       return res.end(buf);
     }
 
+    if (path === "/api/tavus-health" && req.method === "GET") {
+      const palReady = Boolean(
+        process.env.TAVUS_API_KEY &&
+          process.env.TAVUS_PERSONA_ID &&
+          process.env.TAVUS_REPLICA_ID,
+      );
+      return json(res, palReady ? 200 : 503, { ok: palReady, palReady });
+    }
+
     if (path === "/api/tavus-conversation" && req.method !== "POST") {
       res.setHeader("Allow", "POST");
       return json(res, 405, { ok: false, error: "Method not allowed" });

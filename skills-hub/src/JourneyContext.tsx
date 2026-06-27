@@ -26,6 +26,7 @@ interface JourneyCtx {
   markSeen: (skillId: string, meta: Partial<JourneyEntry>) => void;
   learnMove: (skillId: string, moveIndex: number, totalMoves: number) => void;
   equip: (skillId: string) => void;
+  awardBadge: (name: string) => void;
   canCatchSkill: (skillId: string) => boolean;
   isTrainer: (skillId: string, author?: string) => boolean;
   sync: () => Promise<void>;
@@ -108,6 +109,25 @@ export function JourneyProvider({ children }: { children: ReactNode }) {
     [persist],
   );
 
+  const awardBadge = useCallback(
+    (name: string) => {
+      const badge = name.trim();
+      if (!badge) return;
+      persist((prev) => {
+        if (prev.badges.includes(badge)) return prev;
+        return {
+          ...prev,
+          badges: [...prev.badges, badge],
+          trainerRank:
+            prev.trainerRank === "Route 1 Trainer"
+              ? "Route 2 Trainer"
+              : prev.trainerRank,
+        };
+      });
+    },
+    [persist],
+  );
+
   const canCatchSkill = useCallback(
     (skillId: string) => canCatch(journey.entries[skillId]),
     [journey],
@@ -129,11 +149,12 @@ export function JourneyProvider({ children }: { children: ReactNode }) {
       markSeen,
       learnMove,
       equip,
+      awardBadge,
       canCatchSkill,
       isTrainer,
       sync,
     }),
-    [journey, syncReady, markSeen, learnMove, equip, canCatchSkill, isTrainer, sync],
+    [journey, syncReady, markSeen, learnMove, equip, awardBadge, canCatchSkill, isTrainer, sync],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

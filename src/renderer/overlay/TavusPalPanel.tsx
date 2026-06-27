@@ -83,6 +83,7 @@ export const TavusPalPanel: React.FC<TavusPalPanelProps> = ({
 
   useEffect(() => {
     onLiveChange?.(phase === "live");
+    return () => onLiveChange?.(false);
   }, [phase, onLiveChange]);
 
   const handleUpload = async (file: File) => {

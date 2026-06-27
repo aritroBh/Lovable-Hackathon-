@@ -161,3 +161,9 @@ export async function tavusStartConversation(opts: {
 export function tavusHubConfigured(): boolean {
   return Boolean(hubUrl());
 }
+
+export async function tavusPalAvailable(): Promise<boolean> {
+  if (!hubUrl()) return false;
+  const { ok, status } = await hubJson("/api/tavus-health");
+  return ok && status === 200;
+}

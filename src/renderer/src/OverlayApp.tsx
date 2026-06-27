@@ -396,6 +396,9 @@ const OverlayApp: React.FC = () => {
       }
     };
     fetchMode();
+    void api.tavusPalAvailable().then((r) => {
+      if (r?.ok) setFaceMode("tavus");
+    });
   }, []);
   const [currentStep, setCurrentStep] = useState<any>(null);
   const [replayState, setReplayState] = useState<ReplayState>("idle");

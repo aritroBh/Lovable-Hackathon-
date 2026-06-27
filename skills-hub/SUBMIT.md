@@ -17,9 +17,10 @@
 
 ## Pre-submit checklist
 
-- [ ] `npm run verify:e2e` passes (includes adversarial stress)
-- [ ] Prod browse + PAL iframe
+- [ ] `npm run verify:e2e` passes (includes adversarial stress + mac publish + e2e matrix)
+- [ ] Prod browse + PAL iframe (run smoke immediately after deploy — Vercel `/tmp` store is ephemeral on cold start)
 - [ ] `SKILLS_HUB_URL` filled below (for Mac demo sync)
+- [ ] `node scripts/sync-user-id.cjs` — Mac `SPECTER_USER_ID` matches Hub `specter-user-id`
 
 ## URLs
 

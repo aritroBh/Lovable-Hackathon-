@@ -13,7 +13,7 @@ import { isSpecterAgentOnline, playSkillOnMac } from "../specterAgent";
 
 export default function SkillDetail() {
   const { id } = useParams<{ id: string }>();
-  const { journey, syncReady, markSeen, learnMove, equip, canCatchSkill, isTrainer, sync } =
+  const { journey, syncReady, markSeen, learnMove, equip, awardBadge, canCatchSkill, isTrainer, sync } =
     useJourney();
   const [skill, setSkill] = useState<Skill | undefined>();
   const [conversationUrl, setConversationUrl] = useState<string | null>(null);
@@ -69,10 +69,13 @@ export default function SkillDetail() {
       learnMove(skill.id, i, totalMoves);
       if (i + 1 >= totalMoves) {
         setMsg("You won! Skill learned. TRAIN with PAL or CATCH to publish.");
-        if (skill.steps.length > 5) equip(skill.id);
+        if (skill.steps.length > 5) {
+          equip(skill.id);
+          awardBadge(skill.app);
+        }
       }
     },
-    [skill, totalMoves, learnMove, equip],
+    [skill, totalMoves, learnMove, equip, awardBadge],
   );
 
   const talk = useCallback(async () => {

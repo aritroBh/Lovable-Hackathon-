@@ -145,7 +145,37 @@ TAVUS_REPLICA_ID=...    # optional if PAL has default replica
 - Generated JSON: [`skills-hub/public/skills.json`](../skills-hub/public/skills.json)
 - Regenerate: `npm run seed:skills` from `skills-hub/`
 
-Verify (no Tavus keys): `npm run verify:e2e` from `skills-hub/` — typecheck, build, hub checks, and `adversarial-stress.cjs` (publish gate + merge probes)
+Verify (from `skills-hub/`):
+
+```bash
+npm run verify:e2e
+```
+
+Pipeline: typecheck → build → `publish-gate.mjs` → `verify-hub.cjs` → `e2e-mac-publish.cjs` (Mac auto-publish sim) → `e2e-matrix.cjs` (game loop + tavus-health) → `adversarial-stress.cjs`.
+
+Individual probes:
+
+| Script | Role |
+|--------|------|
+| `scripts/e2e-mac-publish.cjs` | Journey learned + publish → caught + catalog |
+| `scripts/e2e-matrix.cjs` | 4-skill progression, RECAPORDON gym, publish gate |
+| `scripts/sync-user-id.cjs` | Mac `SPECTER_USER_ID` ↔ Hub `specter-user-id` |
+| `scripts/prod-smoke.cjs` | Post-deploy API + SPA smoke |
+
+## Voice-first agent
+
+- **Primary:** Tavus PAL — Hub **TRAIN with PAL** or Mac overlay **Face → Talk**
+- Mac defaults to Tavus face when `GET /api/tavus-health` returns `palReady: true` (`tavusPalAvailable` IPC)
+- **Fallback:** local ultra loop — Whisper STT + ElevenLabs/OpenAI/macOS TTS; `speakIfUltra()` skips while PAL iframe is live
+
+## Skill recording (Cmd+Shift+R)
+
+1. **Cmd+Shift+R** — start REC (uiohook captures clicks/types)
+2. Perform actions (≥1 click required)
+3. **Cmd+Shift+R** — stop → `publishBuiltSkillToHub`: journey `learned` + `/api/publish` → `caught` + catalog entry
+4. Hub Browse shows new card within ~5s (poll + cache bust)
+
+Requires `SKILLS_HUB_URL` and matching `SPECTER_USER_ID` for dex sync in your browser.
 
 ## Game logic
 
@@ -169,7 +199,7 @@ Mac overlay can swap SpecBuddy for a **Tavus CVI iframe** (`Face` toggle in mode
 2. Hub starts replica training → `POST /api/tavus-replica` → Tavus `POST /v2/replicas` with `train_image_url` + `voice_name`
 3. Training ~3–4h ([docs](https://docs.tavus.io/sections/replica/train-with-an-image)); until ready, conversations use stock `TAVUS_REPLICA_ID`
 4. `Talk` → `POST /api/tavus-conversation` with `source: "overlay"` + GhostWiki `memoryContext`
-5. Electron IPC proxies Hub routes (`tavusHub.ts`) — `TAVUS_API_KEY` never in renderer
+5. Electron IPC proxies Hub routes (`tavusHub.ts`) — `tavusPalAvailable()` probes `GET /api/tavus-health`; `TAVUS_API_KEY` never in renderer
 
 **Dev:** `skills-hub/.data/uploads/` served at `http://127.0.0.1:3001/api/uploads/{file}`. Set `TAVUS_PUBLIC_BASE_URL` if Tavus must reach a tunnel (ngrok) during local replica training.
 

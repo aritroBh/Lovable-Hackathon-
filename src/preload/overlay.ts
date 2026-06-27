@@ -236,6 +236,7 @@ const api = {
 
   // Tavus PAL (Skills Hub proxy — keys stay server-side)
   tavusHubConfigured: () => ipcRenderer.invoke("tavus:hubConfigured"),
+  tavusPalAvailable: () => ipcRenderer.invoke("tavus:palAvailable"),
   tavusUploadPhoto: (imageBase64: string, mimeType: string) =>
     ipcRenderer.invoke("tavus:uploadPhoto", { imageBase64, mimeType }),
   tavusCreateReplica: (uploadUrl: string) =>

@@ -6,7 +6,7 @@ Full launch/troubleshooting: [`DEMO_RUNBOOK.md`](../DEMO_RUNBOOK.md)
 
 ## Morning checklist
 
-- [ ] **Pre-demo gate:** `bash scripts/hackathon-prep.sh` (395 tests + Hub verify + adversarial stress)
+- [ ] **Pre-demo gate:** `bash scripts/hackathon-prep.sh` (396 tests + Hub verify + e2e matrix + adversarial stress)
 - [ ] Launch from **Terminal.app** (not IDE)
 - [ ] `cd "/Users/aritro/Downloads/Loveable Hackathon/Main"`
 - [ ] Kill orphans: `pkill -f "electron-vite dev"; pkill -f "MacOS/Electron ."; kill $(lsof -ti :8765) 2>/dev/null`
@@ -22,6 +22,7 @@ Full launch/troubleshooting: [`DEMO_RUNBOOK.md`](../DEMO_RUNBOOK.md)
 | Keys | Action |
 |------|--------|
 | Double-tap **Shift** | Summon / dismiss overlay |
+| **Cmd+Shift+R** | Start/stop skill recording → auto-publish to Hub |
 | **Cmd+Shift+M** | Memory dashboard |
 | Double-tap **Shift** again | Dismiss overlay before clicking dashboard |
 
@@ -29,12 +30,12 @@ Full launch/troubleshooting: [`DEMO_RUNBOOK.md`](../DEMO_RUNBOOK.md)
 
 | Sec | Where | Action |
 |-----|-------|--------|
-| 0–20 | Mac | Double-shift → Specter appears, input focused |
-| 20–50 | Mac | Type: `what do you remember about the Luma event workflow?` → grounded reply |
+| 0–20 | Mac | Double-shift → Specter appears; **Face → Talk** (Tavus PAL) or voice reply if PAL unavailable |
+| 20–50 | Mac | Ask: `what do you remember about the Luma event workflow?` — speak or type; PAL/TTS responds |
 | 50–80 | Mac | Type: `walk me through creating an event` → ghost cursor, one guided click |
 | 80–100 | Mac | Double-shift dismiss → **Cmd+Shift+M** → show memories + skill progress |
 | 100–130 | Browser | Skills Hub route map → **RECAPORDON** gym → learn moves → **TRAIN with PAL** |
-| 130–150 | Mac optional | Complete session on Mac → Hub dex updates on refresh (matching `SPECTER_USER_ID`) |
+| 130–150 | Mac optional | **Cmd+Shift+R** record 3 clicks → stop → new skill card on Hub within ~5s |
 | 150–180 | Both | *"Specter learns on your Mac. Catch publishes. PAL teaches anyone."* |
 
 ## Laptop → hub bridge line
@@ -51,10 +52,13 @@ Show matching skill in dashboard (**Cmd+Shift+M**), then **Workflow: event-recap
 | Lovable URL down | Extend laptop: Memory panel → **Run Winning Demo** loop |
 | Overlay won't summon | Relaunch from Terminal; check Screen Recording |
 | Memory offline | `kill $(lsof -ti :8765)` → relaunch Specter |
+| Skill not on Hub after record | Check `SKILLS_HUB_URL`; run `node skills-hub/scripts/sync-user-id.cjs`; refresh Browse |
+
+- **Primary:** Tavus PAL (Mac overlay **Face → Talk**, or Hub **TRAIN with PAL**)
+- **Fallback:** Local TTS (ElevenLabs → macOS `say`) when Tavus unavailable; Whisper for mic input if `OPENAI_API_KEY` set
 
 ## Do not demo on stage
 
-- Mic / Whisper (no `OPENAI_API_KEY`)
 - Peekaboo full auto-click
 - Dashboard clicks while overlay is up
 - Clinical window (Cmd+Shift+K) unless asked

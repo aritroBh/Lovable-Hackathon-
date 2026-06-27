@@ -36,6 +36,8 @@ Or use the helper script: `npm run graphify:setup`
 | --- | --- |
 | Electron main / IPC | `src/main/index.ts` |
 | Mac → Hub sync | `src/main/hubSync.ts`, `src/shared/journey.ts` |
+| Skill recording | `src/main/session/skillRecorder.ts`, `src/main/skillBridge.ts` |
+| Tavus Hub proxy | `src/main/tavusHub.ts`, `skills-hub/api/tavus-health.ts` |
 | Skills Hub game | `skills-hub/src/JourneyContext.tsx`, `pages/Browse.tsx`, `pages/SkillDetail.tsx` |
 | Journey contract | `skills-hub/src/journey.ts` (`publishGate`, `mergeJourney`, `canCatch`) |
 | Hub API routes | `skills-hub/api/journey.ts`, `publish.ts`, `skills.ts`, `lib/store.ts` |
@@ -79,8 +81,18 @@ npm run lint && npm run build
 
 See `README.md` and `DEMO_RUNBOOK.md` for demo flows.
 
-**Skills Hub** (before claiming game/sync work done):
+## Skills Hub (before claiming game/sync work done)
 
 ```bash
 cd skills-hub && npm run verify:e2e
+node scripts/sync-user-id.cjs   # Mac SPECTER_USER_ID ↔ Hub specter-user-id
 ```
+
+Entry points for E2E work:
+
+| Area | Files |
+| --- | --- |
+| Mac → Hub publish | `src/main/session/skillRecorder.ts`, `src/main/hubSync.ts` |
+| Tavus overlay | `src/main/tavusHub.ts`, `src/renderer/overlay/TavusPalPanel.tsx` |
+| Hub game UI | `skills-hub/src/pages/Browse.tsx`, `SkillDetail.tsx`, `JourneyContext.tsx` |
+| Verify scripts | `skills-hub/scripts/e2e-mac-publish.cjs`, `e2e-matrix.cjs`, `adversarial-stress.cjs` |

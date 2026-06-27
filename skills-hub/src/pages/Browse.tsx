@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useJourney } from "../JourneyContext";
-import { fetchSkills, type Skill } from "../skills";
+import { clearSkillsCache, fetchSkills, type Skill } from "../skills";
 
 const MON: Record<string, string> = {
   "target-create-event": "CREATO",
@@ -10,13 +10,34 @@ const MON: Record<string, string> = {
   "workflow-event-recap-session-1": "RECAPORDON",
 };
 
+function monName(skill: Skill): string {
+  return MON[skill.id] || skill.title.slice(0, 8).toUpperCase();
+}
+
 export default function Browse() {
   const { journey } = useJourney();
   const [skills, setSkills] = useState<Skill[]>([]);
 
-  useEffect(() => {
+  const reloadSkills = () => {
+    clearSkillsCache();
     void fetchSkills().then(setSkills);
+  };
+
+  useEffect(() => {
+    reloadSkills();
   }, [journey.lastSyncedAt]);
+
+  useEffect(() => {
+    const onVis = () => {
+      if (document.visibilityState === "visible") reloadSkills();
+    };
+    document.addEventListener("visibilitychange", onVis);
+    const t = setInterval(reloadSkills, 5000);
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+      clearInterval(t);
+    };
+  }, []);
 
   const caught = Object.values(journey.entries).filter(
     (e) => e.state === "caught" || e.state === "equipped",
@@ -32,6 +53,7 @@ export default function Browse() {
         <span>PARTY {journey.party.length}/6</span>
         <span>LEARNED {learned}</span>
         <span>CAUGHT {caught}</span>
+        <span>BADGES {journey.badges.length}</span>
         <span>{journey.trainerRank}</span>
       </div>
       <p className="tagline">
@@ -41,7 +63,7 @@ export default function Browse() {
       <div className="route-map">
         {skills.map((s) => {
           const entry = journey.entries[s.id];
-          const mon = MON[s.id] || s.title;
+          const mon = monName(s);
           const total = Math.max(1, s.steps.length || 1);
           const hp = entry
             ? Math.round((entry.movesLearned / total) * 100)

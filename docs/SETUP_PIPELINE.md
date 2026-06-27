@@ -70,7 +70,7 @@ The Electron app auto-uses `Main/.venv/bin/python` when present.
 | `ELEVENLABS_API_KEY` | Optional | Natural TTS; falls back to macOS `say` |
 | `NVIDIA_API_KEY` | For vision | Model: `meta/llama-4-maverick-17b-128e-instruct` (default in `.env.example`) |
 | `SKILLS_HUB_URL` | **Yes** for Tavus/sync | Local: `http://127.0.0.1:3001` · Prod: your Vercel URL |
-| `SPECTER_USER_ID` | Optional | Match Hub browser `localStorage.specter-user-id` for dex sync |
+| `SPECTER_USER_ID` | **Yes for dex sync** | Must match Hub browser `localStorage.specter-user-id` — run `node skills-hub/scripts/sync-user-id.cjs` |
 
 ### `skills-hub/.env` (copy from `skills-hub/.env.example`)
 
@@ -109,12 +109,18 @@ cd Main
 bash scripts/hackathon-prep.sh
 
 # Or individually:
-npm run test:specter          # 395+ invariant checks
-npm run verify:e2e            # Skills Hub build + adversarial + Tavus probe
+npm run test:specter          # 396+ invariant checks
+cd skills-hub && npm run verify:e2e   # Hub build + mac publish + matrix + adversarial
+cd skills-hub && node scripts/sync-user-id.cjs
 curl -s http://127.0.0.1:8765/health   # after npm run dev — memory sidecar
 
-# Code index (optional, before big refactors)
+# Code index (after structural changes)
 graphify build .
+```
+
+```bash
+cd skills-hub && node scripts/sync-user-id.cjs
+# Copy Hub specter-user-id → Main/.env SPECTER_USER_ID → restart Specter
 ```
 
 **Pass criteria:** all commands exit 0; memory health returns `"status":"ok"`.
@@ -126,8 +132,9 @@ graphify build .
 | Path | How |
 |------|-----|
 | **Mac tutor** | Summon overlay → Chat/Voice → Ghost mascot teaches on screen |
+| **Skill record** | **Cmd+Shift+R** → actions → **Cmd+Shift+R** → auto-publish to Hub |
 | **Tavus PAL (browser)** | http://127.0.0.1:5173 → skill → **TRAIN with PAL** |
-| **Tavus PAL (overlay)** | Mode bar → **Face** → **Talk** (uses stock `TAVUS_REPLICA_ID`) |
+| **Tavus PAL (overlay)** | Auto **Face** when PAL ready → **Talk** (stock `TAVUS_REPLICA_ID`) |
 | **Memory / Luma recap** | Memory panel or Cmd+Shift+M dashboard |
 
 ---
@@ -140,7 +147,12 @@ cd skills-hub
 npm run deploy   # or Lovable GitHub sync
 ```
 
-Then set `SKILLS_HUB_URL=https://your-app.vercel.app` in `Main/.env`.
+Then set `SKILLS_HUB_URL=https://your-app.vercel.app` in `Main/.env` and run prod smoke:
+
+```bash
+cd skills-hub
+SKILLS_HUB_PROD_URL=https://your-app.vercel.app npm run verify:prod-smoke
+```
 
 ---
 
@@ -152,7 +164,7 @@ Then set `SKILLS_HUB_URL=https://your-app.vercel.app` in `Main/.env`.
 | Memory panel offline | Run `python3 -m venv .venv && .venv/bin/pip install -r memory_service/requirements.txt`; restart app |
 | PAL 503 Missing Tavus env | Fill `skills-hub/.env`; restart `npm run start` |
 | PAL 503 concurrent conversations | End stale Tavus rooms in dashboard; wait ~1 min |
-| Mac dex not syncing to Hub | Set matching `SPECTER_USER_ID` |
+| Mac dex not syncing to Hub | Run `node skills-hub/scripts/sync-user-id.cjs`; set matching `SPECTER_USER_ID` |
 | Overlay won't summon | Launch from Terminal.app; grant Screen Recording |
 
 See also: [HACKATHON_DEMO_RUNBOOK.md](HACKATHON_DEMO_RUNBOOK.md), [HACKATHON_INTEGRATION.md](HACKATHON_INTEGRATION.md), [skills-hub/docs/TAVUS_PAL_SETUP.md](../skills-hub/docs/TAVUS_PAL_SETUP.md).

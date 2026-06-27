@@ -1578,6 +1578,10 @@ app.whenReady().then(async () => {
     const { tavusHubConfigured } = await import("./tavusHub");
     return { ok: tavusHubConfigured() };
   });
+  ipcMain.handle("tavus:palAvailable", async () => {
+    const { tavusPalAvailable } = await import("./tavusHub");
+    return { ok: await tavusPalAvailable() };
+  });
 
 
   ipcMain.handle("agent:compileNoteHtml", async (event, input) => {

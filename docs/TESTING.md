@@ -50,3 +50,23 @@ curl -s http://127.0.0.1:8765/health   # after npm run dev
 ```
 
 See [../memory_service/README.md](../memory_service/README.md).
+
+## Skills Hub (hackathon E2E)
+
+From `skills-hub/`:
+
+```bash
+npm run verify:e2e       # full gate
+npm run verify:stress    # adversarial only
+node scripts/e2e-mac-publish.cjs
+node scripts/e2e-matrix.cjs
+node scripts/sync-user-id.cjs
+```
+
+From repo root:
+
+```bash
+bash scripts/hackathon-prep.sh   # test:specter + verify:e2e
+```
+
+Manual paths: [HACKATHON_DEMO_RUNBOOK.md](./HACKATHON_DEMO_RUNBOOK.md) · [manual-stress-test-checklist.md](./manual-stress-test-checklist.md) § I
