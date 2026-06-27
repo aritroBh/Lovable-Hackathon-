@@ -197,6 +197,12 @@ const api = {
     onIpc("replay:complete", callback),
   onReplayStopped: (callback: () => void) => onIpc("replay:stopped", callback),
 
+  onSkillRecording: (callback: (data: any) => void) =>
+    onIpc("skill:recording", callback),
+  onSkillBuilt: (callback: (data: any) => void) =>
+    onIpc("skill:built", callback),
+  toggleSkillRecording: () => ipcRenderer.invoke("skill:toggle-record"),
+
   // Demo
   prepareControlledDemo: () => ipcRenderer.invoke("demo:controlledWorkflow"),
 

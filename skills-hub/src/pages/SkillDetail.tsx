@@ -9,6 +9,7 @@ import {
   startTavusConversation,
   type Skill,
 } from "../skills";
+import { isSpecterAgentOnline, playSkillOnMac } from "../specterAgent";
 
 export default function SkillDetail() {
   const { id } = useParams<{ id: string }>();
@@ -17,12 +18,18 @@ export default function SkillDetail() {
   const [skill, setSkill] = useState<Skill | undefined>();
   const [conversationUrl, setConversationUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [ghostLoading, setGhostLoading] = useState(false);
+  const [agentOnline, setAgentOnline] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState("What will you do?");
 
   useEffect(() => {
     void fetchSkills().then(() => setSkill(id ? getSkill(id) : undefined));
   }, [id]);
+
+  useEffect(() => {
+    void isSpecterAgentOnline().then(setAgentOnline);
+  }, []);
 
   const entry = skill ? journey.entries[skill.id] : undefined;
   const totalMoves = Math.max(1, skill?.steps.length || 1);
@@ -82,6 +89,28 @@ export default function SkillDetail() {
       setLoading(false);
     }
   }, [skill, movesLearned]);
+
+  const playGhost = useCallback(async () => {
+    if (!skill) return;
+    const replaySteps = skill.replaySteps;
+    if (!replaySteps?.length) {
+      setError(
+        "This skill has no ghost replay data yet — record it on Mac with Cmd+Shift+R.",
+      );
+      return;
+    }
+    setGhostLoading(true);
+    setError(null);
+    try {
+      await playSkillOnMac(skill.id, replaySteps);
+      setMsg("Ghost walkthrough running on your Mac — follow the spectral cursor.");
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setGhostLoading(false);
+      void isSpecterAgentOnline().then(setAgentOnline);
+    }
+  }, [skill]);
 
   const catchSkill = useCallback(async () => {
     if (!skill || !canCatchSkill(skill.id)) return;
@@ -145,6 +174,23 @@ export default function SkillDetail() {
       </div>
 
       <div className="battle-actions">
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => void playGhost()}
+          disabled={ghostLoading || !skill.replaySteps?.length}
+          title={
+            agentOnline
+              ? "Replay this skill with Specter's ghost cursor"
+              : "Launch Specter on this Mac first"
+          }
+        >
+          {ghostLoading
+            ? "Starting ghost…"
+            : agentOnline
+              ? "GHOST WALKTHROUGH"
+              : "GHOST (Specter offline)"}
+        </button>
         <button type="button" className="btn btn-primary" onClick={() => void talk()} disabled={loading}>
           {loading ? "Starting PAL…" : "TRAIN with PAL"}
         </button>

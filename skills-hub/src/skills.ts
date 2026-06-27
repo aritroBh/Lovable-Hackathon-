@@ -7,6 +7,18 @@ export interface SkillStep {
   target: string;
 }
 
+export interface ReplayStep {
+  action: "click" | "type" | "scroll" | "wait";
+  x: number;
+  y: number;
+  viewportX?: number;
+  viewportY?: number;
+  delayMs?: number;
+  targetLabel?: string;
+  instruction?: string;
+  typeText?: string;
+}
+
 export interface Skill {
   id: string;
   title: string;
@@ -17,6 +29,7 @@ export interface Skill {
   timestamp: string;
   confidence: number | null;
   steps: SkillStep[];
+  replaySteps?: ReplayStep[];
   body: string;
   contextBody: string;
 }

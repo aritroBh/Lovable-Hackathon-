@@ -64,6 +64,14 @@ import {
   saveToNode,
 } from "./session/recorder";
 import { registerReplayIpc, replayWalkthrough } from "./session/replay";
+import {
+  configureSkillRecorder,
+  getSkillRecordingState,
+  isSkillRecording,
+  toggleSkillRecording,
+} from "./session/skillRecorder";
+import { normalizeReplaySteps } from "./session/skillBuilder";
+import { startSkillBridge } from "./skillBridge";
 import { registerClinicalIpc } from "./clinical/ipc";
 import { hasActiveReplay, stopReplay } from "./session/replayController";
 import { mirrorReplayExecute } from "./session/mirrorReplay";
@@ -208,6 +216,7 @@ let mainWindow: BrowserWindow | null = null;
 let overlayWindow: BrowserWindow | null = null;
 let clinicalWindow: BrowserWindow | null = null;
 let memorySidecarProcess: ChildProcess | null = null;
+let skillBridgeServer: ReturnType<typeof startSkillBridge> | null = null;
 
 // Cache of the user's foreground app captured *before* the overlay shows.
 // This is what the AX path uses to walk the right tree — without it,
@@ -900,6 +909,35 @@ app.whenReady().then(async () => {
   globalShortcut.register("CommandOrControl+Shift+M", () => {
     showDashboardWindow();
   });
+
+  globalShortcut.register("CommandOrControl+Shift+R", () => {
+    void toggleSkillRecording(DEFAULT_APP_NAME).then((result) => {
+      sendOverlayEvent("skill:recording-result", result);
+    });
+  });
+
+  configureSkillRecorder({
+    overlayProvider: () => overlayWindow,
+    overlayEmitter: sendOverlayEvent,
+  });
+
+  skillBridgeServer = startSkillBridge({
+    onToggleRecord: () => toggleSkillRecording(DEFAULT_APP_NAME),
+    onPlaySkill: async (skillId, steps) => {
+      if (overlayWindow && !overlayWindow.isDestroyed() && !overlayWindow.isVisible()) {
+        overlayWindow.showInactive();
+        overlayWindow.moveTop();
+        overlayWindow.setIgnoreMouseEvents(true, { forward: true });
+      }
+      safeLog("[skillBridge] ghost walkthrough", {
+        skillId,
+        steps: steps.length,
+      });
+      await replayWalkthrough(steps, () => {});
+    },
+    getRecordingState: () => ({ active: isSkillRecording() }),
+  });
+
   registerDashboardIpc();
 
   ipcMain.handle("automation:peekaboo-status", async () => {
@@ -969,6 +1007,8 @@ app.whenReady().then(async () => {
     stopAmbientAudioListener();
     setForegroundAppProvider(null);
     setBehavioralStateEmitter(null);
+    skillBridgeServer?.close();
+    skillBridgeServer = null;
   });
 
   // IPC Handlers
@@ -1718,6 +1758,20 @@ app.whenReady().then(async () => {
     recordStep(step),
   );
   ipcMain.handle("session:record-stop", async () => stopRecording());
+
+  ipcMain.handle("skill:toggle-record", async () =>
+    toggleSkillRecording(DEFAULT_APP_NAME),
+  );
+  ipcMain.handle("skill:recording-state", async () =>
+    getSkillRecordingState(),
+  );
+  ipcMain.handle("skill:play-steps", async (_event, steps) => {
+    const normalized = normalizeReplaySteps(
+      Array.isArray(steps) ? steps : [],
+    );
+    await replayWalkthrough(normalized, () => {});
+    return { ok: true, steps: normalized.length };
+  });
 
   ipcMain.handle(
     "session:save-node",

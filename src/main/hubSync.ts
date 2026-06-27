@@ -169,6 +169,79 @@ async function pushMacLearnedEntry(skillId: string): Promise<boolean> {
   }
 }
 
+export async function publishBuiltSkillToHub(
+  skill: Record<string, unknown>,
+): Promise<boolean> {
+  const hub = hubUrl();
+  if (!hub) return false;
+  const uid = userId();
+  const skillId = String(skill.id || "");
+  if (!skillId) return false;
+
+  const replaySteps = Array.isArray(skill.replaySteps) ? skill.replaySteps : [];
+  const totalMoves = Math.max(
+    1,
+    Array.isArray(skill.steps) ? skill.steps.length : replaySteps.length,
+  );
+  const now = new Date().toISOString();
+
+  try {
+    const journeyRes = await fetch(`${hub}/api/journey`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: uid,
+        journey: {
+          userId: uid,
+          entries: {
+            [skillId]: {
+              skillId,
+              state: "learned",
+              movesLearned: totalMoves,
+              totalMoves,
+              origin: "mac",
+              author: uid,
+              app: String(skill.app || "Desktop"),
+              updatedAt: now,
+            },
+          },
+          party: [skillId],
+          badges: [],
+          trainerRank: "Skill Builder",
+          lastSyncedAt: now,
+          version: 1,
+        },
+      }),
+    });
+    if (!journeyRes.ok) {
+      safeError("[hubSync] built skill journey push failed", await journeyRes.text());
+      return false;
+    }
+
+    const publishRes = await fetch(`${hub}/api/publish`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: uid,
+        skill: {
+          ...skill,
+          author: uid,
+          timestamp: now,
+        },
+      }),
+    });
+    if (!publishRes.ok) {
+      safeError("[hubSync] built skill publish failed", await publishRes.text());
+      return false;
+    }
+    safeLog("[hubSync] built skill published", { skillId, totalMoves });
+    return true;
+  } catch (e) {
+    safeError("[hubSync] built skill publish error", e);
+    return false;
+  }
+}
+
 export async function publishSkillToHub(skillId: string): Promise<boolean> {
   const hub = hubUrl();
   if (!hub) return false;

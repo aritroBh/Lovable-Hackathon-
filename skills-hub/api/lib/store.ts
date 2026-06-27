@@ -20,6 +20,17 @@ export interface StoredSkill {
   timestamp: string;
   confidence: number | null;
   steps: { action: string; target: string }[];
+  replaySteps?: Array<{
+    action: string;
+    x: number;
+    y: number;
+    viewportX?: number;
+    viewportY?: number;
+    delayMs?: number;
+    targetLabel?: string;
+    instruction?: string;
+    typeText?: string;
+  }>;
   body: string;
   contextBody: string;
   publishedAt?: string;

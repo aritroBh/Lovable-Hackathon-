@@ -43,6 +43,13 @@ let cleanupListeners: Array<() => void> = [];
 let stateEmitter:
   | ((state: BehavioralState, frame: BehavioralFrame) => void)
   | null = null;
+let skillRecordingCollector: ((frame: BehavioralFrame) => void) | null = null;
+
+export function setSkillRecordingCollector(
+  collector: ((frame: BehavioralFrame) => void) | null,
+): void {
+  skillRecordingCollector = collector;
+}
 
 function pushFrame(frame: BehavioralFrame): BehavioralFrame {
   const normalized = normalizeBehavioralFrame(frame);
@@ -62,6 +69,9 @@ function pushFrame(frame: BehavioralFrame): BehavioralFrame {
     };
   }
   stateEmitter?.(currentState, normalized);
+  if (normalized.synthetic !== true) {
+    skillRecordingCollector?.(normalized);
+  }
   return normalized;
 }
 
