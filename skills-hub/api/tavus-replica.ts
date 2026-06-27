@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const { ok, status, data } = await tavusFetch(
-      `/replicas/${stored.replica_id}`,
+      `/faces/${stored.replica_id}`,
     );
     if (!ok) {
       return res.status(status).json({ ok: false, error: data });
@@ -60,10 +60,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ ok: false, error: "uploadUrl required" });
     }
 
-    const { ok, status, data } = await tavusFetch("/replicas", {
+    const { ok, status, data } = await tavusFetch("/faces", {
       method: "POST",
       body: JSON.stringify({
-        replica_name: replicaName,
+        face_name: replicaName,
         train_image_url: uploadUrl,
         voice_name: voiceName,
         auto_fix_training_image: true,
@@ -75,7 +75,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const replicaId =
-      typeof data.replica_id === "string" ? data.replica_id : null;
+      typeof data.face_id === "string"
+        ? data.face_id
+        : typeof data.replica_id === "string"
+          ? data.replica_id
+          : null;
     const replicaStatus =
       typeof data.status === "string" ? data.status : "training";
 

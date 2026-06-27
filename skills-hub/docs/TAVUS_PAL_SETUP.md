@@ -1,6 +1,6 @@
 # Tavus PAL setup (PALmaker)
 
-Do this once before deploying Skills Hub.
+Do this once before deploying Skills Hub. Full install/verify pipeline: [`../../docs/SETUP_PIPELINE.md`](../../docs/SETUP_PIPELINE.md).
 
 ## 1. Credits and keys
 
@@ -59,6 +59,8 @@ npm run start           # API :3001 + UI :5173
 ```
 
 Open http://127.0.0.1:5173 → **Workflow: event-recap-session-1** → **Talk to Specter**.
+
+Pre-demo gate from repo root: `bash scripts/hackathon-prep.sh`.
 
 **503 "Missing Tavus env"** = keys missing in `.env` or Vercel/Lovable secrets panel.
 
